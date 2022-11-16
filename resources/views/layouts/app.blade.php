@@ -18,66 +18,314 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!---reCaptcha API-->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--- Fontawsome Links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css" integrity="sha512-giQeaPns4lQTBMRpOOHsYnGw1tGVzbAIHUyHRgn7+6FmiEgGGjaG0T2LZJmAPMzRCl+Cug0ItQ2xDZpTmEc+CQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!---Link CSS Styling -->
+    <link rel="stylesheet" href="{{ url('assets/css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url('assets/css/media.css') }}" type="text/css">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+        <!----Sidebar Menu-->
+      <div class="sb-body-container">
+         <div class="sidebar_container" id="sidebar_open">
+            <div class="sidebar_main_wrapper">
+               <div class="sidebar_head">
+                  <div class="sidebar_img_box">
+                     <img src="./assets/images/main-logo.jpg" alt="group" class="sidebarlogo">
+                  </div>
+                  <div class="sidebar_close">
+                     <span class="close_border" id="close_cross"><img src="./assets/images/close_menu.png" alt="close_menu" class="close_menu-img"></span>
+                  </div>
+               </div>
+               <div class="sidebar_body">
+                  <div class="sidebar_nav_box">
+                     <ul class="un_sidebar">
+                        <li class="sidebar_list"><a href="#" class="sidebar_list_link">Home</a></li>
+                        <li class="sidebar_list"><a href="./service.html" class="sidebar_list_link">Services</a></li>
+                        <li class="sidebar_list dropdown_sdlist"><a href="#" class="sidebar_list_link sddropbtn">Resources</a></li>
+                        <li class="sidebar_list"><a href="./about_us.html" class="sidebar_list_link">About Us</a></li>
+                        <li class="sidebar_list"><a href="./career_page.html" class="sidebar_list_link">Career</a></li>
+                        <li class="sidebar_list"><a href="./contact_us.html" class="sidebar_list_link">Contact Us</a></li>
+                     </ul>
+                  </div>
+               </div>
             </div>
-        </nav>
+         </div>
+      </div>
 
-        <main class="py-4">
+      <!----- Header --->
+      <header class="header">
+         <div class="container">
+            <div class="row">
+               <div class="col md-12">
+                  <div class="primary_header">
+                     <div class="logo_box">
+                        <a href="#" class="nav-brand">
+                        <span class="nav-brand_inner-box">
+                        <img src="{{ url('assets/images/main-logo.jpg') }}" alt="logo" class="logo_img">
+                        </span>
+                        </a>
+                     </div>
+                     <nav class="primary_menu">
+                        <ul>
+                           <li><a href="./index.html" class="primary_nav-menu">Home</a></li>
+                           <li class="service-dropdown" id="service_dropbtn">
+                              <a href="./service.html" class="service_dropbtn primary_nav-menu">Services</a>
+                              <!---Service Mega Menu-->
+                              <div class="mm-s-menu-container">
+                                 <div class="container">
+                                    <div class="row">
+                                       <div class="col-md-12">
+                                          <div class="mm_service-g-wrapper" id="mm_service-g-item">
+                                             <div class="service_g-item">
+                                                <div class="service_g-content-wrapper">
+                                                   <h2 class="mm-title-head">Our Service</h2>
+                                                   <p>Customized digital solutions to help clients build their competitive edge.</p>
+                                                   <div class="vector_img">
+                                                      <img src="{{ url('assets/images/undraw_Services_re_hu5n.png') }}" alt="service-vector" class="mm_s-vector">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="service_g-item">
+                                                <div class="service_g-content-wrapper service-one_wrapper">
+                                                   <h2 class="s_one">Web Solution</h2>
+                                                   <ul class="sub-service-link">
+                                                      <li><a href="#">Web Design</a></li>
+                                                      <li><a href="#">Web Development</a></li>
+                                                      <li><a href="#">Hosting</a></li>
+                                                      <li><a href="#">SEO</a></li>
+                                                      <li><a href="#">Domain registration</a></li>
+                                                      <li><a href="#">Redesign and Redevelopment</a></li>
+                                                      <li><a href="#">Maintainance and testing</a></li>
+                                                      <li><a href="#">Control Panel</a></li>
+                                                   </ul>
+                                                </div>
+                                             </div>
+                                             <div class="service_g-item">
+                                                <div class="s_g-content-flex-wrapper">
+                                                   <div class="service_g-content-wrapper service-two_wrapper">
+                                                      <h2 class="s_one">Software</h2>
+                                                      <ul class="sub-service-link">
+                                                         <li><a href="#">Integrated System Design</a></li>
+                                                         <li><a href="#">Integrated System Development</a></li>
+                                                      </ul>
+                                                   </div>
+                                                   <div class="service_g-content-wrapper service-three_wrapper">
+                                                      <h2 class="s_one">Mobile App</h2>
+                                                      <ul class="sub-service-link">
+                                                         <li><a href="#">Mobile System Design</a></li>
+                                                         <li><a href="#">Mobile System Development</a></li>
+                                                      </ul>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="service_g-item">
+                                                <div class="service_g-content-wrapper service-one_wrapper">
+                                                   <h2 class="s_one">2D/3D Design</h2>
+                                                   <ul class="sub-service-link">
+                                                      <li><a href="#">2D/3D Isometric games</a></li>
+                                                      <li><a href="#">3D Animation</a></li>
+                                                      <li><a href="#">Letterheads</a></li>
+                                                      <li><a href="#">Business Cards</a></li>
+                                                      <li><a href="#">Brouchers</a></li>
+                                                      <li><a href="#">Logos</a></li>
+                                                      <li><a href="#">Books and Magzines</a></li>
+                                                   </ul>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </li>
+                           <li class="resources_dropdown">
+                              <a href="#" class="res_dropbtn primary_nav-menu">Resources</a>
+                              <!---Resource Mega Menu-->
+                              <div class="mm-r-menu-container">
+                                 <div class="container">
+                                    <div class="row">
+                                       <div class="col-md-12">
+                                          <div class="mm_resource-g-wrapper" id="mm_resource-g-item">
+                                             <div class="service_g-item">
+                                                <div class="resource_g-content-wrapper">
+                                                   <h2 class="mm-title-head">Resources</h2>
+                                                   <p>Explore data-rich insights from our content experts and tech geeks, bringing interesting updates from across the globe.
+                                                   </p>
+                                                </div>
+                                             </div>
+                                             <div class="resource_g-item">
+                                                <div class="h4">Explore</div>
+                                                <a href="./blog.html" class="resource_g-content-wrapper service-one_wrapper">
+                                                   <h2 class="s_one">Blog</h2>
+                                                   <p class="one_content">Stuff that Matters</p>
+                                                </a>
+                                                <a href="#" class="resource_g-content-wrapper service-one_wrapper">
+                                                   <h2 class="s_one">Our News and Events</h2>
+                                                   <p class="one_content">Stay informed about us</p>
+                                                </a>
+                                             </div>
+                                             <div class="resource_g-item res_g-item-second">
+                                                <div class="r_g-content-flex-wrapper">
+                                                   <a href="#" class="resource_g-content-wrapper resource-two_wrapper">
+                                                      <h2 class="s_one">Meet Our leads</h2>
+                                                      <p class="one_content">Our expert Team leads</p>
+                                                   </a>
+                                                   <a href="#" class="resource_g-content-wrapper resource-three_wrapper">
+                                                      <h2 class="s_one">Case Studies</h2>
+                                                      <p class="one_content">From our media desk</p>
+                                                   </a>
+                                                </div>
+                                             </div>
+                                             <div class="resource_g-item res_g-item-second">
+                                                <a href="#" class="resource_g-content-wrapper resource-one_wrapper">
+                                                   <h2 class="s_one">Partnerships</h2>
+                                                   <p class="one_content">Our Partnerships worldwide nation</p>
+                                                </a>
+                                                <a href="#" class="resource_g-content-wrapper resource-one_wrapper">
+                                                   <h2 class="s_one">Podcast</h2>
+                                                   <p class="one_content">Global tech events</p>
+                                                </a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </li>
+                           <li><a href="./about_us.html" class="primary_nav-menu">About Us</a></li>
+                           <li><a href="./career_page.html" class="primary_nav-menu">Career</a></li>
+                           <li class="h-contact-btn"><a href="./contact_us.html" class="contact_us-nav">Contact Us</a></li>
+                        </ul>
+                     </nav>
+                     <div class="menu_toggle-button" id="menu_toggle-btn">
+                        <span class="bar-btn"><img src="./assets/images/menu_bar.png" alt="bar_menu" class="bar_menu-img"></span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
+
+        <main>
             @yield('content')
         </main>
+
+        <!---Footer ----->
+      <footer class="footer">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="footer_container-wrapper">
+                     <div class="footer_up-wrapper">
+                        <div class="foo-logo-box">
+                           <a href="#" class="nav-brand">
+                           <span class="nav-brand_inner-box">
+                           <img src="./assets/images/main-logo.jpg" alt="logo" class="logo_img">
+                           </span>
+                           </a>
+                        </div>
+                        <div class="foo-social-icon">
+                           <div class="foo-social-flex-wrapper">
+                              <span class="footer-social"><i class="fab fa-linkedin"></i></span>
+                              <span class="footer-social"><i class="fab fa-youtube"></i></span>
+                              <span class="footer-social"><i class="fab fa-facebook"></i></span>
+                              <span class="footer-social"><i class="fab fa-instagram"></i></span>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="footer_down-wrapper">
+                        <div class="footer-col footer-col-1">
+                           <h4>About Us</h4>
+                           <ul>
+                              <li><a href="#" class="foo_links">about us</a></li>
+                              <li><a href="#" class="foo_links">our vision</a></li>
+                              <li><a href="#" class="foo_links">meet the team</a></li>
+                              <li><a href="#" class="foo_links">Milestone</a></li>
+                              <li><a href="#" class="foo_links">Our location</a></li>
+                              <li><a href="#" class="foo_links">Blog</a></li>
+                           </ul>
+                        </div>
+                        <div class="footer-col footer-col-2">
+                           <h4>Products and Service</h4>
+                           <ul>
+                              <li><a href="#" class="foo_links">Digital Services</a></li>
+                              <li><a href="#" class="foo_links">IT Staff</a></li>
+                              <li><a href="#" class="foo_links">Staff Augmentation</a></li>
+                              <li><a href="#" class="foo_links">Printing and Package</a></li>
+                           </ul>
+                        </div>
+                        <div class="footer-col footer-col-3">
+                           <h4>Useful Links</h4>
+                           <ul>
+                              <li><a href="#" class="foo_links">privacy policy</a></li>
+                              <li><a href="#" class="foo_links">Terms and conditions</a></li>
+                              <li><a href="#" class="foo_links">Contact Us</a></li>
+                              <li><a href="#" class="foo_links">Agreements and License</a></li>
+                           </ul>
+                        </div>
+                        <div class="footer-col foo-last-col">
+                           <h4>Approach Us</h4>
+                           <div class="social-links">
+                              <div class="social-box">
+                                 <div class="social_icon-container">
+                                    <span class="social_icon"><i class="fas fa-map-marker-alt"></i></span> &nbsp;
+                                    <span class="footer_social_content">
+                                       <h1>Location</h1>
+                                       <p> 413 Park avenue, Near Downtown Brampton, Ontario</p>
+                                    </span>
+                                 </div>
+                                 <div class="social_icon-container">
+                                    <span class="social_icon"><i class="fas fa-envelope"></i></span> &nbsp;
+                                    <span class="footer_social_content">
+                                       <h1>Email</h1>
+                                       <p> abc@gmail.com</p>
+                                    </span>
+                                 </div>
+                                 <div class="social_icon-container">
+                                    <span class="social_icon"><i class="fas fa-phone-alt"></i></span> &nbsp;
+                                    <span class="footer_social_content">
+                                       <h1>Contact Number</h1>
+                                       <p> +10311223344</p>
+                                    </span>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+
+      <!---second footer -->
+      <div class="second_footer">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="second_footer-wrapper">
+                     <p>© 2022 Cognative IT Solution . All Rights Reserved.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
     </div>
+
+    <!--- Jquery cdn-->
+   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+   <!-- Latest compiled and minified JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   <!---custom js file-->
+   <script src="{{ url('assets/js/app.js') }}"></script>
 </body>
 </html>
