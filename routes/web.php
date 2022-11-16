@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsUser;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\SettingController;
-
+use App\Http\Middleware\IsAdmin;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\Admin\UserController;
+
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Auth\RegisterController;
 
 
 /*
@@ -42,4 +43,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('admin/roles', RoleController::class);
 });
 
+Route::get('/google', [RegisterController::class, 'google']);
+Route::get('/google/redirect', [RegisterController::class, 'googleRedirect']);
 
+Route::get('/linkedin', [RegisterController::class, 'linkedin']);
+Route::get('/linkedin/redirect', [RegisterController::class, 'linkedinRedirect']);

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -69,5 +72,51 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    protected function google() {
+        // Send user to google for signup with google
+        return Socialite::driver('google')->redirect();
+    }
+
+    protected function googleRedirect() {
+        // get user info comming from google
+        $user = Socialite::driver('google')->user();
+
+        $user = User::firstOrCreate([
+            'email' => $user->email
+        ], [
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => Hash::make(Str::random(24))
+        ]);
+
+        Auth::login($user, true);
+
+        return redirect()->route('home');
+    }
+
+    protected function linkedin() {
+        // Send user to linkedin for signup with linkedin
+        return Socialite::driver('linkedin')->redirect();
+    }
+
+    protected function linkedinRedirect() {
+        // get user info comming from linked
+        $user = Socialite::driver('linkedin')->user();
+
+        dd($user);
+
+        $user = User::firstOrCreate([
+            'email' => $user->email
+        ], [
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => Hash::make(Str::random(24))
+        ]);
+
+        Auth::login($user, true);
+
+        return redirect()->route('home');
     }
 }
