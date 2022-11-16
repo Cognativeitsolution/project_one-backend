@@ -71,6 +71,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'is_admin' => 0
         ]);
     }
 
@@ -88,7 +89,8 @@ class RegisterController extends Controller
         ], [
             'name' => $user->name,
             'email' => $user->email,
-            'password' => Hash::make(Str::random(24))
+            'password' => Hash::make(Str::random(24)),
+            'is_admin' => 0
         ]);
 
         Auth::login($user, true);
@@ -105,14 +107,13 @@ class RegisterController extends Controller
         // get user info comming from linked
         $user = Socialite::driver('linkedin')->user();
 
-        dd($user);
-
         $user = User::firstOrCreate([
             'email' => $user->email
         ], [
             'name' => $user->name,
             'email' => $user->email,
-            'password' => Hash::make(Str::random(24))
+            'password' => Hash::make(Str::random(24)),
+            'is_admin' => 0
         ]);
 
         Auth::login($user, true);
