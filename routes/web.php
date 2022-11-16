@@ -5,6 +5,7 @@ use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsUser;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SliderController;
 
 use App\Http\Controllers\RoleController;
 
@@ -29,6 +30,7 @@ Auth::routes();
 Route::middleware([IsAdmin::class])->group(function(){
     Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
     Route::resource('admin/users', UserController::class);
+    Route::resource('admin/sliders', SliderController::class);
     Route::resource('admin/settings', SettingController::class);
     //Route::resource('admin/pages', PageController::class); its deleted 
 
