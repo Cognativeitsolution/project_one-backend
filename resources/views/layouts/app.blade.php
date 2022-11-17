@@ -50,12 +50,12 @@
                <div class="sidebar_body">
                   <div class="sidebar_nav_box">
                      <ul class="un_sidebar">
-                        <li class="sidebar_list"><a href="#" class="sidebar_list_link">Home</a></li>
+                        <li class="sidebar_list"><a href="{{ url('/') }}" class="sidebar_list_link">Home</a></li>
                         <li class="sidebar_list"><a href="./service.html" class="sidebar_list_link">Services</a></li>
                         <li class="sidebar_list dropdown_sdlist"><a href="#" class="sidebar_list_link sddropbtn">Resources</a></li>
                         <li class="sidebar_list"><a href="./about_us.html" class="sidebar_list_link">About Us</a></li>
                         <li class="sidebar_list"><a href="./career_page.html" class="sidebar_list_link">Career</a></li>
-                        <li class="sidebar_list"><a href="./contact_us.html" class="sidebar_list_link">Contact Us</a></li>
+                        <li class="sidebar_list"><a href="{{ url('/contact') }}" class="sidebar_list_link">Contact Us</a></li>
                      </ul>
                   </div>
                </div>
@@ -70,7 +70,7 @@
                <div class="col md-12">
                   <div class="primary_header">
                      <div class="logo_box">
-                        <a href="#" class="nav-brand">
+                        <a href="{{ url('/') }}" class="nav-brand">
                         <span class="nav-brand_inner-box">
                         <img src="{{ url('assets/images/main-logo.jpg') }}" alt="logo" class="logo_img">
                         </span>
@@ -78,7 +78,7 @@
                      </div>
                      <nav class="primary_menu">
                         <ul>
-                           <li><a href="./index.html" class="primary_nav-menu">Home</a></li>
+                           <li><a href="{{ url('/') }}" class="primary_nav-menu">Home</a></li>
                            <li class="service-dropdown" id="service_dropbtn">
                               <a href="./service.html" class="service_dropbtn primary_nav-menu">Services</a>
                               <!---Service Mega Menu-->
@@ -205,7 +205,7 @@
                            </li>
                            <li><a href="./about_us.html" class="primary_nav-menu">About Us</a></li>
                            <li><a href="./career_page.html" class="primary_nav-menu">Career</a></li>
-                           <li class="h-contact-btn"><a href="./contact_us.html" class="contact_us-nav">Contact Us</a></li>
+                           <li class="h-contact-btn"><a href="{{ url('/contact') }}" class="contact_us-nav">Contact Us</a></li>
                         </ul>
                      </nav>
                      <div class="menu_toggle-button" id="menu_toggle-btn">
