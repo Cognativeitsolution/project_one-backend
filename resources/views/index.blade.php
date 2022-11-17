@@ -7,27 +7,15 @@
                <!-- Swiper -->
                <div class="swiper mySwiper hero_slider">
                   <div class="swiper-wrapper">
-                     <div class="swiper-slide bg_img" data-bg="{{ url('assets/images/hero_img.jpg') }}">
-                        <div class="h-banner-content">
-                           <h2>UI/UX Design with mordern trends</h2>
-                           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam laudantium esse assumenda optio, accusantium minus debitis voluptate.</p>
-                           <a href="#" class="talk_btn">Let's talk</a>
+                     @foreach ($slider_items as $slider_item)
+                        <div class="swiper-slide bg_img" data-bg="{{ url('images/' . $slider_item->image) }}">
+                           <div class="h-banner-content">
+                              <h2>{{ $slider_item->title }}</h2>
+                              <p>{{ $slider_item->description }}</p>
+                              <a href="{{ $slider_item->url }}" class="talk_btn">Let's talk</a>
+                           </div>
                         </div>
-                     </div>
-                     <div class="swiper-slide bg_img" data-bg="{{ url('assets/images/banner_two.jpg') }}">
-                        <div class="h-banner-content">
-                           <h2>AI trends and Innovation Ideas</h2>
-                           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam laudantium esse assumenda optio, accusantium minus debitis voluptate.</p>
-                           <a href="#" class="talk_btn">Let's talk</a>
-                        </div>
-                     </div>
-                     <div class="swiper-slide bg_img" data-bg="{{ url('assets/images/banner_three.jpg') }}">
-                        <div class="h-banner-content">
-                           <h2>Revolutionary Industries</h2>
-                           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam laudantium esse assumenda optio, accusantium minus debitis voluptate.</p>
-                           <a href="#" class="talk_btn">Let's talk</a>
-                        </div>
-                     </div>
+                     @endforeach
                   </div>
                   <div class="swiper-button-next arrows"></div>
                   <div class="swiper-button-prev arrows"></div>
