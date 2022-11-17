@@ -80,6 +80,18 @@
         </div>
 
         <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
+          <label for="linkedin_account_link">Linkedin URL</label>
+          <input type="text" id="linkedin_account_link" name="linkedin_account_link" value="{{ $record->linkedin_account_link }}" class="form-control">
+          @error('linkedin_account_link')<div class="error">{{ $message }}</div>@enderror
+        </div>
+
+        <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
+          <label for="instagram_account_link">Instagram URL</label>
+          <input type="text" id="instagram_account_link" name="instagram_account_link" value="{{ $record->instagram_account_link }}" class="form-control">
+          @error('instagram_account_link')<div class="error">{{ $message }}</div>@enderror
+        </div>
+
+        <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
           <label for="google_account_link">Google URL</label>
           <input type="text" id="google_account_link" name="google_account_link" value="{{ $record->google_account_link }}" class="form-control">
           @error('google_account_link')<div class="error">{{ $message }}</div>@enderror
@@ -95,6 +107,12 @@
           <label for="youtube_account_link">Youtube URL</label>
           <input type="text" id="youtube_account_link" name="youtube_account_link" value="{{ $record->youtube_account_link }}" class="form-control">
           @error('youtube_account_link')<div class="error">{{ $message }}</div>@enderror
+        </div>
+
+        <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
+          <label for="footer_location_text">Footer Location Text</label>
+          <input type="text" id="footer_location_text" name="footer_location_text" value="{{ $record->footer_location_text }}" class="form-control">
+          @error('footer_location_text')<div class="error">{{ $message }}</div>@enderror
         </div>
 
         <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
