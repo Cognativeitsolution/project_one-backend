@@ -231,7 +231,7 @@
                         <div class="foo-logo-box">
                            <a href="#" class="nav-brand">
                            <span class="nav-brand_inner-box">
-                           <img src="./assets/images/main-logo.jpg" alt="logo" class="logo_img">
+                           <img src="{{ url('assets/images/main-logo.jpg') }}" alt="logo" class="logo_img">
                            </span>
                            </a>
                         </div>
