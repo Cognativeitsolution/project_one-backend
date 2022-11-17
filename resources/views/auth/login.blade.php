@@ -43,7 +43,7 @@
                             <form action="{{ route('login') }}" method="POST" class="sign_up-form-control">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="email" placeholder="Email Address" class="cand-email @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    <input type="email" placeholder="Email Address" class="cand-email @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -52,7 +52,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" placeholder="Password" class="cand-pwd @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    <input type="password" placeholder="Password" class="cand-pwd @error('password') is-invalid @enderror" name="password" required>
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">

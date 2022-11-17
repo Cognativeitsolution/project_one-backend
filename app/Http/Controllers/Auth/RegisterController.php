@@ -95,7 +95,7 @@ class RegisterController extends Controller
 
         Auth::login($user, true);
 
-        return redirect()->route('home');
+        return redirect('/');
     }
 
     protected function linkedin() {
@@ -118,6 +118,6 @@ class RegisterController extends Controller
 
         Auth::login($user, true);
 
-        return redirect()->route('home');
+        return redirect('/');
     }
 }
