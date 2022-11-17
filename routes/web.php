@@ -3,14 +3,13 @@
 use App\Http\Middleware\IsUser;
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\UserController;
-
-
-use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Auth\RegisterController;
 
 
@@ -35,6 +34,7 @@ Route::middleware([IsAdmin::class])->group(function(){
     Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
     Route::resource('admin/users', UserController::class);
     Route::resource('admin/sliders', SliderController::class);
+    Route::resource('admin/blogs', BlogController::class);
     Route::resource('admin/settings', SettingController::class);
     //Route::resource('admin/pages', PageController::class); its deleted 
 
