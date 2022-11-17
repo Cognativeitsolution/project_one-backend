@@ -59,6 +59,15 @@
               </li>
               @endcan
 
+              @can('blog-list')
+              <li class="nav-item">
+                <a href="{{ url('/admin/blogs')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Blogs</p>
+                </a>
+              </li>
+              @endcan
+
               @can('setting-list')
               <li class="nav-item">
                 <a href="{{ url('/admin/settings')}}" class="nav-link">
