@@ -1,19 +1,14 @@
 <?php
 
 use App\Http\Middleware\IsUser;
-<<<<<<< HEAD
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
-=======
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
-
->>>>>>> master
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\Admin\UserController;
 
-use App\Http\Controllers\Admin\SettingController;
+
 use App\Http\Controllers\Auth\RegisterController;
 
 
