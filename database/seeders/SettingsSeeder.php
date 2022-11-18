@@ -16,6 +16,8 @@ class SettingsSeeder extends Seeder
     {
         $setting = [
             [
+                'header_logo' => '1749855649265578p_logo.png',
+                'footer_logo' => '1749855649265578p_logo.png',
                 'contact_number'=>'+923003111117',
                 'contact_email'=>'contact@website.com',
                 'location_address'=>'413 Park avenue, Near Downtown Brampton, Ontario',
