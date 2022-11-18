@@ -10,6 +10,6 @@ class WebHomeController extends Controller
 {
     public function index() {        
         $slider = Slider::get();
-        return view('index', compact('slider', 'settings'));
+        return view('index', compact('slider'));
     }
 }

@@ -13,8 +13,7 @@ class ContactController extends Controller
 {
     // Redirect to contact us page
     protected function index() {
-        // $settings = Setting::first();
-        return view('contact', compact('settings'));
+        return view('contact');
     }
 
     // Redirect to contact us page functionality
