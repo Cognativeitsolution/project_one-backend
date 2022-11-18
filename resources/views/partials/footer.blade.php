@@ -15,7 +15,7 @@
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2022-2025 <a href="{{ url('/admin/home') }}">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2022-2025 <a href="{{ url('/admin/home') }}">Cognitive IT</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->
