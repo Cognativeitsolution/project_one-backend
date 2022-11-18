@@ -91,6 +91,7 @@
                           <td>{{ $setting->updated_at->format('Y-m-d H:i:s') }}</td>
                           <td>
                             @can('setting-edit')
+                            <a href="{{ route('settings.show', $setting->id)}}" class="btn btn-info">Show</a>
                             <a href="{{ route('settings.edit', $setting->id)}}" class="btn btn-primary">Edit</a>
                             @endcan
                             

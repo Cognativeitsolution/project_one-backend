@@ -93,7 +93,15 @@ class SettingController extends Controller
      */
     public function show($id)
     {
-        //
+        $record = Setting::whereId($id)->first();
+
+        $logs = Logs::get_logs_details(Setting::getTableName(), $id);
+
+        if($record != false){
+            return view('settings.show', compact('record','logs'));
+        }else{
+            abort(404);
+        }
     }
 
     /**
