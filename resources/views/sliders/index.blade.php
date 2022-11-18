@@ -44,6 +44,10 @@
               <div class="card">
                 <div class="card-header">
 
+                  <p>
+                    Displaying {{$record->count()}} of {{ $record->total() }} slider(s).
+                  </p>
+
                   <form name="user_search" id="" method="get" action="{{ route('sliders.index')}}">
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 250px;">
@@ -117,6 +121,10 @@
 
                     </tbody>
                   </table>
+
+                  @if(!empty($record))
+                    {!! $record->appends(Request::all())->links() !!}
+                  @endif
                   
 
                 </div>

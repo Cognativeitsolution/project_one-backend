@@ -44,6 +44,10 @@
               <div class="card">
                 <div class="card-header">
 
+                  <p>
+                    Displaying {{$record->count()}} of {{ $record->total() }} blog(s).
+                  </p>
+
                   <form name="user_search" id="" method="get" action="{{ route('blogs.index')}}">
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 250px;">
@@ -119,7 +123,10 @@
 
                     </tbody>
                   </table>
-                  
+
+                  @if(!empty($record))
+                    {!! $record->appends(Request::all())->links() !!}
+                  @endif
 
                 </div>
                 <!-- /.card-body -->
