@@ -3,13 +3,13 @@
 use App\Http\Middleware\IsUser;
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\WebHomeController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Auth\RegisterController;
 
 
@@ -24,7 +24,7 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
-Route::get('/', [PagesController::class, 'index']);
+Route::get('/', [WebHomeController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact', [ContactController::class, 'contact']);
 

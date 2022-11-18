@@ -7,7 +7,7 @@
                <!-- Swiper -->
                <div class="swiper mySwiper hero_slider">
                   <div class="swiper-wrapper">
-                     @foreach ($slider_items as $slider_item)
+                     @foreach ($slider as $slider_item)
                         <div class="swiper-slide bg_img" data-bg="{{ url('images/' . $slider_item->image) }}">
                            <div class="h-banner-content">
                               <h2>{{ $slider_item->title }}</h2>
