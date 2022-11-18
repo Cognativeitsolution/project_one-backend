@@ -110,6 +110,12 @@
         </div>
 
         <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
+          <label for="location_address">Front Website Address Text</label>
+          <input type="text" id="location_address" name="location_address" value="{{ $record->location_address }}" class="form-control">
+          @error('location_address')<div class="error">{{ $message }}</div>@enderror
+        </div>
+        
+        <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
           <label for="footer_location_text">Footer Location Text</label>
           <input type="text" id="footer_location_text" name="footer_location_text" value="{{ $record->footer_location_text }}" class="form-control">
           @error('footer_location_text')<div class="error">{{ $message }}</div>@enderror

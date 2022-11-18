@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Rules\Captcha;
 use App\Models\Contact;
+use App\Models\Setting;
 use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -12,7 +13,8 @@ class ContactController extends Controller
 {
     // Redirect to contact us page
     protected function index() {
-        return view('contact');
+        $settings = Setting::first();
+        return view('contact', compact('settings'));
     }
 
     // Redirect to contact us page functionality

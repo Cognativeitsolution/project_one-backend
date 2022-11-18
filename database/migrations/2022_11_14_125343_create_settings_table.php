@@ -18,6 +18,7 @@ class CreateSettingsTable extends Migration
             $table->string('header_logo')->nullable();
             $table->string('footer_logo')->nullable();
             $table->string('contact_email')->nullable();
+            $table->string('location_address')->nullable();
             $table->string('contact_number')->nullable();
             $table->string('contact_whatsapp')->nullable();
             $table->string('linkedin_account_link')->nullable();

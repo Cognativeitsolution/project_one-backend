@@ -32,19 +32,19 @@
                                  <div class="social-box">
                                     <div class="social_icon-container">
                                        <span class="social_icon"><i class="fas fa-map-marker-alt"></i></span> &nbsp;
-                                       <span class="social_content"> 413 Park avenue, Near Downtown Brampton, Ontario</span>
+                                       <span class="social_content"> {{ $settings->location_address }}</span>
                                     </div>
                                     <div class="social_icon-container">
                                        <span class="social_icon"><i class="fas fa-envelope"></i></span> &nbsp;
-                                       <span class="social_content"> abc@gmail.com </span>
+                                       <span class="social_content"> {{ $settings->contact_email }} </span>
                                     </div>
                                     <div class="social_icon-container">
                                        <span class="social_icon"><i class="fas fa-phone-alt"></i></span> &nbsp;
-                                       <span class="social_content"> +10311223344</span>
+                                       <span class="social_content"> {{ $settings->contact_number }}</span>
                                     </div>
                                     <div class="social_icon-container">
                                        <span class="social_icon"><i class="fas fa-fax"></i></span> &nbsp;
-                                       <span class="social_content"> +3356 1589 2100 </span>
+                                       <span class="social_content"> {{ $settings->contact_whatsapp }} </span>
                                     </div>
                                  </div>
                               </div>

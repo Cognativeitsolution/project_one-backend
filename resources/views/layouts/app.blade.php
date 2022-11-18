@@ -282,21 +282,21 @@
                                     <span class="social_icon"><i class="fas fa-map-marker-alt"></i></span> &nbsp;
                                     <span class="footer_social_content">
                                        <h1>Location</h1>
-                                       <p> 413 Park avenue, Near Downtown Brampton, Ontario</p>
+                                       <p> {{ $settings->location_address }}</p>
                                     </span>
                                  </div>
                                  <div class="social_icon-container">
                                     <span class="social_icon"><i class="fas fa-envelope"></i></span> &nbsp;
                                     <span class="footer_social_content">
                                        <h1>Email</h1>
-                                       <p> abc@gmail.com</p>
+                                       <p> {{ $settings->contact_email }}</p>
                                     </span>
                                  </div>
                                  <div class="social_icon-container">
                                     <span class="social_icon"><i class="fas fa-phone-alt"></i></span> &nbsp;
                                     <span class="footer_social_content">
                                        <h1>Contact Number</h1>
-                                       <p> +10311223344</p>
+                                       <p> {{ $settings->contact_number }}</p>
                                     </span>
                                  </div>
                               </div>
