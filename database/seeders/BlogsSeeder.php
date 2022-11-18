@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 
 use App\Models\Blog;
-//use Faker\Generator as Faker;
 
 class BlogsSeeder extends Seeder
 {
