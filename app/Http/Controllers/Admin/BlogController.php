@@ -39,10 +39,11 @@ class BlogController extends Controller
                 ->orWhere('blogs.short_description', 'like', '%'.$search.'%')
                 ->orWhere('blogs.long_description', 'like', '%'.$search.'%')
                 ->orderBy('blogs.id','DESC')
-                ->get();
+                ->paginate(5);
             return view('blogs.index', compact('record') );
         }else{
-            $record = Blog::orderBy('blogs.id','DESC')->get();
+
+            $record = Blog::orderBy('blogs.id','DESC')->paginate(10);
 
             if($record != false){
                 return view('blogs.index', compact('record') );

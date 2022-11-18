@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BlogController as WebBlogController;
 
 
 /*
@@ -27,6 +28,8 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::get('/', [WebHomeController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact', [ContactController::class, 'contact']);
+Route::get('/blogs', [WebBlogController::class, 'index']);
+Route::get('/blogs/{slug}', [WebBlogController::class, 'blog_detail']);
 
 Auth::routes();
 

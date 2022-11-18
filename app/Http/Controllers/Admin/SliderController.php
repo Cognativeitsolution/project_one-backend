@@ -45,10 +45,11 @@ class SliderController extends Controller
             $record = Slider::where('sliders.title', 'like', '%'.$search.'%')
                 ->orWhere('sliders.description', 'like', '%'.$search.'%')
                 ->orderBy('sliders.id','DESC')
-                ->get();
+                ->paginate(5);
             return view('sliders.index', compact('record') );
         }else{
-            $record = Slider::orderBy('sliders.id','DESC')->get();
+            $record = Slider::orderBy('sliders.id','DESC')
+                ->paginate(10);
 
             if($record != false){
                 return view('sliders.index', compact('record') );

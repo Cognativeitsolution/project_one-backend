@@ -266,7 +266,7 @@
                               <li><a href="#" class="foo_links">meet the team</a></li>
                               <li><a href="#" class="foo_links">Milestone</a></li>
                               <li><a href="#" class="foo_links">Our location</a></li>
-                              <li><a href="#" class="foo_links">Blog</a></li>
+                              <li><a href="{{ url('/blogs') }}" class="foo_links">Blog</a></li>
                            </ul>
                         </div>
                         <div class="footer-col footer-col-2">
