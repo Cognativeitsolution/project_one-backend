@@ -145,6 +145,7 @@
           </form>
           <a href="{{ route('settings.index') }}" class="btn btn-info">Back</a>
           <br>
+          <br>
           <div class='log_information'>
             @if(!empty($logs['created_log']) )
                 <p class="log_information" style=""><strong>Created info :</strong>

@@ -35,13 +35,26 @@
 </head>
 <body>
     <div id="app">
-        <!----Sidebar Menu-->
+      <!---Top head--->
+      <div class="top_head">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <a href="{{ route('login') }}" class="top_head-link">
+                  <span><i class="fas fa-user"></i></span>
+                  Login</a>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!----Sidebar Menu-->
       <div class="sb-body-container">
          <div class="sidebar_container" id="sidebar_open">
             <div class="sidebar_main_wrapper">
                <div class="sidebar_head">
                   <div class="sidebar_img_box">
-                     <img src="./assets/images/main-logo.jpg" alt="group" class="sidebarlogo">
+                     <img src="{{ asset('images/' . $settings->header_logo) }}" alt="group" class="sidebarlogo">
                   </div>
                   <div class="sidebar_close">
                      <span class="close_border" id="close_cross"><img src="./assets/images/close_menu.png" alt="close_menu" class="close_menu-img"></span>
@@ -72,7 +85,7 @@
                      <div class="logo_box">
                         <a href="{{ url('/') }}" class="nav-brand">
                         <span class="nav-brand_inner-box">
-                        <img src="{{ url('assets/images/main-logo.jpg') }}" alt="logo" class="logo_img">
+                        <img src="{{ asset('images/' . $settings->header_logo) }}" alt="logo" class="logo_img">
                         </span>
                         </a>
                      </div>
@@ -229,9 +242,9 @@
                   <div class="footer_container-wrapper">
                      <div class="footer_up-wrapper">
                         <div class="foo-logo-box">
-                           <a href="#" class="nav-brand">
+                           <a href="{{ url('/') }}" class="nav-brand">
                            <span class="nav-brand_inner-box">
-                           <img src="{{ url('assets/images/main-logo.jpg') }}" alt="logo" class="logo_img">
+                           <img src="{{ asset('images/' . $settings->footer_logo) }}" alt="logo" class="logo_img">
                            </span>
                            </a>
                         </div>
