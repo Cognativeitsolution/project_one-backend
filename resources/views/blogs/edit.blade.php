@@ -68,8 +68,12 @@
       
             <div class="form-group">
               <label for="long_description">Long Description</label>
-              <input type="text" id="long_description" name="long_description" value="{{ $record->long_description }}" class="form-control" >
+              <textarea name="long_description" id="long_description" cols="30" rows="10" class="form-control">{{ $record->long_description }}</textarea>
               @error('long_description')<div class="error">{{ $message }}</div>@enderror
+            
+              <script>
+                CKEDITOR.replace( 'long_description' );
+              </script>
             </div>
 
             <div class="form-group">
