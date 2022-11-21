@@ -25,7 +25,6 @@ class BlogsSeeder extends Seeder
             $blog->short_description = $faker->text(150);
             $blog->long_description = $faker->paragraph(60);
             $blog->blog_image = "blog_image.jpg";
-            $blog->blog_additional_image = "blog_additional_image.png";
             $blog->save();
         }
     }

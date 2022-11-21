@@ -97,11 +97,11 @@
         @error('blog_image')<div class="error">{{ $message }}</div>@enderror
       </div>
 
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="blog_additional_image">Blog Additional Image</label>
         <input type="file" class="form-control" id="blog_additional_image" name="blog_additional_image" class="form-control" >
         @error('blog_additional_image')<div class="error">{{ $message }}</div>@enderror
-      </div>
+      </div> -->
 
         <button type="submit" class="btn btn-primary">Submit</button>
 
