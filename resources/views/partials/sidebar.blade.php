@@ -75,6 +75,15 @@
               </li>
               @endcan
 
+              @can('job-list')
+              <li class="nav-item">
+                <a href="{{ url('/admin/jobs')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Jobs</p>
+                </a>
+              </li>
+              @endcan
+
               @can('setting-list')
               <li class="nav-item">
                 <a href="{{ url('/admin/settings')}}" class="nav-link">

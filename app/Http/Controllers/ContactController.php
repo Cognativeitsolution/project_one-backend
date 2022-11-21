@@ -26,7 +26,7 @@ class ContactController extends Controller
             'g-recaptcha-response' => new Captcha(),
         ]);
 
-        $settings = Setting::first();
+        $settings = Setting::select('contact_email')->first();
 
         try {
             Mail::to($settings->contact_email, env('COMPANY_NAME'))->send(new ContactMail($details));

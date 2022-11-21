@@ -110,6 +110,9 @@
 }
 
 @media(max-width: 767px) {
+	.related_head {
+		text-align: center;
+	}
 	.sb-grid-container {
 		flex-direction: column;
 	}

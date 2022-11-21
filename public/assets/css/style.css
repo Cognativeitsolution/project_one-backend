@@ -62,36 +62,6 @@ section {
 }
 
 /* Permanent Component*/
-
-/* top head */
-.top_head {
-	padding: 10px 0;
-	background: #2a2a2a;
-}
-
-a.top_head-link {
-	float: right;
-	font-weight: 500;
-	color: #2a2a2a;
-	color: #fff;
-	position: relative;
-	text-decoration: none;
-	margin: 0 16px;
-	display: block;
-	font-size: 14px;
-}
-
-a.top_head-link:hover,
-a.top_head-link:active,
-a.top_head-link:visited {
-	text-decoration: none !important;
-	color: #fff !important;
-}
-
-a.top_head-link span i {
-	padding: 0 10px;
-}
-
 /* Header Styling */
 .header {
 	padding: 20px;
@@ -543,6 +513,76 @@ ul.sub-service-link li a:hover {
 	color: #ffff;
 }
 
+/* Job list */
+.jobs_grid-container {
+	margin-top: 30px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	grid-gap: 30px;
+}
+
+.jl_wrapper {
+	display: flex;
+	flex-direction: column;
+	grid-gap: 10px;
+	align-items: center;
+}
+
+.jl_list {
+	padding: 20px;
+	background: #f5f8fa;
+	color: #333;
+	border-radius: 3px;
+	text-decoration: none;
+	transition: all .4s ease;
+}
+
+.jl_list:hover,
+.jl_list:active,
+.jl_list:visited {
+	text-decoration: none !important;
+	color: #333 !important;
+}
+
+.jl_list:hover {
+	background-color: #fff;
+	box-shadow: 1.5px 2.598px 40px 0 rgb(0 27 43 / 10%);
+}
+
+.jl_head {
+	display: flex;
+	align-items: center;
+	grid-gap: 10px;
+	align-self: flex-start;
+}
+
+.jl_head h3 {
+	font-size: 20px;
+}
+
+.jl_head span i {
+	font-size: 14px;
+	color: #1e90ff;
+}
+
+.jl_intro {
+	padding: 0 25px;
+}
+
+.jl_tag {
+	display: flex;
+	grid-gap: 20px;
+	align-items: center;
+}
+
+.tag.date {
+	padding: 5px 10px;
+	background: #ff9753;
+	border-radius: 5px;
+	box-shadow: inset 0 0 5px #0002;
+	color: #fff;
+}
+
 /* Heading main style */
 .primary_heading {
 	width: 542px;
@@ -590,13 +630,13 @@ ul.sub-service-link li a:hover {
 }
 
 .store-grid {
-	/* width: 100%; */
-	/* height: 100%; */
-	display: flex;
-	flex-wrap: wrap;
-	grid-gap: 20px;
-	align-items: center;
-	justify-content: center;
+    /* width: 100%; */
+    /* height: 100%; */
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
 }
 
 .wcu_grid-container {
@@ -936,25 +976,18 @@ li.active {
 	position: relative;
 }
 
-.one,
-.two,
-.three,
-.four,
-.five,
-.six {
+.one, .two, .three, .four, .five, .six {
 	position: relative;
-	display: inline;
+    display: inline;
 }
 
 ul#nav_un-list li a {
-	color: #333;
+    color: #333;
 	text-decoration: none;
 }
 
-ul#nav_un-list li a:hover,
-ul#nav_un-list li a:active,
-ul#nav_un-list li a:visited {
-	color: #333;
+ul#nav_un-list li a:hover,ul#nav_un-list li a:active,ul#nav_un-list li a:visited {
+    color: #333;
 	text-decoration: none;
 }
 
@@ -1144,7 +1177,8 @@ ul#nav_un-list li a:visited {
 .career_hero-banner,
 .about_hero-banner,
 .service_hero-banner,
-.blog_hero-banner {
+.blog_hero-banner,
+.job_hero-banner {
 	height: 330px;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -1153,6 +1187,9 @@ ul#nav_un-list li a:visited {
 	background-blend-mode: soft-light;
 	background-attachment: fixed;
 	position: relative;
+}
+.job_hero-banner {
+	background-image: url('./../images/join.jpg');
 }
 
 .contact_hero-banner {
@@ -2165,16 +2202,17 @@ transition: all .5s ease-in-out;
 }
 
 .side_bar {
-	flex: 0 0 50%;
-	display: flex;
-	flex-direction: column;
-	grid-gap: 20px;
+	flex: 0 0 40%;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px;
+
 }
 
 .blog_img img {
 	border-radius: 5px;
-	box-shadow: 0 0 10px #0003;
-	width: 35rem;
+    box-shadow: 0 0 10px #0003;
+    max-width: 100%;
 }
 
 .related_offer {

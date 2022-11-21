@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\ContactusCotroller;
 use App\Http\Controllers\BlogController as WebBlogController;
+use App\Http\Controllers\JobController as WebJobController;
+use App\Http\Controllers\Admin\JobController;
 
 
 /*
@@ -31,6 +33,7 @@ Route::get('/contact_us', [ContactController::class, 'index']);
 Route::post('/contact_us', [ContactController::class, 'contact_us']);
 Route::get('/blogs', [WebBlogController::class, 'index']);
 Route::get('/blogs/{slug}', [WebBlogController::class, 'blog_detail']);
+Route::get('/jobs', [WebJobController::class, 'index']);
 
 Auth::routes();
 
@@ -41,8 +44,9 @@ Route::middleware([IsAdmin::class])->group(function(){
     Route::get('admin/contact_us', [ContactusCotroller::class, 'index'])->name('contactus.home');    
     Route::resource('admin/sliders', SliderController::class);
     Route::resource('admin/blogs', BlogController::class);
+    Route::resource('admin/jobs', JobController::class);
     Route::resource('admin/settings', SettingController::class);
-    //Route::resource('admin/pages', PageController::class); its deleted 
+
 
 });
 
