@@ -41,6 +41,13 @@
               </li>
               @endcan
 
+              <li class="nav-item">
+                <a href="{{ route('contactus.home') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Contact Us</p>
+                </a>
+              </li>
+
               @can('role-list')
               <li class="nav-item">
                 <a href="{{ url('/admin/roles') }}" class="nav-link">

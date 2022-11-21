@@ -7,6 +7,22 @@
   color:red;
 }
 </style>
+
+<!-- CKEDITOR -->
+<script src="https://cdn.ckeditor.com/ckeditor5/35.3.1/decoupled-document/ckeditor.js"></script>
+
+<style>
+  .ck-editor__editable {
+    border: 1px solid var(--ck-color-base-border) !important;
+
+    /* Set vertical boundaries for the document editor. */
+    min-height: 200px;
+
+    /* This element is a flex container for easier rendering. */
+    display: flex;
+    flex-flow: column nowrap;
+  }
+</style>
 @endsection
 @section('content')
   <!-- Content Wrapper. Contains page content -->
@@ -68,13 +84,24 @@
       
             <div class="form-group">
               <label for="long_description">Long Description</label>
-              <textarea name="long_description" id="long_description" cols="30" rows="10" class="form-control">{{ $record->long_description }}</textarea>
+              <div id="toolbar-container"></div>
+              <div id="editor">
+                <textarea name="long_description" id="long_description" cols="30" rows="10" class="form-control">{{ $record->long_description }}</textarea>
+              </div>
               @error('long_description')<div class="error">{{ $message }}</div>@enderror
-            
+
               <script>
-                CKEDITOR.replace( 'long_description' );
+                  DecoupledEditor
+                      .create( document.querySelector( '#editor' ) )
+                      .then( editor => {
+                          const toolbarContainer = document.querySelector( '#toolbar-container' );
+
+                          toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+                      } )
+                      .catch( error => {
+                          console.error( error );
+                      } );
               </script>
-            </div>
 
             <div class="form-group">
               <label>Select Related Blog</label>

@@ -26,9 +26,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 
-    <!-- CKEDITOR -->
-    <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
-
     <style>
     .log_information{
         font-size:13px;
