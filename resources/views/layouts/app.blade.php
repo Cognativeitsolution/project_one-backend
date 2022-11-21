@@ -179,7 +179,7 @@
                                              </div>
                                              <div class="resource_g-item">
                                                 <div class="h4">Explore</div>
-                                                <a href="./blog.html" class="resource_g-content-wrapper service-one_wrapper">
+                                                <a href="{{ url('/blogs') }}" class="resource_g-content-wrapper service-one_wrapper">
                                                    <h2 class="s_one">Blog</h2>
                                                    <p class="one_content">Stuff that Matters</p>
                                                 </a>

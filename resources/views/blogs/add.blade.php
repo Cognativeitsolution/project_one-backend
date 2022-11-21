@@ -9,20 +9,7 @@
 </style>
 
 <!-- CKEDITOR -->
-<script src="https://cdn.ckeditor.com/ckeditor5/35.3.1/decoupled-document/ckeditor.js"></script>
-
-<style>
-  .ck-editor__editable {
-    border: 1px solid var(--ck-color-base-border) !important;
-
-    /* Set vertical boundaries for the document editor. */
-    min-height: 200px;
-
-    /* This element is a flex container for easier rendering. */
-    display: flex;
-    flex-flow: column nowrap;
-  }
-</style>
+<script src="{{ asset('ckeditor/build/ckeditor.js') }}"></script>
 @endsection
 
 @section('content')
@@ -84,24 +71,20 @@
 
       <div class="form-group">
         <label for="long_description">Long Description</label>
-        <div id="toolbar-container"></div>
-        <div id="editor">
-          <textarea name="long_description" id="long_description" cols="30" rows="10" class="form-control">{{ old('long_description') }}</textarea>
-        </div>
-        @error('long_description')<div class="error">{{ $message }}</div>@enderror
+        <textarea name="long_description" id="long_description" cols="30" rows="10" class="form-control">{{ old('long_description') }}</textarea>
+        
 
         <script>
-            DecoupledEditor
-                .create( document.querySelector( '#editor' ) )
-                .then( editor => {
-                    const toolbarContainer = document.querySelector( '#toolbar-container' );
-
-                    toolbarContainer.appendChild( editor.ui.view.toolbar.element );
-                } )
-                .catch( error => {
-                    console.error( error );
-                } );
+                ClassicEditor
+                        .create( document.querySelector( '#long_description' ) )
+                        .then( editor => {
+                                console.log( editor );
+                        } )
+                        .catch( error => {
+                                console.error( error );
+                        } );
         </script>
+        @error('long_description')<div class="error">{{ $message }}</div>@enderror
       </div>
 
 

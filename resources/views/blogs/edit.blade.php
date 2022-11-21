@@ -8,8 +8,8 @@
 }
 </style>
 
-<!-- CKEDITOR -->
-<script src="https://cdn.ckeditor.com/ckeditor5/35.3.1/decoupled-document/ckeditor.js"></script>
+<!-- Tinymce -->
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
 <style>
   .ck-editor__editable {
@@ -91,16 +91,19 @@
               @error('long_description')<div class="error">{{ $message }}</div>@enderror
 
               <script>
-                  DecoupledEditor
-                      .create( document.querySelector( '#editor' ) )
-                      .then( editor => {
-                          const toolbarContainer = document.querySelector( '#toolbar-container' );
-
-                          toolbarContainer.appendChild( editor.ui.view.toolbar.element );
-                      } )
-                      .catch( error => {
-                          console.error( error );
-                      } );
+                tinymce.init({
+                  selector: '#long_description',
+                  menubar: false,
+                  branding: false,
+                  plugins: [
+                    'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+                    'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
+                    'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount', 'textcolor'
+                  ],
+                  toolbar: 'undo redo | formatpainter casechange blocks | styleselect | bold italic forecolor backcolor | ' +
+                    'alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help',
+                });
               </script>
 
             <div class="form-group">
