@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BlogController as WebBlogController;
+use App\Http\Controllers\JobController as WebJobController;
+use App\Http\Controllers\Admin\JobController;
 
 
 /*
@@ -30,6 +32,7 @@ Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact', [ContactController::class, 'contact']);
 Route::get('/blogs', [WebBlogController::class, 'index']);
 Route::get('/blogs/{slug}', [WebBlogController::class, 'blog_detail']);
+Route::get('/jobs', [WebJobController::class, 'index']);
 
 Auth::routes();
 
@@ -38,8 +41,9 @@ Route::middleware([IsAdmin::class])->group(function(){
     Route::resource('admin/users', UserController::class);
     Route::resource('admin/sliders', SliderController::class);
     Route::resource('admin/blogs', BlogController::class);
+    Route::resource('admin/jobs', JobController::class);
     Route::resource('admin/settings', SettingController::class);
-    //Route::resource('admin/pages', PageController::class); its deleted 
+
 
 });
 

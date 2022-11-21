@@ -67,7 +67,7 @@
                         <li class="sidebar_list"><a href="./service.html" class="sidebar_list_link">Services</a></li>
                         <li class="sidebar_list dropdown_sdlist"><a href="#" class="sidebar_list_link sddropbtn">Resources</a></li>
                         <li class="sidebar_list"><a href="./about_us.html" class="sidebar_list_link">About Us</a></li>
-                        <li class="sidebar_list"><a href="./career_page.html" class="sidebar_list_link">Career</a></li>
+                        <li class="sidebar_list"><a href="{{ url('/jobs') }}" class="sidebar_list_link">Career</a></li>
                         <li class="sidebar_list"><a href="{{ url('/contact') }}" class="sidebar_list_link">Contact Us</a></li>
                      </ul>
                   </div>
@@ -179,7 +179,7 @@
                                              </div>
                                              <div class="resource_g-item">
                                                 <div class="h4">Explore</div>
-                                                <a href="./blog.html" class="resource_g-content-wrapper service-one_wrapper">
+                                                <a href="{{ url('/blogs') }}" class="resource_g-content-wrapper service-one_wrapper">
                                                    <h2 class="s_one">Blog</h2>
                                                    <p class="one_content">Stuff that Matters</p>
                                                 </a>
@@ -217,7 +217,7 @@
                               </div>
                            </li>
                            <li><a href="./about_us.html" class="primary_nav-menu">About Us</a></li>
-                           <li><a href="./career_page.html" class="primary_nav-menu">Career</a></li>
+                           <li><a href="{{ url('/jobs') }}" class="primary_nav-menu">Career</a></li>
                            <li class="h-contact-btn"><a href="{{ url('/contact') }}" class="contact_us-nav">Contact Us</a></li>
                         </ul>
                      </nav>
