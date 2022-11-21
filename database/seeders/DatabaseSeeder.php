@@ -20,10 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SettingsSeeder::class);
         $this->call(SlidersSeeder::class);
         $this->call(BlogsSeeder::class);
-<<<<<<< HEAD
-        $this->call(ContactusSeeder::class);
-=======
         $this->call(JobsSeeder::class);
->>>>>>> master
     }
 }
