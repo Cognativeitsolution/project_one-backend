@@ -68,7 +68,7 @@
                         <li class="sidebar_list dropdown_sdlist"><a href="#" class="sidebar_list_link sddropbtn">Resources</a></li>
                         <li class="sidebar_list"><a href="./about_us.html" class="sidebar_list_link">About Us</a></li>
                         <li class="sidebar_list"><a href="./career_page.html" class="sidebar_list_link">Career</a></li>
-                        <li class="sidebar_list"><a href="{{ url('/contact') }}" class="sidebar_list_link">Contact Us</a></li>
+                        <li class="sidebar_list"><a href="{{ url('/contact_us') }}" class="sidebar_list_link">Contact Us</a></li>
                      </ul>
                   </div>
                </div>
@@ -218,7 +218,7 @@
                            </li>
                            <li><a href="./about_us.html" class="primary_nav-menu">About Us</a></li>
                            <li><a href="./career_page.html" class="primary_nav-menu">Career</a></li>
-                           <li class="h-contact-btn"><a href="{{ url('/contact') }}" class="contact_us-nav">Contact Us</a></li>
+                           <li class="h-contact-btn"><a href="{{ url('/contact_us') }}" class="contact_us-nav">Contact Us</a></li>
                         </ul>
                      </nav>
                      <div class="menu_toggle-button" id="menu_toggle-btn">
@@ -283,7 +283,7 @@
                            <ul>
                               <li><a href="#" class="foo_links">privacy policy</a></li>
                               <li><a href="#" class="foo_links">Terms and conditions</a></li>
-                              <li><a href="#" class="foo_links">Contact Us</a></li>
+                              <li><a href="{{ url('/contact_us') }}" class="foo_links">Contact Us</a></li>
                               <li><a href="#" class="foo_links">Agreements and License</a></li>
                            </ul>
                         </div>

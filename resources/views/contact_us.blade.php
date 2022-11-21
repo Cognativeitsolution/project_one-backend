@@ -67,7 +67,7 @@
                               <span class="sub_card-sh">Feel free to drop us a line below!</span>
                            </div>
                            <div class="sub_card-form-wrapper">
-                              <form action="{{url('/contact')}}" id="form-control" method="POST">
+                              <form action="{{url('/contact_us')}}" id="form-control" method="POST">
                                   @csrf
                                  <div class="form-group">
                                     <input type="text" class="fname @error('name') is-invalid @enderror" id="fullname" placeholder="Your Name" name="name" value="{{ old('name') }}">

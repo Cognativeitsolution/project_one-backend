@@ -27,8 +27,8 @@ use App\Http\Controllers\BlogController as WebBlogController;
 */
 
 Route::get('/', [WebHomeController::class, 'index']);
-Route::get('/contact', [ContactController::class, 'index']);
-Route::post('/contact', [ContactController::class, 'contact']);
+Route::get('/contact_us', [ContactController::class, 'index']);
+Route::post('/contact_us', [ContactController::class, 'contact_us']);
 Route::get('/blogs', [WebBlogController::class, 'index']);
 Route::get('/blogs/{slug}', [WebBlogController::class, 'blog_detail']);
 

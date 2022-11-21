@@ -13,11 +13,11 @@ class ContactController extends Controller
 {
     // Redirect to contact us page
     protected function index() {
-        return view('contact');
+        return view('contact_us');
     }
 
     // Redirect to contact us page functionality
-    protected function contact(Request $request) {
+    protected function contact_us(Request $request) {
         // Validation
         $details = $request->validate([
             'name' => 'required',
