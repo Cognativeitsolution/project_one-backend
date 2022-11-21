@@ -8,22 +8,10 @@
 }
 </style>
 
-<!-- Tinymce -->
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-
-<style>
-  .ck-editor__editable {
-    border: 1px solid var(--ck-color-base-border) !important;
-
-    /* Set vertical boundaries for the document editor. */
-    min-height: 200px;
-
-    /* This element is a flex container for easier rendering. */
-    display: flex;
-    flex-flow: column nowrap;
-  }
-</style>
+<!-- CKEDITOR -->
+<script src="{{ asset('ckeditor/build/ckeditor.js') }}"></script>
 @endsection
+
 @section('content')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -84,27 +72,19 @@
       
             <div class="form-group">
               <label for="long_description">Long Description</label>
-              <div id="toolbar-container"></div>
-              <div id="editor">
-                <textarea name="long_description" id="long_description" cols="30" rows="10" class="form-control">{{ $record->long_description }}</textarea>
-              </div>
-              @error('long_description')<div class="error">{{ $message }}</div>@enderror
+              <textarea name="long_description" id="long_description" cols="30" rows="10" class="form-control">{{ $record->long_description }}</textarea>
 
               <script>
-                tinymce.init({
-                  selector: '#long_description',
-                  menubar: false,
-                  branding: false,
-                  plugins: [
-                    'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
-                    'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
-                    'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount', 'textcolor'
-                  ],
-                  toolbar: 'undo redo | formatpainter casechange blocks | styleselect | bold italic forecolor backcolor | ' +
-                    'alignleft aligncenter alignright alignjustify | ' +
-                    'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help',
-                });
+                      ClassicEditor
+                              .create( document.querySelector( '#long_description' ) )
+                              .then( editor => {
+                                      console.log( editor );
+                              } )
+                              .catch( error => {
+                                      console.error( error );
+                              } );
               </script>
+              @error('long_description')<div class="error">{{ $message }}</div>@enderror
 
             <div class="form-group">
               <label>Select Related Blog</label>

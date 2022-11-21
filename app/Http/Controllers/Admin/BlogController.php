@@ -107,18 +107,6 @@ class BlogController extends Controller
 
         }
 
-        if(isset($request['blog_additional_image'])){
-
-            $blog_additional_image = Helper::upload_image($request->file('blog_additional_image'));
-
-            $data3 = array(
-                'blog_additional_image'        => $blog_additional_image,
-            );
-
-            $record->update($data3);
-
-        }
-
         Logs::add_log(Blog::getTableName(), $record->id, $data, 'add', '');
         return redirect()->route('blogs.index')->with('success','Record Added !');
     }
@@ -200,19 +188,7 @@ class BlogController extends Controller
             $blog->update($data2);
 
         }
-
-        if(isset($request['blog_additional_image'])){
-
-            $blog_additional_image = Helper::upload_image($request->file('blog_additional_image'));
-
-            $data3 = array(
-                'blog_additional_image'        => $blog_additional_image,
-            );
-
-            $blog->update($data3);
-
-        }
-
+        
         Logs::add_log(Blog::getTableName(), $blog->id, $request->all, 'edit', 1);
         return redirect()->route('blogs.index')->with('success','Record Updated !');
     }

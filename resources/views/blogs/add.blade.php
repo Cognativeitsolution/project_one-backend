@@ -72,7 +72,6 @@
       <div class="form-group">
         <label for="long_description">Long Description</label>
         <textarea name="long_description" id="long_description" cols="30" rows="10" class="form-control">{{ old('long_description') }}</textarea>
-        
 
         <script>
                 ClassicEditor
