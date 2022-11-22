@@ -1590,6 +1590,7 @@ input#email,
 .candidate_form {
 	width: 500px;
 	max-width: 100%;
+	margin: 0 auto;
 }
 
 #candidate_name,
@@ -1709,6 +1710,11 @@ input#fileuploadfield {
 	border: 0;
 	text-transform: uppercase;
 	box-shadow: 0 0 10px #0003;
+}
+
+.db_wrapper {
+    display: flex;
+    grid-gap: 20px;
 }
 
 /* Sign-up form page */
@@ -2399,4 +2405,78 @@ h5:after {
 
 .svg_box-ei span i {
 	color: dodgerblue;
+}
+
+/* Job Description */
+.job_detail-content {
+	margin: 0 0 20px;
+}
+
+.job-detail-heading {
+	font-size: 30px;
+	color: #2a2a2a;
+	position: relative;
+	margin: 0 0 36px;
+	padding: 0 0 20px;
+}
+
+.job-detail-heading:after {
+	content: '';
+	position: absolute;
+	width: 66px;
+	height: 6px;
+	background-color: #0c7ec2;
+	bottom: 0;
+	left: 0;
+}
+
+.jbc_head {
+	color: #0c7ec2;
+	font-size: 20px;
+	margin: 0 0 20px;
+	padding-top: 8px;
+}
+
+.job_detail-content p {
+	margin-bottom: 15px;
+}
+
+.head_six {
+	color: #333;
+	font-size: 16px;
+	margin: 0 0 20px;
+	padding-top: 8px;
+}
+
+.un_list-jd {
+	margin: 0;
+	list-style-type: none;
+}
+
+.un_list-jd>li {
+	text-indent: -5px;
+	line-height: 1.5;
+}
+
+.un_list-jd>li:before {
+	content: "-";
+	text-indent: -5px;
+	padding-right: 5px;
+}
+
+.main_job-desc .apply_btn {
+	padding: 8px 16px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	box-shadow: 0 0 10px #0003;
+	background-color: #0c7ec2;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+a.apply_btn:hover, a.apply_btn:active, a.apply_btn:visited{
+	text-decoration: none;
+
 }

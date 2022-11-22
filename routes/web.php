@@ -29,13 +29,15 @@ use App\Http\Controllers\BlogController as WebBlogController;
 |
 */
 
-Route::get('/', [WebHomeController::class, 'index']);
+Route::get('/', [WebHomeController::class, 'index'])->name('web.home');
 Route::get('/contact_us', [ContactController::class, 'index']);
 Route::post('/contact_us', [ContactController::class, 'contact_us']);
 Route::get('/blogs', [WebBlogController::class, 'index']);
 Route::get('/blogs/{slug}', [WebBlogController::class, 'blog_detail']);
 Route::get('/jobs', [WebJobController::class, 'index']);
 Route::get('/services', [WebServiceController::class, 'index']);
+Route::get('/jobs/{slug}', [WebJobController::class, 'job_detail']);
+
 
 Auth::routes();
 
@@ -57,6 +59,9 @@ Route::middleware([IsUser::class])->group(function(){
 });
 
 Route::group(['middleware' => ['auth']], function() {
+    Route::get('/apply_job', [WebJobController::class, 'apply_job']);
+    Route::post('/success_apply_job', [WebJobController::class, 'success_apply_job'])
+    ->name('success_apply_job');
     Route::resource('admin/roles', RoleController::class);
 });
 
@@ -65,3 +70,8 @@ Route::get('/google/redirect', [RegisterController::class, 'googleRedirect']);
 
 Route::get('/linkedin', [RegisterController::class, 'linkedin']);
 Route::get('/linkedin/redirect', [RegisterController::class, 'linkedinRedirect']);
+
+Route::get('/clear', function () {
+    Session::flush();
+    return "Cleared!";
+});
