@@ -34,15 +34,33 @@
     <link rel="stylesheet" href="{{ url('assets/css/media.css') }}" type="text/css">
 </head>
 <body>
-    <div id="app">
       <!---Top head--->
       <div class="top_head">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
-                  <a href="{{ route('login') }}" class="top_head-link">
-                  <span><i class="fas fa-user"></i></span>
-                  Login</a>
+                  @guest
+                     <a href="{{ route('login') }}" class="top_head-link">
+                     <span><i class="fas fa-user"></i></span>
+                     Login</a>
+                  @endguest
+                  
+                  @auth
+                     <a class="top_head-link">
+                     <span><i class="fas fa-user"></i></span>
+                     {{ auth()->user()->name }}</a>
+
+                     <a class="top_head-link" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+                        <span><i class="fa fa-sign-out"></i></span>
+                        {{ __('Logout') }}
+                     </a>
+
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                           @csrf
+                     </form>
+                  @endauth
                </div>
             </div>
          </div>
@@ -64,7 +82,7 @@
                   <div class="sidebar_nav_box">
                      <ul class="un_sidebar">
                         <li class="sidebar_list"><a href="{{ url('/') }}" class="sidebar_list_link">Home</a></li>
-                        <li class="sidebar_list"><a href="./service.html" class="sidebar_list_link">Services</a></li>
+                        <li class="sidebar_list"><a href="{{ url('/services') }}" class="sidebar_list_link">Services</a></li>
                         <li class="sidebar_list dropdown_sdlist"><a href="#" class="sidebar_list_link sddropbtn">Resources</a></li>
                         <li class="sidebar_list"><a href="./about_us.html" class="sidebar_list_link">About Us</a></li>
                         <li class="sidebar_list"><a href="./career_page.html" class="sidebar_list_link">Career</a></li>
@@ -84,16 +102,16 @@
                   <div class="primary_header">
                      <div class="logo_box">
                         <a href="{{ url('/') }}" class="nav-brand">
-                        <span class="nav-brand_inner-box">
-                        <img src="{{ asset('images/' . $settings->header_logo) }}" alt="logo" class="logo_img">
-                        </span>
+                           <span class="nav-brand_inner-box">
+                              <img src="{{ asset('images/' . $settings->header_logo) }}" alt="logo" class="logo_img">
+                           </span>
                         </a>
                      </div>
                      <nav class="primary_menu">
                         <ul>
                            <li><a href="{{ url('/') }}" class="primary_nav-menu">Home</a></li>
                            <li class="service-dropdown" id="service_dropbtn">
-                              <a href="./service.html" class="service_dropbtn primary_nav-menu">Services</a>
+                              <a href="{{ url('/services') }}" class="service_dropbtn primary_nav-menu">Services</a>
                               <!---Service Mega Menu-->
                               <div class="mm-s-menu-container">
                                  <div class="container">
@@ -334,7 +352,6 @@
             </div>
          </div>
       </div>
-    </div>
 
    <!-- Swiper JS -->
    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>

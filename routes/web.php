@@ -6,15 +6,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\WebHomeController;
+use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\WebServiceController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\ContactusCotroller;
-use App\Http\Controllers\BlogController as WebBlogController;
 use App\Http\Controllers\JobController as WebJobController;
-use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\BlogController as WebBlogController;
 
 
 /*
@@ -34,6 +35,7 @@ Route::post('/contact_us', [ContactController::class, 'contact_us']);
 Route::get('/blogs', [WebBlogController::class, 'index']);
 Route::get('/blogs/{slug}', [WebBlogController::class, 'blog_detail']);
 Route::get('/jobs', [WebJobController::class, 'index']);
+Route::get('/services', [WebServiceController::class, 'index']);
 
 Auth::routes();
 

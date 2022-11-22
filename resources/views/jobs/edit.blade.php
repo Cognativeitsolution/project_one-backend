@@ -5,8 +5,17 @@
 .error{
   color:red;
 }
+
+/* For Ckeditor */
+.ck-editor__editable_inline {
+    min-height: 250px;
+  }
 </style>
+
+<!-- CKEDITOR -->
+<script src="{{ asset('ckeditor/build/ckeditor.js') }}"></script>
 @endsection
+
 @section('content')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -68,6 +77,51 @@
             <div class="form-group">
               <label for="long_description">Long Description</label>
               <textarea name="long_description" id="long_description" cols="30" rows="10" class="form-control">{{ $record->long_description }}</textarea>
+              
+              <script>
+                  ClassicEditor
+                          .create( document.querySelector( '#long_description' ), {
+                            fontSize: {
+                              options: [
+                                // '10pt', '12pt', '14pt', '16pt', '18pt', '24pt', '30pt', '36pt', '48pt', '60pt', '70pt', '84pt',
+                                {
+                                  title: 'xx-small',
+                                  model: '5px'
+                                },
+                                {
+                                  title: 'x-small',
+                                  model: '7px'
+                                },
+                                {
+                                  title: 'small',
+                                  model: '11px'
+                                },
+                                {
+                                  title: 'medium',
+                                  model: '16px'
+                                },
+                                {
+                                  title: 'large',
+                                  model: '24px'
+                                },
+                                {
+                                  title: 'x-large',
+                                  model: '36px'
+                                },
+                                {
+                                  title: 'xx-large',
+                                  model: '54px'
+                                }
+                              ]
+                            }
+                          } )
+                          .then( editor => {
+                                  console.log( editor );
+                          } )
+                          .catch( error => {
+                                  console.error( error );
+                          } );
+              </script>
               @error('long_description')<div class="error">{{ $message }}</div>@enderror
             
               <script>

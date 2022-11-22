@@ -20,7 +20,9 @@ import List from '@ckeditor/ckeditor5-list/src/list.js';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice.js';
 import Table from '@ckeditor/ckeditor5-table/src/table.js';
+import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar.js';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation.js';
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
 
 class Editor extends ClassicEditor {}
 
@@ -43,7 +45,9 @@ Editor.builtinPlugins = [
 	Paragraph,
 	PasteFromOffice,
 	Table,
-	TextTransformation
+	TableToolbar,
+	TextTransformation,
+	Underline
 ];
 
 // Editor configuration.
@@ -55,25 +59,33 @@ Editor.defaultConfig = {
 			'fontFamily',
 			'fontSize',
 			'|',
+			'alignment',
 			'bold',
 			'italic',
+			'underline',
 			'link',
 			'bulletedList',
 			'numberedList',
 			'|',
+			'fontColor',
+			'fontBackgroundColor',
 			'outdent',
 			'indent',
 			'|',
-			'fontColor',
-			'fontBackgroundColor',
-			'alignment',
 			'blockQuote',
 			'insertTable',
 			'undo',
 			'redo'
 		]
 	},
-	language: 'en'
+	language: 'en',
+	table: {
+		contentToolbar: [
+			'tableColumn',
+			'tableRow',
+			'mergeTableCells'
+		]
+	}
 };
 
 export default Editor;
