@@ -20,7 +20,7 @@ class CreateCareersTable extends Migration
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('resume')->nullable();
-            $table->string('university_form')->nullable();
+            $table->string('major_field')->nullable();
             $table->string('experience')->nullable();
             $table->string('degree')->nullable();
             $table->text('details')->nullable();

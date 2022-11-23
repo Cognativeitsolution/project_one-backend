@@ -139,16 +139,19 @@
                <form method="post" enctype="multipart/form-data" action="{{ url('success_apply_job')}}" class="form-controls">
                   @csrf
                   <div class="form-group candidate_form-group">
-                     <input type="text" required="required" name="name" value="{{ old('name') }}" placeholder="Your Name" id="candidate_name" class="candidate_name">
+                     <input type="text" name="name" value="{{ old('name') }}" placeholder="Your Name" id="candidate_name" class="candidate_name">
                   </div>
+                  @error('name')<div class="error" style="color: red;">{{ $message }}</div>@enderror
 
                   <div class="form-group candidate_form-group">
-                     <input type="email" required="required" name="email" value="{{ old('email') }}" placeholder="Your Email" id="candidate_mail" class="candidate_mail">
+                     <input type="email" name="email" value="{{ old('email') }}" placeholder="Your Email" id="candidate_mail" class="candidate_mail">
                   </div>
+                  @error('email')<div class="error" style="color: red;">{{ $message }}</div>@enderror
 
                   <div class="form-group candidate_form-group">
-                     <input type="text" required="required" name="phone_number" value="{{ old('phone_number') }}" placeholder="Phone Number" id="candidate_number" class="candidate_number">
+                     <input type="text" name="phone_number" value="{{ old('phone_number') }}" placeholder="Phone Number" id="candidate_number" class="candidate_number">
                   </div>
+                  @error('phone_number')<div class="error" style="color: red;">{{ $message }}</div>@enderror
 
                   @error('file')<div class="error" style="color: red;">{{ $message }}</div>@enderror
 
@@ -186,7 +189,7 @@
                   </div>
 
                   <div class="form-group candidate_form-group">
-                     <input type="text" name="university_form" value="{{ old('university_form') }}" placeholder="Major Field" id="candidate_inst" class="candidate_inst">
+                     <input type="text" name="major_field" value="{{ old('major_field') }}" placeholder="Major Field" id="candidate_inst" class="candidate_inst">
                   </div>
 
                   <div class="form-group candidate_form-group">
