@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\WebServiceController;
+use App\Http\Controllers\Admin\CareerController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -50,6 +51,7 @@ Route::middleware([IsAdmin::class])->group(function(){
     Route::resource('admin/blogs', BlogController::class);
     Route::resource('admin/jobs', JobController::class);
     Route::resource('admin/settings', SettingController::class);
+    Route::resource('admin/careers', CareerController::class);
 
 
 });

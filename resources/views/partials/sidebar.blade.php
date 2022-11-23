@@ -48,6 +48,13 @@
                 </a>
               </li>
 
+              <li class="nav-item">
+                <a href="{{ route('careers.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Careers</p>
+                </a>
+              </li>
+
               @can('role-list')
               <li class="nav-item">
                 <a href="{{ url('/admin/roles') }}" class="nav-link">
