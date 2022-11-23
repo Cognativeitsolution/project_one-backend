@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Career;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CareerController extends Controller
 {
@@ -14,7 +15,32 @@ class CareerController extends Controller
      */
     public function index()
     {
-        //
+        $search = request('search');
+
+        if (!empty($search)) {
+            $careers = Career::select('careers.id', 'careers.name', 'careers.email', 'careers.phone_number', 'careers.experience', 'jobs.title')
+                ->join('jobs', 'jobs.id', 'careers.job_id')
+                ->where('careers.name', 'like', '%'.$search.'%')
+                ->orWhere('careers.email', 'like', '%'.$search.'%')
+                ->orWhere('careers.phone_number', 'like', '%'.$search.'%')
+                ->orWhere('careers.experience', 'like', '%'.$search.'%')
+                ->orWhere('jobs.title', 'like', '%'.$search.'%')
+                ->orderBy('careers.id','DESC')
+                ->paginate(5);
+            return view('careers.index', compact('careers') );
+        } else {
+
+            $careers = Career::select('careers.id', 'careers.name', 'careers.email', 'careers.phone_number', 'careers.experience', 'jobs.title')
+                ->join('jobs', 'jobs.id', 'careers.job_id')
+                ->orderBy('careers.id', 'DESC')
+                ->paginate(10);
+
+            if($careers != false){
+                return view('careers.index', compact('careers'));
+            }else{
+                abort(404);
+            }
+        }
     }
 
     /**
@@ -46,7 +72,7 @@ class CareerController extends Controller
      */
     public function show(Career $career)
     {
-        //
+        return view('careers.show', compact('career'));
     }
 
     /**
