@@ -60,8 +60,7 @@ Route::middleware([IsUser::class])->group(function(){
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/apply_job', [WebJobController::class, 'apply_job']);
-    Route::post('/success_apply_job', [WebJobController::class, 'success_apply_job'])
-    ->name('success_apply_job');
+    Route::post('/success_apply_job', [WebJobController::class, 'success_apply_job'])->name('success_apply_job');
     Route::resource('admin/roles', RoleController::class);
 });
 

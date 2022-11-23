@@ -24,6 +24,7 @@ class CareersSeeder extends Seeder
             $career->email = $faker->email();
             $career->phone_number = $faker->phoneNumber();
             $career->experience = $faker->text(80);
+            $career->resume = "sample.pdf";
             $career->degree = $faker->text(50);
             $career->details = $faker->paragraph(100);
             $career->job_id = $faker->unique()->numberBetween(1,10);
