@@ -40,6 +40,10 @@ class JobController extends Controller
         return view('apply_job');
     }
 
+    public function thank_you(){
+        return view('thank_you');
+    }
+
     public function success_apply_job(Request $request){
         
         $request->validate([
@@ -57,7 +61,30 @@ class JobController extends Controller
             abort(404);
         }
 
-        // For PDF
+        $pdf = $request->file->extension() == "pdf" ? 1 : 0 ;
+
+        $random = rand(5,999999999) ;
+        $fileName = $random.'.'.$request->file->extension();
+
+        //$fileName = time().'.'.$request->file->extension();
+        $request->file->move(public_path('files'), $fileName);
+
+        if( $pdf == 0 ){
+
+            $domPdfPath = base_path('vendor/dompdf/dompdf');
+            \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
+            \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
+
+            //Load word file
+            $Content = \PhpOffice\PhpWord\IOFactory::load(public_path('files/'.$fileName));
+
+            //Save it into PDF
+            $PDFWriter = \PhpOffice\PhpWord\IOFactory::createWriter($Content,'PDF');
+
+            $fileName = $random.".pdf";
+            $PDFWriter->save(public_path('files/'.$fileName));
+
+        }
 
         $data = [
             'job_id' => $job_id,
@@ -65,8 +92,8 @@ class JobController extends Controller
             'email'  => $request->email,
             'phone_number'  => $request->phone_number,
             'resume'        => $fileName,
-            'experience'        => $request->experience,
-            'degree'        => $request->degree,
+            'experience_id'        => $request->experience,
+            'degree_id'        => $request->degree,
             'major_field'  => $request->major_field,
             'details'  => $request->details,
             'profile_link'  => $request->profile_link,
@@ -75,7 +102,10 @@ class JobController extends Controller
         Career::create($data);
         Session::forget(['job_id']);
 
-        return redirect()->route('web.home')->with('success','Thanks for Apply We will contact you soon!');
+        return redirect()->route('thank_you')->with('success','Thanks for Apply We will contact you soon!');
     }
+
+
+
 
 }

@@ -34,7 +34,7 @@ Route::get('/contact_us', [ContactController::class, 'index']);
 Route::post('/contact_us', [ContactController::class, 'contact_us']);
 Route::get('/blogs', [WebBlogController::class, 'index']);
 Route::get('/blogs/{slug}', [WebBlogController::class, 'blog_detail']);
-Route::get('/jobs', [WebJobController::class, 'index']);
+Route::get('/jobs', [WebJobController::class, 'index'])->name('web.jobs');
 Route::get('/services', [WebServiceController::class, 'index']);
 Route::get('/jobs/{slug}', [WebJobController::class, 'job_detail']);
 
@@ -61,6 +61,7 @@ Route::middleware([IsUser::class])->group(function(){
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/apply_job', [WebJobController::class, 'apply_job']);
     Route::post('/success_apply_job', [WebJobController::class, 'success_apply_job'])->name('success_apply_job');
+    Route::get('/thank_you', [WebJobController::class, 'thank_you'])->name('thank_you');
     Route::resource('admin/roles', RoleController::class);
 });
 
