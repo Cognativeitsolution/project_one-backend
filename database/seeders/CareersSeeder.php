@@ -27,6 +27,8 @@ class CareersSeeder extends Seeder
             $career->degree = $faker->text(50);
             $career->details = $faker->paragraph(100);
             $career->job_id = $faker->unique()->numberBetween(1,10);
+            $career->profile_link  = $faker->imageUrl($width = 200, $height = 200);
+            $career->major_field = $faker->text(20);
             $career->save();
         }
     }

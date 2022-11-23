@@ -41,6 +41,9 @@ class JobController extends Controller
     public function success_apply_job(Request $request){
         
         $request->validate([
+            'name'  => 'required',
+            'email' => ['required', 'email', 'unique:careers'],
+            'phone_number'  => 'required',
             //'file' => 'required|mimes:pdf,doc,docx|max:2048',
             'file' => 'required|mimes:pdf|max:2048',
         ]);
@@ -65,7 +68,7 @@ class JobController extends Controller
             'resume'        => $fileName,
             'experience'        => $request->experience,
             'degree'        => $request->degree,
-            'university_form'  => $request->university_form,
+            'major_field'  => $request->major_field,
             'details'  => $request->details,
             'profile_link'  => $request->profile_link,
         ];
