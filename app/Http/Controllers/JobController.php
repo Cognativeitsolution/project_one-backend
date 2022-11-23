@@ -7,6 +7,8 @@ use App\Models\Career;
 use Illuminate\Http\Request;
 use Session;
 use Validator;
+use PDF;
+use Illuminate\Support\Str;
 
 class JobController extends Controller
 {
@@ -43,9 +45,9 @@ class JobController extends Controller
         $request->validate([
             'name'  => 'required',
             'email' => ['required', 'email', 'unique:careers'],
-            'phone_number'  => 'required',
-            //'file' => 'required|mimes:pdf,doc,docx|max:2048',
-            'file' => 'required|mimes:pdf|max:2048',
+            'phone_number'  => 'required|numeric',
+            'file' => 'required|mimes:pdf,doc,docx|max:2048',
+            //'file' => 'required|mimes:pdf|max:2048',
         ]);
 
         if($request->session()->has('job_id'))
@@ -55,10 +57,7 @@ class JobController extends Controller
             abort(404);
         }
 
-        $fileName = time().'.'.$request->file->extension();
-        $request->file->move(public_path('files'), $fileName);
-
-        // Put convert PDF Logic //
+        // For PDF
 
         $data = [
             'job_id' => $job_id,
