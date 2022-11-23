@@ -39,7 +39,7 @@ class JobController extends Controller
     }
 
     public function success_apply_job(Request $request){
-
+        
         $request->validate([
             //'file' => 'required|mimes:pdf,doc,docx|max:2048',
             'file' => 'required|mimes:pdf|max:2048',
@@ -63,6 +63,8 @@ class JobController extends Controller
             'email'  => $request->email,
             'phone_number'  => $request->phone_number,
             'resume'        => $fileName,
+            'experience'        => $request->experience,
+            'degree'        => $request->degree,
             'university_form'  => $request->university_form,
             'details'  => $request->details,
             'profile_link'  => $request->profile_link,
