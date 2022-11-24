@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('seo')
+   <title>Jobs in Cognitive IT Solution we make your future</title>
+   <meta name="keywords" content="We make future in Cognitive IT Solution"/>
+   <meta name="description" content="We are hiring in Cognitive IT Solution in multiple position, Apply here cognitive IT solution"/>
+@endsection
+
 @section('content')
     
       <!---About Us Banner Container-->

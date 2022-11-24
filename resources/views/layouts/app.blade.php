@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    @yield('seo')
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -280,29 +280,37 @@
                            <h4>About Us</h4>
                            <ul>
                               <li><a href="#" class="foo_links">about us</a></li>
-                              <li><a href="#" class="foo_links">our vision</a></li>
-                              <li><a href="#" class="foo_links">meet the team</a></li>
-                              <li><a href="#" class="foo_links">Milestone</a></li>
-                              <li><a href="#" class="foo_links">Our location</a></li>
                               <li><a href="{{ url('/blogs') }}" class="foo_links">Blog</a></li>
+
+                              @foreach($footer_pages as $page)
+                                 @if($page->parent_id == 1)
+                                    <li><a href="{{ route('web.page_detail', $page->slug) }}" class="foo_links">{{ $page->name }}</a></li>
+                                 @endif
+                              @endforeach
+
                            </ul>
                         </div>
                         <div class="footer-col footer-col-2">
                            <h4>Products and Service</h4>
                            <ul>
-                              <li><a href="#" class="foo_links">Digital Services</a></li>
-                              <li><a href="#" class="foo_links">IT Staff</a></li>
-                              <li><a href="#" class="foo_links">Staff Augmentation</a></li>
-                              <li><a href="#" class="foo_links">Printing and Package</a></li>
+                              @foreach($footer_pages as $page)
+                                 @if($page->parent_id == 2)
+                                    <li><a href="{{ route('web.page_detail', $page->slug) }}" class="foo_links">{{ $page->name }}</a></li>
+                                 @endif
+                              @endforeach
+
                            </ul>
                         </div>
                         <div class="footer-col footer-col-3">
                            <h4>Useful Links</h4>
                            <ul>
-                              <li><a href="#" class="foo_links">privacy policy</a></li>
-                              <li><a href="#" class="foo_links">Terms and conditions</a></li>
                               <li><a href="{{ url('/contact_us') }}" class="foo_links">Contact Us</a></li>
-                              <li><a href="#" class="foo_links">Agreements and License</a></li>
+                              @foreach($footer_pages as $page)
+                                 @if($page->parent_id == 3)
+                                    <li><a href="{{ route('web.page_detail', $page->slug) }}" class="foo_links">{{ $page->name }}</a></li>
+                                 @endif
+                              @endforeach
+                              
                            </ul>
                         </div>
                         <div class="footer-col foo-last-col">

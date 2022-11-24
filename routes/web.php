@@ -8,6 +8,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\WebHomeController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\WebServiceController;
 use App\Http\Controllers\Admin\CareerController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\ContactusCotroller;
 use App\Http\Controllers\JobController as WebJobController;
 use App\Http\Controllers\BlogController as WebBlogController;
+use App\Http\Controllers\PagesController as WebPagesController;
 
 
 /*
@@ -39,6 +41,7 @@ Route::get('/blogs/{slug}', [WebBlogController::class, 'blog_detail']);
 Route::get('/jobs', [WebJobController::class, 'index'])->name('web.jobs');
 Route::get('/services', [WebServiceController::class, 'index']);
 Route::get('/jobs/{slug}', [WebJobController::class, 'job_detail']);
+Route::get('/pages/{slug}', [WebPagesController::class, 'page_detail'])->name('web.page_detail');
 
 
 Auth::routes();
@@ -54,7 +57,7 @@ Route::middleware([IsAdmin::class])->group(function(){
     Route::resource('admin/settings', SettingController::class);
     Route::resource('admin/careers', CareerController::class);
     Route::resource('admin/degrees', DegreesController::class);
-
+    Route::resource('admin/pages', PageController::class);
 
 });
 

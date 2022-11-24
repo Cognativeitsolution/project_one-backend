@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
 use App\Models\Page;
+use App\Models\Logs;
 use Illuminate\Http\Request;
+//use App\Helpers\helper as Helper;
+
 use App\Http\Controllers\Controller;
 
-use App\Models\Logs;
-//use App\Http\Requests\StoreUser;
-//use App\Http\Requests\UpdateUser;
-use Illuminate\Validation\Rule;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use DB;
+use App\Http\Requests\StorePageRequest;
+use App\Http\Requests\UpdatePageRequest;
 
 class PageController extends Controller
 {
@@ -24,6 +21,7 @@ class PageController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth');
 
         $this->middleware('permission:page-list|page-create|page-edit|page-delete', ['only' => ['index','store']]);
         $this->middleware('permission:page-create', ['only' => ['create','store']]);
@@ -31,21 +29,31 @@ class PageController extends Controller
         $this->middleware('permission:page-delete', ['only' => ['destroy']]);
 
     }
-
     public function index()
     {
         $search = request('search');
 
         if (!empty($search)) {
-            $users = User::where('users.name', 'like', '%'.$search.'%')
-                ->orWhere('users.email', 'like', '%'.$search.'%')
-                ->orderBy('users.id','DESC')
-                ->paginate(10);
-        } else {
-            $users = User::orderBy('users.id','DESC')->paginate(15);
-        }
+            $record = Page::where('pages.title', 'like', '%'.$search.'%')
+                ->where('pages.parent_id', '!=', 0)
+                ->Where('pages.name', 'like', '%'.$search.'%')
+                ->Where('pages.short_description', 'like', '%'.$search.'%')
+                ->Where('pages.long_description', 'like', '%'.$search.'%')
+                ->orderBy('pages.id','DESC')
+                ->paginate(5);
+            return view('pages.index', compact('record') );
+        }else{
 
-        return view('pages.index', compact('users') );
+            $record = Page::orderBy('pages.id','DESC')
+                            ->where('pages.parent_id', '!=', 0)
+                            ->paginate(10);
+
+            if($record != false){
+                return view('pages.index', compact('record') );
+            }else{
+                abort(404);
+            }
+        }
     }
 
     /**
@@ -55,18 +63,22 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        $pages = Page::select('id', 'title')->where('parent_id', 0)->get();
+        return view('pages.add', compact('pages'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StorePageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePageRequest $request)
     {
-        //
+        $record = Page::create( $request->all() );
+
+        Logs::add_log(Page::getTableName(), $record->id, $request->all(), 'add', '');
+        return redirect()->route('pages.index')->with('success','Record Added !');
     }
 
     /**
@@ -88,19 +100,39 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        //
+        $record = Page::whereId($page->id)->first();
+
+        $pages = Page::select('id', 'title')
+                        ->where('parent_id', 0)
+                        ->whereNotIn('id', [$page->id])->get();
+
+        $logs = Logs::get_logs_details(Page::getTableName(), $page->id);
+
+        if($record != false){
+            return view('pages.edit', compact('record','logs','pages'));
+        }else{
+            abort(404);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UpdatePageRequest  $request
      * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Page $page)
+    public function update(UpdatePageRequest $request, Page $page)
     {
-        //
+        $page = Page::find($page->id);
+
+        $status = $request->status == "on" ? 1 : 0 ;
+        $request['status'] = $status ;
+
+        $page->update($request->all() );
+
+        Logs::add_log(Page::getTableName(), $page->id, $request->all, 'edit', 1);
+        return redirect()->route('pages.index')->with('success','Record Updated !');
     }
 
     /**
@@ -111,6 +143,9 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        //
+        $page = Page::find($page->id);
+        $page->delete();
+
+        return redirect()->route('pages.index')->with('success', 'Record Deleted !');
     }
 }

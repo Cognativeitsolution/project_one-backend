@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
+@section('seo')
+   <title>{{ $blog->title }}</title>
+   <meta name="keywords" content="Cognitive IT Solution are create blogs for user information"/>
+   <meta name="description" content="Cognitive IT Solution are create blogs for user information"/>
+@endsection
+
 @section('content')
-   
 <!---Blog Banner Container-->
 <section class="blog_hero-banner">
    <div class="container">

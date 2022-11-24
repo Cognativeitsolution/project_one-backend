@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('seo')
+   <title>You need any type of website please contact us</title>
+   <meta name="keywords" content="Cognitive IT Solution provide all types of software solution"/>
+   <meta name="description" content="Contact Us for IT Solution, Cognitive IT Solution provide all types of software solution."/>
+@endsection
+
 @section('content')
     <!---About Us Banner Container-->
     <section class="contact_hero-banner">
