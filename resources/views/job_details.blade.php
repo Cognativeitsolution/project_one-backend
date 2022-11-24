@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
+@section('seo')
+   <title>{{ $job->title }}</title>
+   <meta name="keywords" content="{{ $job->short_description }}"/>
+   <meta name="description" content="We are hiring in Cognitive IT Solution in multiple position, Apply here cognitive IT solution"/>
+@endsection
+
 @section('content')
-   
 <!---About Us Banner Container-->
 <section class="job_hero-banner">
    <div class="container">

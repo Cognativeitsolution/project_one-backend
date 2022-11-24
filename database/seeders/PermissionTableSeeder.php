@@ -54,7 +54,12 @@ class PermissionTableSeeder extends Seeder
             'degree-list',
             'degree-create',
             'degree-edit',
-            'degree-delete'
+            'degree-delete',
+            'page-list',
+            'page-create',
+            'page-edit',
+            'page-delete'
+
         ];
      
         foreach ($permissions as $permission) {

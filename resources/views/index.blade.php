@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('seo')
+   <title>Cognitive IT Solution Best Website Solution and Software Company</title>
+   <meta name="keywords" content="Cognitive IT Solution Best Website Solution and Software Company"/>
+   <meta name="description" content="We Provide best services, software solutions, Cognitive IT Solution"/>
+@endsection
+
 @section('content')
 
    <!---Home Slider-->

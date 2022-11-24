@@ -18,11 +18,11 @@
           <div class="col-sm-6">
             <div class="col-sm-4"></div>
 
-            @can('page-create')
+           @can('page-create')
             <div class="col-sm-4">
               <a href="{{ route('pages.create') }}" class="btn btn-block btn-primary">Add Page</a>
             </div>
-            @endcan
+           @endcan
             
           </div><!-- /.col -->
           <div class="col-sm-6">
@@ -43,13 +43,12 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <!--<h3 class="card-title">Responsive Hover Table</h3>-->
 
                   <p>
-                    Displaying {{$users->count()}} of {{ $users->total() }} user(s).
+                    Displaying {{$record->count()}} of {{ $record->total() }} page(s).
                   </p>
 
-                  <form name="user_search" id="" method="get" action="{{ route('users.index')}}">
+                  <form name="user_search" id="" method="get" action="{{ route('pages.index')}}">
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 250px;">
                       <input type="text" name="search" class="form-control float-right" placeholder="{{ app('request')->input('search') }} Search">
@@ -70,52 +69,44 @@
                       <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Roles</th>
-                        <th>Created</th>
+                        <th>Title</th>
+                        <th>Short Description</th>
                         <th>Updated</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
 
-                    @if ($users->count() == 0)
+                    @if ($record->count() == 0)
                     <tr>
-                        <td colspan="6">No users to display.</td>
+                        <td colspan="6">No pages to display.</td>
                     </tr>
                     @endif
                     
-                    @if(!empty($users) && $users->count())
-                      @foreach( $users as $user)
+                    @if(!empty($record) && $record->count())
+                      @foreach( $record as $page)
                         <tr>
-                          <td>{{ $user->id }}</td>
-                          <td>{{ $user->name }}</td>
-                          <td>{{ $user->email }}</td>
-
-                          <td>
-                          @if(!empty($user->getRoleNames()))
-                            @foreach($user->getRoleNames() as $v)
-                              <label class="badge badge-success">{{ $v }}</label>
-                            @endforeach
-                          @endif
-                        </td>
+                          <td>{{ $page->id }}</td>
+                          <td>{!! Str::words( $page->name, 3, ' ...') !!}</td>
+                          <td>{!! Str::words( $page->title, 3, ' ...') !!}</td>
+                          <td>{!! Str::words( $page->short_description, 5, ' ...') !!}</td>
                         
-                          <td>{{ $user->created_at->format('Y-m-d H:i:s') }}</td>
-                          <td>{{ $user->updated_at->format('Y-m-d H:i:s') }}</td>
+                          <td>{{ $page->updated_at->format('Y-m-d H:i:s') }}</td>
                           <td>
                             @can('page-edit')
-                            <a href="{{ route('users.edit', $user->id)}}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('pages.edit', $page->id)}}" class="btn btn-primary">Edit</a>
                             @endcan
-
-                            @can('page-delete')                            
+                            
+                            @can('page-delete')
                               <td>
-                              <form action="{{ route('users.destroy', $user->id)}}" method="post">
+                              <form action="{{ route('pages.destroy', $page->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
                               </form>
+
                               </td>
-                            @endcan
+                              @endcan
                           </td>
                         </tr>
                       @endforeach
@@ -123,8 +114,10 @@
 
                     </tbody>
                   </table>
-                  
-                  {!! $users->appends(Request::all())->links() !!}
+
+                  @if(!empty($record))
+                    {!! $record->appends(Request::all())->links() !!}
+                  @endif
 
                 </div>
                 <!-- /.card-body -->
