@@ -1001,10 +1001,9 @@ li.active {
 	font-weight: 500;
 }
 
-.tab_content {
+.tab-content {
 	padding: 30px 0;
-	margin-top: 30px;
-	position: relative;
+    position: relative;
 }
 
 .one,
@@ -1045,6 +1044,27 @@ ul#nav_un-list li a:visited {
 	transition: all .5s;
 }
 
+.technologies_head {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.ti_head span {
+	position: relative;
+	padding-bottom: 0;
+	font-size: 30px;
+}
+
+.ti_head span:after {
+	position: absolute;
+	content: "";
+	height: 3px;
+	width: 100%;
+	background-color: #e54100;
+	bottom: -10px;
+	left: 0;
+}
+ 
 .store.store-grid-item1>a {
 	display: flex;
 	flex-direction: column;
@@ -2480,3 +2500,55 @@ a.apply_btn:hover, a.apply_btn:active, a.apply_btn:visited{
 	text-decoration: none;
 
 }
+
+/* Thank you */
+.greeting_container {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    max-width: 100%;
+    margin: 0 auto;
+
+	background: #fff;
+    box-shadow: 0 0 10px #0002;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.greet_img-box img {
+    width: 150px;
+    height: 150px;
+}
+
+.greeting_container .head_three {
+    color: #00abfb;
+    font-size: 35px;
+}
+
+.greeting_container p {
+    font-size: 18px;
+    color: #c4c4c4;
+}
+
+.greeting_container .back_btn {
+    text-decoration: none;
+    color: #fff;
+    background: #00abfb;
+    padding: 8px 16px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #0002;
+}
+
+.back_btn:hover,.back_btn:visited,.back_btn:active{
+	color: #fff;
+	text-decoration: none;
+}
+.privacy {
+    background-color: #f1f1f1;
+}
+
+  
+

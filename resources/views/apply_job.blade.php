@@ -170,20 +170,20 @@
                      <div class="form-group candidate_form-group">
                         <Label class="experience_label">Experience:</Label> &nbsp;
                         <select name="experience" id="exp">
-                           <option value="Experience">Experience</option>
-                           <option value="Less than 1">Less than 1</option>
-                           <option value="More 1 year or less 3">More 1 year or less 3</option>
-                           <option value="3+ years">3+ years</option>
-                           <option value="5+ years">5+ years</option>
+                           <option value=1>Experience</option>
+                           <option value=2>Less than 1</option>
+                           <option value=3>More 1 year or less 3</option>
+                           <option value=4>3+ years</option>
+                           <option value=5>5+ years</option>
                         </select>
                      </div>
                      <div class="form-group candidate_form-group">
                         <Label class="deg_label">Degree:</Label> &nbsp;
                         <select name="degree" id="exp">
-                           <option value="MS">MS</option>
-                           <option value="BE">BE</option>
-                           <option value="BS">BS</option>
-                           <option value="Diploma">Diploma</option>
+                           <option value=1>MS</option>
+                           <option value=2>BE</option>
+                           <option value=3>BS</option>
+                           <option value=4>Diploma</option>
                         </select>
                      </div>
                   </div>
