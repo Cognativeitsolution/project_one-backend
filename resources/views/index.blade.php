@@ -705,7 +705,9 @@
                      <h2>Make a great <br> project with us.</h2>
                   </div>
                   <div class="get_btn-box">
-                     <button class="get_qt-btn">Get a Quote &rarr;</button>
+                     <a href="{{ url('contact_us') }}">
+                        <button class="get_qt-btn">Get a Quote &rarr;</button>
+                     </a>
                   </div>
                </div>
             </div>

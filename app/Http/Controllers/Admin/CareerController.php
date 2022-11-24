@@ -18,19 +18,24 @@ class CareerController extends Controller
         $search = request('search');
 
         if (!empty($search)) {
-            $careers = Career::select('careers.id', 'careers.name', 'careers.email', 'careers.phone_number', 'careers.experience', 'jobs.title')
+            $careers = Career::select('careers.id', 'careers.name', 'careers.email', 'careers.phone_number', 'experiences.name AS experience', 'jobs.title', 'degrees.name AS degree')
+                ->join('experiences', 'experiences.id', 'careers.experience_id')
+                ->join('degrees', 'degrees.id', 'careers.degree_id')
                 ->join('jobs', 'jobs.id', 'careers.job_id')
                 ->where('careers.name', 'like', '%'.$search.'%')
                 ->orWhere('careers.email', 'like', '%'.$search.'%')
                 ->orWhere('careers.phone_number', 'like', '%'.$search.'%')
-                ->orWhere('careers.experience', 'like', '%'.$search.'%')
+                ->orWhere('experiences.name', 'like', '%'.$search.'%')
                 ->orWhere('jobs.title', 'like', '%'.$search.'%')
+                ->orWhere('degrees.name', 'like', '%'.$search.'%')
                 ->orderBy('careers.id','DESC')
                 ->paginate(5);
             return view('careers.index', compact('careers') );
         } else {
 
-            $careers = Career::select('careers.id', 'careers.name', 'careers.email', 'careers.phone_number', 'careers.experience', 'jobs.title')
+            $careers = Career::select('careers.id', 'careers.name', 'careers.email', 'careers.phone_number', 'experiences.name AS experience', 'jobs.title', 'degrees.name AS degree')
+                ->join('experiences', 'experiences.id', 'careers.experience_id')
+                ->join('degrees', 'degrees.id', 'careers.degree_id')
                 ->join('jobs', 'jobs.id', 'careers.job_id')
                 ->orderBy('careers.id', 'DESC')
                 ->paginate(10);

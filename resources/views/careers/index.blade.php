@@ -59,6 +59,7 @@
                         <th>Job Title</th>
                         <th>Experience</th>
                         <th>Phone Number</th>                        
+                        <th>Degree</th>                        
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -77,10 +78,11 @@
                           <td>{{ $career->name }}</td>
                           <td>{{ $career->email }}</td>
                           <td>{{ $career->title }}</td>
-                          <td>{!! Str::words( $career->experience, 3, ' ...') !!}</td>
+                          <td>{{ $career->experience }}</td>
                           <td>{{ $career->phone_number }}</td>
+                          <td>{{ $career->degree }}</td>
                           <td>
-                            <a href="{{ route('careers.show', $career->id) }}" class="btn btn-success">Show</a>                           
+                            <a href="{{ route('careers.show', $career->id) }}" class="btn btn-info">Show</a>                           
                           </td>
                         </tr>
                       @endforeach

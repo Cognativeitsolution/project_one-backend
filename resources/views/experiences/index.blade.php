@@ -20,7 +20,7 @@
 
            @can('blog-create')
             <div class="col-sm-4">
-              <a href="{{ route('degrees.create') }}" class="btn btn-block btn-primary">Add Degree</a>
+              <a href="{{ route('experiences.create') }}" class="btn btn-block btn-primary">Add Experience</a>
             </div>
            @endcan
             
@@ -28,7 +28,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Home</a></li>
-              <li class="breadcrumb-item">All Degrees</li>
+              <li class="breadcrumb-item">All Experiences</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -45,10 +45,10 @@
                 <div class="card-header">
 
                   <p>
-                    Displaying {{$degrees->count()}} of {{ $degrees->total() }} blog(s).
+                    Displaying {{$experiences->count()}} of {{ $experiences->total() }} blog(s).
                   </p>
 
-                  <form name="user_search" id="" method="get" action="{{ route('degrees.index')}}">
+                  <form name="user_search" id="" method="get" action="{{ route('experiences.index')}}">
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 250px;">
                       <input type="text" name="search" class="form-control float-right" placeholder="{{ app('request')->input('search') }} Search">
@@ -76,33 +76,33 @@
                     </thead>
                     <tbody>
 
-                    @if ($degrees->count() == 0)
+                    @if ($experiences->count() == 0)
                     <tr>
-                        <td colspan="6">No degrees to display.</td>
+                        <td colspan="6">No experiences to display.</td>
                     </tr>
                     @endif
                     
-                    @if(!empty($degrees) && $degrees->count())
-                      @foreach( $degrees as $degree)
+                    @if(!empty($experiences) && $experiences->count())
+                      @foreach( $experiences as $experience)
                         <tr>
-                          <td>{{ $degree->id }}</td>
-                          <td>{{ $degree->name }}</td>
+                          <td>{{ $experience->id }}</td>
+                          <td>{{ $experience->name }}</td>
                           <td>
-                            @if ($degree->status == 1)
+                            @if ($experience->status == 1)
                               active
                             @else
                               inactive
                             @endif                          
                           </td>                        
-                          <td>{{ $degree->updated_at->format('Y-m-d H:i:s') }}</td>
+                          <td>{{ $experience->updated_at->format('Y-m-d H:i:s') }}</td>
                           <td>
                             @can('degree-edit')
-                              <a href="{{ route('degrees.edit', $degree->id)}}" class="btn btn-primary">Edit</a>
+                              <a href="{{ route('experiences.edit', $experience->id)}}" class="btn btn-primary">Edit</a>
                             @endcan
                             
                             @can('degree-delete')   
                               <td>                        
-                                <form action="{{ route('degrees.destroy', $degree->id)}}" method="post">
+                                <form action="{{ route('experiences.destroy', $experience->id)}}" method="post">
                                   @csrf
                                   @method('DELETE')
                                   <button class="btn btn-danger" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
@@ -117,8 +117,8 @@
                     </tbody>
                   </table>
 
-                  @if(!empty($degrees))
-                    {!! $degrees->appends(Request::all())->links() !!}
+                  @if(!empty($experiences))
+                    {!! $experiences->appends(Request::all())->links() !!}
                   @endif
 
                 </div>

@@ -82,12 +82,12 @@
 
             <div class="form-group col-md-4 col-sm-4 col-lg-4 col-xs-4">
               <label for="degree">Degree</label>
-              <input type="text" name="degree" id="degree" class="form-control" value="{{ $career->degree }}" readonly>
+              <input type="text" name="degree" id="degree" class="form-control" value="{{ $career->degree->name }}" readonly>
             </div>
 
             <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
               <label for="experience">Experience</label>
-              <input type="text" name="experience" id="experience" class="form-control" value="{{ $career->experience }}" readonly>
+              <input type="text" name="experience" id="experience" class="form-control" value="{{ $career->experience->name }}" readonly>
             </div>
             
             <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">

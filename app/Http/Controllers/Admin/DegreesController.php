@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Logs;
 use App\Models\Degree;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDegreeRequest;
+use App\Http\Requests\UpdateDegreeRequest;
 
 class DegreesController extends Controller
 {
@@ -55,7 +57,7 @@ class DegreesController extends Controller
     {
         $degree = Degree::create( $request->all() );
 
-        Logs::add_log(Degree::getTableName(), $degree->id, $degree, 'add', '');
+        Logs::add_log(Degree::getTableName(), $degree->id, $request->all(), 'add', '');
         return redirect()->route('degrees.index')->with('success','Record Added !');
     }
 
@@ -76,9 +78,15 @@ class DegreesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Degree $degree)
     {
-        //
+        $logs = Logs::get_logs_details(Degree::getTableName(), $degree->id);
+
+        if($degree != false){
+            return view('degrees.edit', compact('degree','logs'));
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -88,9 +96,17 @@ class DegreesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateDegreeRequest $request, Degree $degree)
     {
-        //
+        $status = $request->status == "on" ? 1 : 0 ;
+
+        $request['status'] = $status ;
+
+        $degree->update($request->all());
+
+        Logs::add_log(Degree::getTableName(), $degree->id, $request->all(), 'edit', 1);
+        
+        return redirect()->route('degrees.index')->with('success','Record Updated !');
     }
 
     /**
@@ -99,8 +115,10 @@ class DegreesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Degree $degree)
     {
-        //
+        $degree->delete();
+
+        return redirect()->route('degrees.index')->with('success', 'Record Deleted !');
     }
 }

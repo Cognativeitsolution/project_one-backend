@@ -84,7 +84,7 @@
                         <li class="sidebar_list"><a href="{{ url('/') }}" class="sidebar_list_link">Home</a></li>
                         <li class="sidebar_list"><a href="{{ url('/services') }}" class="sidebar_list_link">Services</a></li>
                         <li class="sidebar_list dropdown_sdlist"><a href="#" class="sidebar_list_link sddropbtn">Resources</a></li>
-                        <li class="sidebar_list"><a href="./about_us.html" class="sidebar_list_link">About Us</a></li>
+                        <li class="sidebar_list"><a href="{{ url('/about_us') }}" class="sidebar_list_link">About Us</a></li>
                         <li class="sidebar_list"><a href="./career_page.html" class="sidebar_list_link">Career</a></li>
                         <li class="sidebar_list"><a href="{{ url('/contact_us') }}" class="sidebar_list_link">Contact Us</a></li>
                      </ul>
@@ -234,7 +234,7 @@
                                  </div>
                               </div>
                            </li>
-                           <li><a href="./about_us.html" class="primary_nav-menu">About Us</a></li>
+                           <li><a href="{{ url('/about_us') }}" class="primary_nav-menu">About Us</a></li>
                            <li><a href="{{ url('/jobs') }}" class="primary_nav-menu">Career</a></li>
                            <li class="h-contact-btn"><a href="{{ url('/contact_us') }}" class="contact_us-nav">Contact Us</a></li>
                         </ul>
@@ -279,7 +279,7 @@
                         <div class="footer-col footer-col-1">
                            <h4>About Us</h4>
                            <ul>
-                              <li><a href="#" class="foo_links">about us</a></li>
+                              <li><a href="{{ url('/about_us') }}" class="foo_links">about us</a></li>
                               <li><a href="#" class="foo_links">our vision</a></li>
                               <li><a href="#" class="foo_links">meet the team</a></li>
                               <li><a href="#" class="foo_links">Milestone</a></li>

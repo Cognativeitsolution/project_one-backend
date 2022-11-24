@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Job;
-use App\Models\Career;
-use Illuminate\Http\Request;
+use PDF;
 use Session;
 use Validator;
-use PDF;
+use App\Models\Job;
+use App\Models\Career;
+use App\Models\Degree;
+use App\Models\Experience;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
@@ -37,7 +39,9 @@ class JobController extends Controller
 
     }
     public function apply_job(){
-        return view('apply_job');
+        $experiences = Experience::select('id', 'name')->get();
+        $degrees = Degree::select('id', 'name')->get();
+        return view('apply_job', compact('experiences', 'degrees'));
     }
 
     public function thank_you(){

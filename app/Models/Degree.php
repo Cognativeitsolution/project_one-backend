@@ -10,6 +10,8 @@ class Degree extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $guarded = ['id'];
+
     public static function getTableName()
     {
         return with(new static)->getTable();

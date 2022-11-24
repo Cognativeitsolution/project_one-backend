@@ -8,21 +8,17 @@
       <div class="container-fluid">
                     
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <div class="col-sm-4"></div>
 
-           
-            <div class="col-sm-4">
-              <!--<a href="{{ route('settings.create') }}" class="btn btn-block btn-primary">Add Setting</a>-->
-            </div>
-            
+          <div class="col-sm-6">           
           </div><!-- /.col -->
+
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Home</a></li>
               <li class="breadcrumb-item">Contact Us</li>
             </ol>
           </div><!-- /.col -->
+          
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -80,18 +76,7 @@
                           <td>{{ Str::words( $contact->message, 5, ' ...') }}</td>                        
                           <td>{{ $contact->created_at->format('Y-m-d H:i:s') }}</td>
                           <td>                            
-                            <a href="{{ route('contactus.show', $contact->id) }}" class="btn btn-info">Show</a>                            
-                            
-                            @can('contact-delete')
-                              <!--<td>
-                              <form action="{{ route('settings.destroy', $setting->id)}}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
-                              </form>
-
-                              </td>-->
-                              @endcan
+                            <a href="{{ route('contactus.show', $contact->id) }}" class="btn btn-info">Show</a>  
                           </td>
                         </tr>
                       @endforeach

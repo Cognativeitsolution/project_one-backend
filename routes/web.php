@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\WebHomeController;
+use App\Http\Controllers\WebAboutController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\UserController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Admin\DegreesController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\ContactusCotroller;
+use App\Http\Controllers\Admin\ExperiencesController;
 use App\Http\Controllers\JobController as WebJobController;
 use App\Http\Controllers\BlogController as WebBlogController;
 
@@ -34,6 +36,7 @@ use App\Http\Controllers\BlogController as WebBlogController;
 Route::get('/', [WebHomeController::class, 'index'])->name('web.home');
 Route::get('/contact_us', [ContactController::class, 'index']);
 Route::post('/contact_us', [ContactController::class, 'contact_us']);
+Route::get('/about_us', [WebAboutController::class, 'index']);
 Route::get('/blogs', [WebBlogController::class, 'index']);
 Route::get('/blogs/{slug}', [WebBlogController::class, 'blog_detail']);
 Route::get('/jobs', [WebJobController::class, 'index'])->name('web.jobs');
@@ -54,6 +57,7 @@ Route::middleware([IsAdmin::class])->group(function(){
     Route::resource('admin/settings', SettingController::class);
     Route::resource('admin/careers', CareerController::class);
     Route::resource('admin/degrees', DegreesController::class);
+    Route::resource('admin/experiences', ExperiencesController::class);
 
 
 });
