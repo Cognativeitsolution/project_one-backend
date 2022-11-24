@@ -281,15 +281,7 @@
                         <div class="footer-col footer-col-1">
                            <h4>About Us</h4>
                            <ul>
-<<<<<<< HEAD
                               <li><a href="{{ url('/about_us') }}" class="foo_links">about us</a></li>
-                              <li><a href="#" class="foo_links">our vision</a></li>
-                              <li><a href="#" class="foo_links">meet the team</a></li>
-                              <li><a href="#" class="foo_links">Milestone</a></li>
-                              <li><a href="#" class="foo_links">Our location</a></li>
-=======
-                              <li><a href="#" class="foo_links">about us</a></li>
->>>>>>> master
                               <li><a href="{{ url('/blogs') }}" class="foo_links">Blog</a></li>
 
                               @foreach($footer_pages as $page)
