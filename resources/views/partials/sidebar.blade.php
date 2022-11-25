@@ -94,15 +94,6 @@
               </li>
               @endcan
 
-              @can('role-list')
-              <li class="nav-item">
-                <a href="{{ url('/admin/roles') }}" class="nav-link {{ Request::is('admin/roles') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Roles</p>
-                </a>
-              </li>
-              @endcan
-
               @can('slider-list')
               <li class="nav-item">
                 <a href="{{ url('/admin/sliders')}}" class="nav-link {{ Request::is('admin/sliders') ? 'active' : '' }}">
