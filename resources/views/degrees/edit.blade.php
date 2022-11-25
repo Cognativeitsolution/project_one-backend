@@ -60,7 +60,7 @@
             </div>
             <!--close row -->
                 
-            @can('setting-edit')
+            @can('degree-edit')
             <button type="submit" class="btn btn-primary">Update</button>
             @endcan
           </form>

@@ -13,6 +13,17 @@ class CareerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('permission:career-list|career-create|career-edit|career-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:career-create', ['only' => ['create','store']]);
+        $this->middleware('permission:career-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:career-delete', ['only' => ['destroy']]);
+
+    }
+
     public function index()
     {
         $search = request('search');

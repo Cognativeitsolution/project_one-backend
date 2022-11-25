@@ -177,7 +177,7 @@
             </div>
             <!--close row -->
                 
-            @can('setting-edit')
+            @can('blog-edit')
             <button type="submit" class="btn btn-primary">Update</button>
             @endcan
           </form>

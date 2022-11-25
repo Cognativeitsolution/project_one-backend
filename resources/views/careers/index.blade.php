@@ -82,7 +82,9 @@
                           <td>{{ $career->phone_number }}</td>
                           <td>{{ $career->degree }}</td>
                           <td>
-                            <a href="{{ route('careers.show', $career->id) }}" class="btn btn-info">Show</a>                           
+                            @can('career-create')
+                              <a href="{{ route('careers.show', $career->id) }}" class="btn btn-info">Show</a>                           
+                            @endcan
                           </td>
                         </tr>
                       @endforeach

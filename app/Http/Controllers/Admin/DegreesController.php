@@ -16,6 +16,17 @@ class DegreesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('permission:degree-list|degree-create|degree-edit|degree-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:degree-create', ['only' => ['create','store']]);
+        $this->middleware('permission:degree-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:degree-delete', ['only' => ['destroy']]);
+
+    }
+    
     public function index()
     {
         $search = request('search');

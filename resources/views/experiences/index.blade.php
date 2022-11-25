@@ -18,7 +18,7 @@
           <div class="col-sm-6">
             <div class="col-sm-4"></div>
 
-           @can('blog-create')
+           @can('experience-create')
             <div class="col-sm-4">
               <a href="{{ route('experiences.create') }}" class="btn btn-block btn-primary">Add Experience</a>
             </div>
@@ -96,11 +96,11 @@
                           </td>                        
                           <td>{{ $experience->updated_at->format('Y-m-d H:i:s') }}</td>
                           <td>
-                            @can('degree-edit')
+                            @can('experience-edit')
                               <a href="{{ route('experiences.edit', $experience->id)}}" class="btn btn-primary">Edit</a>
                             @endcan
                             
-                            @can('degree-delete')   
+                            @can('experience-delete')   
                               <td>                        
                                 <form action="{{ route('experiences.destroy', $experience->id)}}" method="post">
                                   @csrf

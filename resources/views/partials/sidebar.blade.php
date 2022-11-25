@@ -40,6 +40,15 @@
                 </a>
               </li>
 
+              @can('role-list')
+              <li class="nav-item">
+                <a href="{{ url('/admin/roles') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Roles</p>
+                </a>
+              </li>
+              @endcan
+
               @can('user-list')
               <li class="nav-item">
                 <a href="{{ url('/admin/users') }}" class="nav-link {{ Request::is('admin/users') ? 'active' : '' }}">
@@ -49,27 +58,34 @@
               </li>
               @endcan
 
+              @can('contact-list')
               <li class="nav-item">
                 <a href="{{ route('contactus.home') }}" class="nav-link {{ Request::is('admin/contact_us') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Contact Us</p>
                 </a>
               </li>
+              @endcan
 
+              @can('career-list')
               <li class="nav-item">
                 <a href="{{ route('careers.index') }}" class="nav-link {{ Request::is('admin/careers') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Careers</p>
                 </a>
               </li>
+              @endcan
 
+              @can('degree-list')
               <li class="nav-item">
                 <a href="{{ route('degrees.index') }}" class="nav-link {{ Request::is('admin/degrees') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Degrees</p>
                 </a>
               </li>
+              @endcan
 
+              @can('experience-list')
               <li class="nav-item">
                 <a href="{{ route('experiences.index') }}" class="nav-link {{ Request::is('admin/experiences') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>

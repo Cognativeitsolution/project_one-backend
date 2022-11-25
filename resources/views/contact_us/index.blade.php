@@ -75,9 +75,11 @@
                           <td>{{ $contact->email }}</td>
                           <td>{{ Str::words( $contact->message, 5, ' ...') }}</td>                        
                           <td>{{ $contact->created_at->format('Y-m-d H:i:s') }}</td>
+                          @can('contact-edit')
                           <td>                            
                             <a href="{{ route('contactus.show', $contact->id) }}" class="btn btn-info">Show</a>  
                           </td>
+                          @endcan
                         </tr>
                       @endforeach
                     @endif
