@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use App\Http\Middleware\IsUser;
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\ContactusCotroller;
 use App\Http\Controllers\Admin\ExperiencesController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\JobController as WebJobController;
 use App\Http\Controllers\BlogController as WebBlogController;
 use App\Http\Controllers\PagesController as WebPagesController;
@@ -81,6 +83,22 @@ Route::get('/google/redirect', [RegisterController::class, 'googleRedirect']);
 
 Route::get('/linkedin', [RegisterController::class, 'linkedin']);
 Route::get('/linkedin/redirect', [RegisterController::class, 'linkedinRedirect']);
+
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
 
 Route::get('/clear', function () {
     Session::flush();

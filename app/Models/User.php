@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     // protected $table = 'users';
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes, HasRoles;
@@ -29,7 +29,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'is_admin'
+        'is_admin',
+        'email_verified_at'
     ];
 
     /**
