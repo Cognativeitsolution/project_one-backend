@@ -18,7 +18,7 @@
           <div class="col-sm-6">
             <div class="col-sm-4"></div>
 
-           @can('blog-create')
+           @can('degree-create')
             <div class="col-sm-4">
               <a href="{{ route('degrees.create') }}" class="btn btn-block btn-primary">Add Degree</a>
             </div>

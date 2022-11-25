@@ -16,6 +16,16 @@ class ExperiencesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('permission:experience-list|experience-create|experience-edit|experience-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:experience-create', ['only' => ['create','store']]);
+        $this->middleware('permission:experience-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:experience-delete', ['only' => ['destroy']]);
+
+    }
     public function index()
     {
         $search = request('search');

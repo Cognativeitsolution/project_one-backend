@@ -25,12 +25,21 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
 
-            <li class="nav-item">
+              <li class="nav-item">
                 <a href="{{ url('/admin/home') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
+
+              @can('role-list')
+              <li class="nav-item">
+                <a href="{{ url('/admin/roles') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Roles</p>
+                </a>
+              </li>
+              @endcan
 
               @can('user-list')
               <li class="nav-item">
@@ -41,39 +50,38 @@
               </li>
               @endcan
 
+              @can('contact-list')
               <li class="nav-item">
                 <a href="{{ route('contactus.home') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Contact Us</p>
                 </a>
               </li>
+              @endcan
 
+              @can('career-list')
               <li class="nav-item">
                 <a href="{{ route('careers.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Careers</p>
                 </a>
               </li>
+              @endcan
 
+              @can('degree-list')
               <li class="nav-item">
                 <a href="{{ route('degrees.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Degrees</p>
                 </a>
               </li>
+              @endcan
 
+              @can('experience-list')
               <li class="nav-item">
                 <a href="{{ route('experiences.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Experiences</p>
-                </a>
-              </li>
-
-              @can('role-list')
-              <li class="nav-item">
-                <a href="{{ url('/admin/roles') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Roles</p>
                 </a>
               </li>
               @endcan
