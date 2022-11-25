@@ -92,6 +92,7 @@
                   <p>Experiences</p>
                 </a>
               </li>
+              @endcan
 
               @can('role-list')
               <li class="nav-item">
