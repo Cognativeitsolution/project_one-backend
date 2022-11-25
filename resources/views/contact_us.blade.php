@@ -6,6 +6,12 @@
    <meta name="description" content="Contact Us for IT Solution, Cognitive IT Solution provide all types of software solution."/>
 @endsection
 
+<style>
+   .error {
+      color: #dc3545;
+   }
+</style>
+
 @section('content')
     <!---About Us Banner Container-->
     <section class="contact_hero-banner">
@@ -105,11 +111,11 @@
                                  <div class="form-group">
                                     <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY') }}"></div>
                                     @error('g-recaptcha-response')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                       <span class="error">
+                                          <strong >{{ $message }}</strong>
+                                       </span>
                                     @enderror
-                                 </div>
+                                 </div>                                 
                                  
                                  <input type="submit" value="Submit" class="primary-btn">
                               </form>

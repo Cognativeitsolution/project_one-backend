@@ -18,11 +18,13 @@ class SettingsSeeder extends Seeder
             [
                 'header_logo' => '1749855649265578p_logo.png',
                 'footer_logo' => '1749855649265578p_logo.png',
+                'favicon' => 'favicon.png',
                 'contact_number'=>'+923003111117',
                 'contact_email'=>'contact@website.com',
                 'location_address'=>'413 Park avenue, Near Downtown Brampton, Ontario',
                 'contact_whatsapp'=> '+923003111117',
-                'footer_text'=> 'This is footer dummy text @ 2022-2023'
+                'footer_text'=> 'This is footer dummy text @ 2022-2023',
+                'title' => 'Cognitive IT Solutions'
             ],           
         ];
   

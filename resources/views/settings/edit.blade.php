@@ -127,6 +127,24 @@
               @error('footer_text')<div class="error">{{ $message }}</div>@enderror
             </div>
 
+            <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
+              <label for="title">Title</label>
+              <input type="text" id="title" name="title" value="{{ $record->title }}" class="form-control" placeholder="Enter minimum 10 characters and maximum 60 characters">
+              @error('title')<div class="error">{{ $message }}</div>@enderror
+            </div>
+
+            <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
+              <label for="keywords">Keywords</label>
+              <input type="text" id="keywords" name="keywords" value="{{ $record->keywords }}" class="form-control" placeholder="Enter minimum 50 characters and maximum 160 characters">
+              @error('keywords')<div class="error">{{ $message }}</div>@enderror
+            </div>
+
+            <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
+              <label for="description">Description</label>
+              <input type="text" id="description" name="description" value="{{ $record->description }}" class="form-control" placeholder="Enter minimum 50 characters and maximum 160 characters">
+              @error('description')<div class="error">{{ $message }}</div>@enderror
+            </div>
+
               <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
                 <label for="header_logo">Header Logo</label>
                 <input type="file" class="form-control" id="header_logo" name="header_logo">
@@ -135,6 +153,11 @@
               <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
                 <label for="footer_logo">Footer Logo</label>
                 <input type="file" class="form-control" id="footer_logo" name="footer_logo">
+              </div>
+
+              <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
+                <label for="favicon">Favicon</label>
+                <input type="file" class="form-control" id="favicon" name="favicon">
               </div>
 
               @if( !empty($record->header_logo) )
@@ -153,6 +176,13 @@
               </div>
               @endif
 
+              @if( !empty($record->favicon) )
+              <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
+                <strong>Thumbnail Favicon </strong>
+                <br/>
+                <img src="{{ asset('images/' . $record->favicon) }}" >
+              </div>
+              @endif
 
             </div>
             <!--close row -->

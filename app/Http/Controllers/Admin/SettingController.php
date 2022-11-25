@@ -131,7 +131,7 @@ class SettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSettingRequest $request, $id)
     {
         $setting = Setting::find($id);
 
@@ -155,6 +155,18 @@ class SettingController extends Controller
 
             $data = array(
                 'footer_logo'        => $footer_logo,
+            );
+
+            $setting->update($data);
+
+        }
+
+        if(isset($request['favicon'])){
+
+            $favicon = Helper::upload_image($request->file('favicon'));
+
+            $data = array(
+                'favicon'        => $favicon,
             );
 
             $setting->update($data);

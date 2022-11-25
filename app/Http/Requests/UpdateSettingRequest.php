@@ -24,8 +24,23 @@ class UpdateSettingRequest extends FormRequest
     public function rules()
     {
         return [
-            'contact_number' => ['required'],
-            'contact_email' => ['required', 'email'],
+            'header_logo'               => ['mimes: jpg, png, jpeg'],
+            'footer_logo'               => ['mimes: jpg, png, jpeg'],
+            'favicon'                   => ['mimes: jpg, png, jpeg', 'ico'],
+            'contact_number'            => ['required'],
+            'contact_email'             => ['required', 'email'],
+            'location_address'          => ['nullable', 'string', 'min:10', 'max:100'],
+            'contact_whatsapp'          => ['nullable', 'string', 'min:5', 'max:20'],
+            'linkedin_account_link'     => ['nullable', 'url'],
+            'instagram_account_link'    => ['nullable', 'url'],
+            'google_account_link'       => ['nullable', 'url'],
+            'facebook_account_link'     => ['nullable', 'url'],
+            'youtube_account_link'      => ['nullable', 'url'],
+            'footer_location_text'      => ['nullable', 'string'],
+            'footer_text'               => ['nullable', 'string'],
+            'title'                     => ['nullable', 'string', 'min:10', 'max:60'],
+            'keywords'                  => ['nullable', 'string', 'min:50', 'max:160'],
+            'description'               => ['nullable', 'string', 'min:50', 'max:160']
         ];
     }
 }

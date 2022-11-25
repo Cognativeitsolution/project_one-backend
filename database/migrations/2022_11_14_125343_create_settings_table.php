@@ -17,6 +17,7 @@ class CreateSettingsTable extends Migration
             $table->id();
             $table->string('header_logo')->nullable();
             $table->string('footer_logo')->nullable();
+            $table->string('favicon')->nullable();
             $table->string('contact_email')->nullable();
             $table->string('location_address')->nullable();
             $table->string('contact_number')->nullable();
@@ -28,6 +29,9 @@ class CreateSettingsTable extends Migration
             $table->string('youtube_account_link')->nullable();
             $table->string('footer_location_text')->nullable();
             $table->string('footer_text')->nullable();
+            $table->string('title')->nullable();
+            $table->string('keywords')->nullable();
+            $table->string('description')->nullable();
             $table->tinyInteger('website_status')->default(1);
             $table->timestamps();
             $table->softDeletes();

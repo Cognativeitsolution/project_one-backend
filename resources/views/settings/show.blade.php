@@ -123,6 +123,24 @@
               @error('footer_text')<div class="error">{{ $message }}</div>@enderror
             </div>
 
+            <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
+              <label for="title">Title</label>
+              <input type="text" id="title" name="title" value="{{ $record->title }}" class="form-control" readonly>
+              @error('title')<div class="error">{{ $message }}</div>@enderror
+            </div>
+
+            <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
+              <label for="keywords">Keywords</label>
+              <input type="text" id="keywords" name="keywords" value="{{ $record->keywords }}" class="form-control" readonly>
+              @error('keywords')<div class="error">{{ $message }}</div>@enderror
+            </div>
+
+            <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
+              <label for="description">Description</label>
+              <input type="text" id="description" name="description" value="{{ $record->description }}" class="form-control" readonly>
+              @error('description')<div class="error">{{ $message }}</div>@enderror
+            </div>
+
               @if( !empty($record->header_logo) )
               <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
                 <strong>Thumbnail Header Logo </strong>
@@ -136,6 +154,14 @@
                 <strong>Thumbnail Footer Logo </strong>
                 <br/>
                 <img src="{{ url('/thumbnail/') }}/{{ $record->footer_logo }}" >
+              </div>
+              @endif
+
+              @if( !empty($record->favicon) )
+              <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
+                <strong>Thumbnail Favicon </strong>
+                <br/>
+                <img src="{{ asset('images/' . $record->favicon) }}" >
               </div>
               @endif
 

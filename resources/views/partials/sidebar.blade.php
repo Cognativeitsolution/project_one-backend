@@ -1,3 +1,11 @@
+@section('css')
+  <style>
+    .active {
+      color: blue;
+    }
+  </style>
+@endsection
+
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -26,7 +34,7 @@
           <li class="nav-item has-treeview menu-open">
 
             <li class="nav-item">
-                <a href="{{ url('/admin/home') }}" class="nav-link">
+                <a href="{{ url('/admin/home') }}" class="nav-link {{ Request::is('admin/home') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard</p>
                 </a>
@@ -34,7 +42,7 @@
 
               @can('user-list')
               <li class="nav-item">
-                <a href="{{ url('/admin/users') }}" class="nav-link">
+                <a href="{{ url('/admin/users') }}" class="nav-link {{ Request::is('admin/users') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Users</p>
                 </a>
@@ -42,28 +50,28 @@
               @endcan
 
               <li class="nav-item">
-                <a href="{{ route('contactus.home') }}" class="nav-link">
+                <a href="{{ route('contactus.home') }}" class="nav-link {{ Request::is('admin/contact_us') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Contact Us</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{ route('careers.index') }}" class="nav-link">
+                <a href="{{ route('careers.index') }}" class="nav-link {{ Request::is('admin/careers') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Careers</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{ route('degrees.index') }}" class="nav-link">
+                <a href="{{ route('degrees.index') }}" class="nav-link {{ Request::is('admin/degrees') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Degrees</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{ route('experiences.index') }}" class="nav-link">
+                <a href="{{ route('experiences.index') }}" class="nav-link {{ Request::is('admin/experiences') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Experiences</p>
                 </a>
@@ -71,7 +79,7 @@
 
               @can('role-list')
               <li class="nav-item">
-                <a href="{{ url('/admin/roles') }}" class="nav-link">
+                <a href="{{ url('/admin/roles') }}" class="nav-link {{ Request::is('admin/roles') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Roles</p>
                 </a>
@@ -80,7 +88,7 @@
 
               @can('slider-list')
               <li class="nav-item">
-                <a href="{{ url('/admin/sliders')}}" class="nav-link">
+                <a href="{{ url('/admin/sliders')}}" class="nav-link {{ Request::is('admin/sliders') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sliders</p>
                 </a>
@@ -89,7 +97,7 @@
 
               @can('blog-list')
               <li class="nav-item">
-                <a href="{{ url('/admin/blogs')}}" class="nav-link">
+                <a href="{{ url('/admin/blogs')}}" class="nav-link {{ Request::is('admin/blogs') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Blogs</p>
                 </a>
@@ -98,7 +106,7 @@
 
               @can('job-list')
               <li class="nav-item">
-                <a href="{{ url('/admin/jobs')}}" class="nav-link">
+                <a href="{{ url('/admin/jobs')}}" class="nav-link {{ Request::is('admin/jobs') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jobs</p>
                 </a>
@@ -107,7 +115,7 @@
 
               @can('page-list')
               <li class="nav-item">
-                <a href="{{ url('/admin/pages')}}" class="nav-link">
+                <a href="{{ url('/admin/pages')}}" class="nav-link {{ Request::is('admin/pages') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pages</p>
                 </a>
@@ -116,7 +124,7 @@
 
               @can('setting-list')
               <li class="nav-item">
-                <a href="{{ url('/admin/settings')}}" class="nav-link">
+                <a href="{{ url('/admin/settings')}}" class="nav-link {{ Request::is('admin/settings') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Settings</p>
                 </a>

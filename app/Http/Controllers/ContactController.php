@@ -35,7 +35,7 @@ class ContactController extends Controller
         }
 
         // Store message
-        Contact::create($details);
+        $contact = Contact::create($details);
 
         // return back
         return redirect()->back()->with('message', 'Your message has been received!');

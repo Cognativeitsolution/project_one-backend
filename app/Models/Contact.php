@@ -9,5 +9,10 @@ class Contact extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email', 'message'];
+    protected $guarded = ['id'];
+
+    public static function getTableName()
+    {
+        return with(new static)->getTable();
+    }
 }
