@@ -1,9 +1,12 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Middleware\IsUser;
 use App\Http\Middleware\IsAdmin;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\WebHomeController;
@@ -104,3 +107,27 @@ Route::get('/clear', function () {
     Session::flush();
     return "Cleared!";
 });
+
+// Perform email verification
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect()->route('web.home')->with('message', 'Your email has been verified');
+})->middleware(['signed'])->name('verification.verify');
+
+// Resend verification email on user request
+Route::post('/email/verification-notification', function (Request $request) {
+    $user = User::find($request->user_id);
+
+    if (!empty($user)) {
+        $user->sendEmailVerificationNotification();
+        $message = 'Verification link sent!';
+        $status = 'success';
+    } else {
+        $message = 'Something went wrong!';
+        $status = 'danger';
+    }
+
+    return back()->with('message', $message)->with('status', $status);
+    
+})->middleware('guest')->name('verification.send');

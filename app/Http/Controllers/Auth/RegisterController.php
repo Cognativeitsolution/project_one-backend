@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
@@ -87,10 +88,11 @@ class RegisterController extends Controller
         $user = User::firstOrCreate([
             'email' => $user->email
         ], [
-            'name' => $user->name,
-            'email' => $user->email,
-            'password' => Hash::make(Str::random(24)),
-            'is_admin' => 0
+            'name'              => $user->name,
+            'email'             => $user->email,
+            'email_verified_at' => Carbon::now(),
+            'password'          => Hash::make(Str::random(24)),
+            'is_admin'          => 0
         ]);
 
         Auth::login($user, true);
@@ -110,10 +112,11 @@ class RegisterController extends Controller
         $user = User::firstOrCreate([
             'email' => $user->email
         ], [
-            'name' => $user->name,
-            'email' => $user->email,
-            'password' => Hash::make(Str::random(24)),
-            'is_admin' => 0
+            'name'              => $user->name,
+            'email'             => $user->email,
+            'email_verified_at' => Carbon::now(),
+            'password'          => Hash::make(Str::random(24)),
+            'is_admin'          => 0
         ]);
 
         Auth::login($user, true);
