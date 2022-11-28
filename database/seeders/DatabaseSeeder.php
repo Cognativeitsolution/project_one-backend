@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\JobMetas;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,5 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DegreeSeeder::class);
         $this->call(ExperienceSeeder::class);
         $this->call(PageSeeder::class);
+        $this->call(JobMetasSeeder::class);
     }
 }

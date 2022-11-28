@@ -25,6 +25,10 @@ class Job extends Model
         });
     }
 
+    public function meta(){
+        return $this->hasOne(JobMetas::class);
+    }
+
     public static function getTableName()
     {
         return with(new static)->getTable();

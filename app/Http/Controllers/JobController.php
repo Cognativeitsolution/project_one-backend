@@ -28,7 +28,9 @@ class JobController extends Controller
     }
     public function job_detail($slug){
 
-        $job = Job::where('status', 1)->whereSlug($slug)->first();
+        $job = Job::where('status', 1)
+            ->with('meta:job_id,meta_keywords,meta_description')
+            ->whereSlug($slug)->first();
 
         if($job != false){
             Session::put('job_id', $job->id);

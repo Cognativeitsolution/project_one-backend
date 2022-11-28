@@ -2,8 +2,8 @@
 
 @section('seo')
    <title>{{ $job->title }}</title>
-   <meta name="keywords" content="{{ $job->short_description }}"/>
-   <meta name="description" content="We are hiring in Cognitive IT Solution in multiple position, Apply here cognitive IT solution"/>
+   <meta name="keywords" content="{{ $job->meta ? $job->meta->meta_keywords : '' }}"/>
+   <meta name="description" content="{{ $job->meta ? $job->meta->meta_description : '' }}"/>
 @endsection
 
 @section('content')
