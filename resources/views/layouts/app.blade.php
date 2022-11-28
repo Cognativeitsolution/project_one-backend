@@ -68,6 +68,14 @@
          </div>
       </div>
 
+      @if (session('message'))
+      <div class="container pt-5">
+         <div class="alert alert-{{ session('status') }}">
+            {{ session('message') }}
+         </div>
+      </div>
+      @endif
+
       <!----Sidebar Menu-->
       <div class="sb-body-container">
          <div class="sidebar_container" id="sidebar_open">
