@@ -24,6 +24,8 @@ class CreateJobsTable extends Migration
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->index(['name', 'title', 'short_description']);
         });
     }
 

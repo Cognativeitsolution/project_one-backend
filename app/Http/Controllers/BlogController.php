@@ -23,7 +23,9 @@ class BlogController extends Controller
     }
 
     public function blog_detail($slug){
-        $blog = Blog::whereSlug($slug)->first();
+        $blog = Blog::whereSlug($slug)
+                ->with('meta:blog_id,meta_keywords,meta_description')
+                ->first();
 
         if($blog != false){
             $related_blog_ids = BlogRelated::where('blog_id', $blog->id)
@@ -32,7 +34,14 @@ class BlogController extends Controller
             $related_blogs = Blog::select('title','slug','blog_image')
                 ->where('status', 1)->whereIn('id', $related_blog_ids)->get();
 
-            return view('blog_details', compact('blog', 'related_blogs') );
+            $other_blogs = Blog::select('id', 'title','slug','blog_image')
+                ->where('status', 1)
+                ->whereNotIn('id', [$blog->id])
+                ->inRandomOrder()
+                ->limit(3)
+                ->get();
+
+            return view('blog_details', compact('blog', 'related_blogs', 'other_blogs') );
         }else{
             abort(404);
         }
