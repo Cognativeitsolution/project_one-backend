@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Job;
+use App\Models\Logs;
+use App\Models\JobMetas;
+
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
-
-use App\Models\Logs;
-use App\Http\Controllers\Controller;
 
 class JobController extends Controller
 {
@@ -68,9 +69,16 @@ class JobController extends Controller
      */
     public function store(StoreJobRequest $request)
     {
-        $record = Job::create( $request->all() );
+        $job = Job::create($request->except(['meta_keywords', 'meta_description']));
 
-        Logs::add_log(Job::getTableName(), $record->id, $record, 'add', '');
+        $metaData = $request->only('meta_keywords', 'meta_description');
+
+        $metaData['job_id'] = $job->id;
+
+        JobMetas::create($metaData);
+
+        Logs::add_log(Job::getTableName(), $job->id, $request->all(), 'add', '');
+
         return redirect()->route('jobs.index')->with('success','Record Added !');
     }
 
@@ -93,7 +101,10 @@ class JobController extends Controller
      */
     public function edit(Job $job)
     {
-        $record = Job::whereId($job->id)->first();
+        $record = Job::select('jobs.id', 'jobs.name', 'jobs.title', 'jobs.short_description', 'jobs.long_description', 'jobs.location', 'job_metas.meta_keywords', 'job_metas.meta_description')
+                ->join('job_metas', 'job_metas.job_id', 'jobs.id')
+                ->where('jobs.id', $job->id)
+                ->first();
 
         $logs = Logs::get_logs_details(Job::getTableName(), $job->id);
 
@@ -113,14 +124,18 @@ class JobController extends Controller
      */
     public function update(UpdateJobRequest $request, Job $job)
     {
-        $job = Job::find($job->id);
+        $metaData = JobMetas::where('job_id', $job->id)->first();
 
         $status = $request->status == "on" ? 1 : 0 ;
+
         $request['status'] = $status ;
 
-        $job->update($request->all() );
+        $job->update($request->except(['meta_keywords', 'meta_description']));
 
-        Logs::add_log(Job::getTableName(), $job->id, $request->all, 'edit', 1);
+        $metaData->update($request->only('meta_keywords', 'meta_description'));
+
+        Logs::add_log(Job::getTableName(), $job->id, $request->all(), 'edit', 1);
+
         return redirect()->route('jobs.index')->with('success','Record Updated !');
 
     }

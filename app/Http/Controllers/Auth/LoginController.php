@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -45,7 +46,7 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    {   
+    {  
         $input = $request->all();
 
         $this->validate($request, [
@@ -53,12 +54,16 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        $user = User::where('email', $input['email'])->first();
+        $credentials = $request->only('email', 'password');
 
-        if ($user) {
+        $user = Auth::getProvider()->retrieveByCredentials($credentials);
+
+        $remember = $request->has('remember') ? true : false;
+
+        if (!empty($user)) {
             if ($user->is_admin == 1) {
                 // Handle admin login
-                if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
+                if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']), $remember)) {
                     return redirect()->route('admin.home');
                 } else {
                     return redirect()->route('login')
@@ -67,7 +72,7 @@ class LoginController extends Controller
             } else {
                 // Handle user login
                 if (!is_null($user->email_verified_at)) {
-                    if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
+                    if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']), $remember)) {
                         //return redirect('/');
                         return redirect()->intended();
                     } else {

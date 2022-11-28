@@ -68,14 +68,6 @@
          </div>
       </div>
 
-      @if (session('message'))
-      <div class="container pt-5">
-         <div class="alert alert-{{ session('status') }}">
-            {{ session('message') }}
-         </div>
-      </div>
-      @endif
-
       <!----Sidebar Menu-->
       <div class="sb-body-container">
          <div class="sidebar_container" id="sidebar_open">
@@ -258,9 +250,19 @@
          </div>
       </header>
 
-        <main>
-            @yield('content')
-        </main>
+      <main>
+
+         @if (session('message'))
+         <div class="container py-3">
+            <div class="alert alert-{{ session('status') }}">
+               {{ session('message') }}
+            </div>
+         </div>
+         @endif
+
+         @yield('content')
+         
+      </main>
 
         <!---Footer ----->
       <footer class="footer">

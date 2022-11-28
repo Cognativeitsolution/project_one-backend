@@ -87,33 +87,20 @@ Route::get('/google/redirect', [RegisterController::class, 'googleRedirect']);
 Route::get('/linkedin', [RegisterController::class, 'linkedin']);
 Route::get('/linkedin/redirect', [RegisterController::class, 'linkedinRedirect']);
 
-Route::get('/email/verify', function () {
-    return view('auth.verify');
-})->middleware('auth')->name('verification.notice');
 
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-
-    return redirect('/');
-})->middleware(['auth', 'signed'])->name('verification.verify');
-
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-
-    return back()->with('message', 'Verification link sent!');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
-
-Route::get('/clear', function () {
-    Session::flush();
-    return "Cleared!";
-});
 
 // Perform email verification
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
-    return redirect()->route('web.home')->with('message', 'Your email has been verified');
+    $message = 'Your email has been verified';
+
+    $status = 'success';
+
+    return redirect()->route('web.home')->with('message', $message)->with('status', $status);
 })->middleware(['signed'])->name('verification.verify');
+
+
 
 // Resend verification email on user request
 Route::post('/email/verification-notification', function (Request $request) {
@@ -121,10 +108,13 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     if (!empty($user)) {
         $user->sendEmailVerificationNotification();
+
         $message = 'Verification link sent!';
+        
         $status = 'success';
     } else {
         $message = 'Something went wrong!';
+        
         $status = 'danger';
     }
 
