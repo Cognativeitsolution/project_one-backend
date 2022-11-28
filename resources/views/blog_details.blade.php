@@ -2,8 +2,8 @@
 
 @section('seo')
    <title>{{ $blog->title }}</title>
-   <meta name="keywords" content="Cognitive IT Solution are create blogs for user information"/>
-   <meta name="description" content="Cognitive IT Solution are create blogs for user information"/>
+   <meta name="keywords" content="{{ $blog->meta ? $blog->meta->meta_keywords : '' }}"/>
+   <meta name="description" content="{{ $blog->meta ? $blog->meta->meta_description : '' }}"/>
 @endsection
 
 @section('content')
@@ -56,6 +56,24 @@
                         </a>
                         @endforeach
 
+
+                     </div>
+                  </div>
+                  @else
+                  <div class="related_offer">
+                     <h3 class="related_head">Recent Blogs</h3>
+                     <div class="related_blogs-item">
+                        
+                        @foreach($other_blogs as $other_blog)
+                        <a href="{{ url('blogs/' .$other_blog->slug) }}" class="rb_item">
+                           <div class="img_rb">
+                              <img src="{{ url('thumbnail/' . $other_blog->blog_image) }}" alt="blog-img" class="blog_img-one">
+                           </div>
+                           <div class="rb_item-one">
+                              {!! Str::words( $other_blog->title, 10, ' ') !!}
+                           </div>
+                        </a>
+                        @endforeach
 
                      </div>
                   </div>

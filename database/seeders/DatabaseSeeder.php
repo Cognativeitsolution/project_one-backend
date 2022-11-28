@@ -28,5 +28,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ExperienceSeeder::class);
         $this->call(PageSeeder::class);
         $this->call(JobMetasSeeder::class);
+        $this->call(BlogMetasSeeder::class);
     }
 }

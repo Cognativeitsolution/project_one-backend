@@ -26,6 +26,10 @@ class Blog extends Model
         });
     }
 
+    public function meta(){
+        return $this->hasOne(BlogMetas::class);
+    }
+
     public static function getTableName()
     {
         return with(new static)->getTable();
