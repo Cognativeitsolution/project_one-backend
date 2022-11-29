@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ContactUsJob;
 use App\Rules\Captcha;
 use App\Models\Contact;
 use App\Models\Setting;
-use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -19,7 +19,7 @@ class ContactController extends Controller
     // Redirect to contact us page functionality
     protected function contact_us(Request $request) {
         // Validation
-        $details = $request->validate([
+        $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'message' => 'required',
@@ -28,16 +28,12 @@ class ContactController extends Controller
 
         $settings = Setting::select('contact_email')->first();
 
-        try {
-            Mail::to($settings->contact_email, env('COMPANY_NAME'))->send(new ContactMail($details));
-        } catch (Throwable $th) {
-            dd($th->getMessage());
-        }
+        dispatch(new ContactUsJob($settings->contact_email, $request->all()));
 
         // Store message
-        $contact = Contact::create($details);
+        $contact = Contact::create($request->except('g-recaptcha-response', '_token'));
 
         // return back
-        return redirect()->back()->with('message', 'Your message has been received!');
+        return redirect()->back()->with('message', 'Your message has been received!')->with('status', 'success');
     }
 }
