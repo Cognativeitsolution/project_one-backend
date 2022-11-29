@@ -261,6 +261,14 @@
          </div>
          @endif
 
+         @if (session('reset_success'))
+         <div class="container py-3">
+            <div class="alert alert-success">
+               {{ session('reset_success') }}
+            </div>
+         </div>
+         @endif
+
          @yield('content')
          
       </main>
