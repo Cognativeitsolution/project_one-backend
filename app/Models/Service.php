@@ -26,6 +26,10 @@ class Service extends Model
         });
     }
 
+    public function meta(){
+        return $this->hasOne(ServiceMetas::class);
+    }
+
     public static function getTableName()
     {
         return with(new static)->getTable();

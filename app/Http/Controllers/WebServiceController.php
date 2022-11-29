@@ -12,6 +12,18 @@ class WebServiceController extends Controller
         return view('services');
     }
 
+    public function service_detail($slug){
 
+        $record = Service::where('slug', $slug)
+            ->with('meta:service_id,meta_keywords,meta_description')
+            ->first();
+
+        if($record != false){
+            return view('service_details', compact('record'));
+        }else{
+            abort(404);
+        }
+
+    }
 
 }

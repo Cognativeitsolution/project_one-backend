@@ -113,7 +113,7 @@
                         <ul>
                            <li><a href="{{ url('/') }}" class="primary_nav-menu">Home</a></li>
                            <li class="service-dropdown" id="service_dropbtn">
-                              <a href="{{ url('/services') }}" class="service_dropbtn primary_nav-menu">Services</a>
+                              <a href="#" class="service_dropbtn primary_nav-menu">Services</a>
                               <!---Service Mega Menu-->
                               <div class="mm-s-menu-container">
                                  <div class="container">

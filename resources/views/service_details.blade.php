@@ -2,8 +2,8 @@
 
 @section('seo')
    <title>{{ $record->title }}</title>
-   <meta name="keywords" content="{{ $record->short_description }}"/>
-   <meta name="description" content="Contact Us for IT Solution, Cognitive IT Solution provide all types of software solution."/>
+   <meta name="keywords" content="{{ $record->meta ? $record->meta->meta_keywords : '' }}"/>
+   <meta name="description" content="{{ $record->meta ? $record->meta->meta_description : '' }}"/>
 @endsection
 
 @section('content')

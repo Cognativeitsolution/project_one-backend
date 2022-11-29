@@ -138,10 +138,24 @@
               </select>
             </div>
 
+            <h3>Seo Section </h3>
+
+            <div class="form-group">
+              <label for="meta_keywords">Meta Keywords</label>
+              <input type="text" id="meta_keywords" name="meta_keywords" value="{{ $record->meta_keywords }}" class="form-control" placeholder="Enter minimum 50 characters and maximum 160 characters">
+              @error('meta_keywords')<div class="error">{{ $message }}</div>@enderror
+            </div>
+
+            <div class="form-group">
+              <label for="meta_description">Meta Description</label>
+              <input type="text" id="meta_description" name="meta_description" value="{{ $record->meta_description }}" class="form-control" placeholder="Enter minimum 50 characters and maximum 160 characters">
+              @error('meta_description')<div class="error">{{ $message }}</div>@enderror
+            </div>
+
             <div class="form-group">
               <div class="custom-control custom-switch">
               <input type="checkbox" name="status" {{ $record->status == 1 ? 'checked' : 'no' }} class="custom-control-input" id="customSwitch1">
-              <label class="custom-control-label" for="customSwitch1">Show Page</label>
+              <label class="custom-control-label" for="customSwitch1">Show Service</label>
               </div>
             </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Service;
+use App\Models\ServiceMetas;
 use App\Models\Logs;
 
 use App\Http\Controllers\Controller;
@@ -73,7 +74,13 @@ class ServiceController extends Controller
      */
     public function store(StoreServiceRequest $request)
     {
-        $record = Service::create( $request->all() );
+        $record = Service::create( $request->except(['meta_keywords', 'meta_description']) );
+
+        $metaData = $request->only('meta_keywords', 'meta_description');
+
+        $metaData['service_id'] = $record->id;
+
+        ServiceMetas::create($metaData);
 
         Logs::add_log(Service::getTableName(), $record->id, $request->all(), 'add', '');
         return redirect()->route('services.index')->with('success','Record Added !');
@@ -98,7 +105,10 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        $record = Service::whereId($service->id)->first();
+        $record = Service::select('services.id', 'services.parent_id', 'services.name', 'services.title', 'services.short_description', 'services.long_description', 'services.status', 'service_metas.meta_keywords', 'service_metas.meta_description')
+            ->join('service_metas', 'service_metas.service_id', 'services.id')
+            ->where('services.id', $service->id)
+            ->first();
 
         $services = Service::select('id', 'title')
             ->where('parent_id', 0)
@@ -124,10 +134,14 @@ class ServiceController extends Controller
     {
         $service = Service::find($service->id);
 
+        $metaData = ServiceMetas::where('service_id', $service->id)->first();
+
         $status = $request->status == "on" ? 1 : 0 ;
         $request['status'] = $status ;
 
-        $service->update($request->all() );
+        $service->update( $request->except(['meta_keywords', 'meta_description']) );
+
+        $metaData->update($request->only('meta_keywords', 'meta_description'));
 
         Logs::add_log(Service::getTableName(), $service->id, $request->all, 'edit', 1);
         return redirect()->route('services.index')->with('success','Record Updated !');
