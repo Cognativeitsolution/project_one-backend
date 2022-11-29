@@ -35,9 +35,9 @@ class ServiceController extends Controller
         if (!empty($search)) {
             $record = Service::where('services.title', 'like', '%'.$search.'%')
                 ->where('services.parent_id', '!=', 0)
-                ->Where('services.name', 'like', '%'.$search.'%')
-                ->Where('services.short_description', 'like', '%'.$search.'%')
-                ->Where('services.long_description', 'like', '%'.$search.'%')
+                ->orWhere('services.name', 'like', '%'.$search.'%')
+                ->orWhere('services.short_description', 'like', '%'.$search.'%')
+                ->orWhere('services.long_description', 'like', '%'.$search.'%')
                 ->orderBy('services.id','DESC')
                 ->paginate(5);
             return view('services.index', compact('record') );
