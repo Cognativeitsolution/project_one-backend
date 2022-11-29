@@ -3,6 +3,7 @@
 namespace App\Providers;
 use App\Models\Setting;
 use App\Models\Page;
+use App\Models\Service;
 
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
@@ -31,8 +32,10 @@ class AppServiceProvider extends ServiceProvider
 
         $settings = Setting::first();
         $footer_pages = Page::select('id','parent_id','name','slug')->where('parent_id', '!=', 0)->where('status',1)->get();
+        $services = Service::select('id','parent_id','name','slug')->where('parent_id', '!=', 0)->where('status',1)->get();
         
         View::share('settings', $settings);
         View::share('footer_pages', $footer_pages);
+        View::share('services', $services);
     }
 }

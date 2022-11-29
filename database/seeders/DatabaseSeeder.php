@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PageSeeder::class);
         $this->call(JobMetasSeeder::class);
         $this->call(BlogMetasSeeder::class);
+        $this->call(ServiceSeeder::class);
     }
 }

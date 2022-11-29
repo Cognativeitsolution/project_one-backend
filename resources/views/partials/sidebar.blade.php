@@ -130,6 +130,15 @@
               </li>
               @endcan
 
+              @can('service-list')
+              <li class="nav-item">
+                <a href="{{ url('/admin/services')}}" class="nav-link {{ Request::is('admin/services') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Services</p>
+                </a>
+              </li>
+              @endcan
+
               @can('setting-list')
               <li class="nav-item">
                 <a href="{{ url('/admin/settings')}}" class="nav-link {{ Request::is('admin/settings') ? 'active' : '' }}">

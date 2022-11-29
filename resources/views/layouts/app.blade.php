@@ -133,14 +133,11 @@
                                                 <div class="service_g-content-wrapper service-one_wrapper">
                                                    <h2 class="s_one">Web Solution</h2>
                                                    <ul class="sub-service-link">
-                                                      <li><a href="#">Web Design</a></li>
-                                                      <li><a href="#">Web Development</a></li>
-                                                      <li><a href="#">Hosting</a></li>
-                                                      <li><a href="#">SEO</a></li>
-                                                      <li><a href="#">Domain registration</a></li>
-                                                      <li><a href="#">Redesign and Redevelopment</a></li>
-                                                      <li><a href="#">Maintainance and testing</a></li>
-                                                      <li><a href="#">Control Panel</a></li>
+                                                      @foreach($services as $service)
+                                                         @if($service->parent_id == 1)
+                                                            <li><a href="{{ route('web.service_detail', $service->slug) }}">{{ $service->name }}</a></li>
+                                                         @endif
+                                                      @endforeach
                                                    </ul>
                                                 </div>
                                              </div>
@@ -149,15 +146,21 @@
                                                    <div class="service_g-content-wrapper service-two_wrapper">
                                                       <h2 class="s_one">Software</h2>
                                                       <ul class="sub-service-link">
-                                                         <li><a href="#">Integrated System Design</a></li>
-                                                         <li><a href="#">Integrated System Development</a></li>
+                                                         @foreach($services as $service)
+                                                            @if($service->parent_id == 2)
+                                                               <li><a href="{{ route('web.service_detail', $service->slug) }}">{{ $service->name }}</a></li>
+                                                            @endif
+                                                         @endforeach
                                                       </ul>
                                                    </div>
                                                    <div class="service_g-content-wrapper service-three_wrapper">
                                                       <h2 class="s_one">Mobile App</h2>
                                                       <ul class="sub-service-link">
-                                                         <li><a href="#">Mobile System Design</a></li>
-                                                         <li><a href="#">Mobile System Development</a></li>
+                                                         @foreach($services as $service)
+                                                            @if($service->parent_id == 3)
+                                                               <li><a href="{{ route('web.service_detail', $service->slug) }}">{{ $service->name }}</a></li>
+                                                            @endif
+                                                         @endforeach
                                                       </ul>
                                                    </div>
                                                 </div>
@@ -166,13 +169,11 @@
                                                 <div class="service_g-content-wrapper service-one_wrapper">
                                                    <h2 class="s_one">2D/3D Design</h2>
                                                    <ul class="sub-service-link">
-                                                      <li><a href="#">2D/3D Isometric games</a></li>
-                                                      <li><a href="#">3D Animation</a></li>
-                                                      <li><a href="#">Letterheads</a></li>
-                                                      <li><a href="#">Business Cards</a></li>
-                                                      <li><a href="#">Brouchers</a></li>
-                                                      <li><a href="#">Logos</a></li>
-                                                      <li><a href="#">Books and Magzines</a></li>
+                                                      @foreach($services as $service)
+                                                         @if($service->parent_id == 4)
+                                                            <li><a href="{{ route('web.service_detail', $service->slug) }}">{{ $service->name }}</a></li>
+                                                         @endif
+                                                      @endforeach
                                                    </ul>
                                                 </div>
                                              </div>
