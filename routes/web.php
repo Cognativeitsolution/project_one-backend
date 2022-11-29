@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\WebServiceController;
+use App\Http\Requests\EmailVerificationRequest;
 use App\Http\Controllers\Admin\CareerController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\DegreesController;
@@ -24,11 +25,10 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\ContactusCotroller;
 use App\Http\Controllers\Admin\ExperiencesController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\JobController as WebJobController;
 use App\Http\Controllers\BlogController as WebBlogController;
 use App\Http\Controllers\PagesController as WebPagesController;
-
+use App\Jobs\ResendEmailVerificationNotice;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,7 +109,7 @@ Route::post('/email/verification-notification', function (Request $request) {
     $user = User::find($request->user_id);
 
     if (!empty($user)) {
-        $user->sendEmailVerificationNotification();
+        dispatch(new ResendEmailVerificationNotice($user));
 
         $message = 'Verification link sent!';
         
