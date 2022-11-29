@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Auth;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Jobs\VerifyEmailJob;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
@@ -123,4 +127,35 @@ class RegisterController extends Controller
 
         return redirect('/');
     }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $user = $this->create($request->all());
+
+        dispatch(new VerifyEmailJob($user));
+
+        if (!is_null($user->emailVerifiedAt)) {
+            $this->guard()->login($user);
+        }
+
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 201)
+            : redirect($this->redirectPath());
+    }
+
+    protected function registered(Request $request, $user)
+    {
+        $message = 'Registration successful, please verify your email to login';
+
+        $status = 'success';
+        
+        return redirect('/')->with('message', $message)->with('status', $status);
+    }
+
 }
