@@ -23,7 +23,7 @@ class SettingsSeeder extends Seeder
                 'contact_email'=>'contact@website.com',
                 'location_address'=>'413 Park avenue, Near Downtown Brampton, Ontario',
                 'contact_whatsapp'=> '+923003111117',
-                'footer_text'=> 'This is footer dummy text @ 2022-2023',
+                'footer_text'=> '© 2022 Cognitive IT Solution. All Rights Reserved.',
                 'title' => 'Cognitive IT Solutions'
             ],           
         ];

@@ -26,6 +26,10 @@ class Page extends Model
         });
     }
 
+    public function meta(){
+        return $this->hasOne(PageMetas::class);
+    }
+
     public static function getTableName()
     {
         return with(new static)->getTable();

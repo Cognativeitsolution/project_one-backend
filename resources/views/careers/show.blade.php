@@ -33,7 +33,7 @@
             <div class="col-sm-4"></div>
 
             <div class="col-sm-4">
-              <a href="{{ route('careers.index') }}" class="btn btn-block btn-primary">Careers</a>
+              <a href="{{ route('careers.index') }}" class="btn btn-block btn-primary">View Careers</a>
             </div>
 
           </div><!-- /.col -->

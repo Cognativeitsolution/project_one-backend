@@ -43,5 +43,18 @@ class PageSeeder extends Seeder
         foreach ($pages as $key => $value) {
             Page::create($value);
         }
+
+        $faker = \Faker\Factory::create();
+        for($i = 1; $i<=7; $i++){
+
+            $page = new Page;
+            $page->parent_id = $faker->numberBetween(1,3);
+            $page->name = $faker->name();
+            $page->title = $faker->words(4, true);
+            $page->short_description = $faker->text(100);
+            $page->long_description = $faker->text(1000);
+            $page->save();
+        }
+
     }
 }

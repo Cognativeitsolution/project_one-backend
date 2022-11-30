@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-use App\Models\ServiceMetas;
+use App\Models\PageMetas;
 
-class ServiceMetasSeeder extends Seeder
+class PageMetasSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,9 +17,9 @@ class ServiceMetasSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        for($i=1; $i<=14; $i++){
-            $meta = new ServiceMetas();
-            $meta->service_id = $i;
+        for($i=1; $i<=10; $i++){
+            $meta = new PageMetas();
+            $meta->page_id = $i;
             $meta->meta_keywords = $faker->words(15, true);
             $meta->meta_description = $faker->words(30, true);
             $meta->save();

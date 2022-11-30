@@ -28,6 +28,8 @@ class StorePageRequest extends FormRequest
             'title' => 'required|string|min:3|max:50',
             'short_description' => 'required|string|min:3|max:80',
             'long_description' => ['required'],
+            'meta_keywords' => 'required|min:50|max:160',
+            'meta_description' => 'required|min:50|max:160'
         ];
     }
 }

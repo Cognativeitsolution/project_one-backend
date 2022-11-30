@@ -52,5 +52,18 @@ class ServiceSeeder extends Seeder
         foreach ($services as $key => $value) {
             Service::create($value);
         }
+
+        $faker = \Faker\Factory::create();
+        for($i = 1; $i<=10; $i++){
+
+            $service = new Service;
+            $service->parent_id = $faker->numberBetween(1,4);
+            $service->name = $faker->name();
+            $service->title = $faker->words(4, true);
+            $service->short_description = $faker->text(100);
+            $service->long_description = $faker->text(500);
+            $service->save();
+        }
+
     }
 }

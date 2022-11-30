@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Page;
+use App\Models\PageMetas;
 use App\Models\Logs;
 use Illuminate\Http\Request;
 //use App\Helpers\helper as Helper;
@@ -36,9 +37,9 @@ class PageController extends Controller
         if (!empty($search)) {
             $record = Page::where('pages.title', 'like', '%'.$search.'%')
                 ->where('pages.parent_id', '!=', 0)
-                ->Where('pages.name', 'like', '%'.$search.'%')
-                ->Where('pages.short_description', 'like', '%'.$search.'%')
-                ->Where('pages.long_description', 'like', '%'.$search.'%')
+                ->orWhere('pages.name', 'like', '%'.$search.'%')
+                ->orWhere('pages.short_description', 'like', '%'.$search.'%')
+                ->orWhere('pages.long_description', 'like', '%'.$search.'%')
                 ->orderBy('pages.id','DESC')
                 ->paginate(5);
             return view('pages.index', compact('record') );
@@ -75,7 +76,13 @@ class PageController extends Controller
      */
     public function store(StorePageRequest $request)
     {
-        $record = Page::create( $request->all() );
+        $record = Page::create( $request->except(['meta_keywords', 'meta_description']) );
+
+        $metaData = $request->only('meta_keywords', 'meta_description');
+
+        $metaData['page_id'] = $record->id;
+
+        PageMetas::create($metaData);
 
         Logs::add_log(Page::getTableName(), $record->id, $request->all(), 'add', '');
         return redirect()->route('pages.index')->with('success','Record Added !');
@@ -100,7 +107,10 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        $record = Page::whereId($page->id)->first();
+        $record = Page::select('pages.id','pages.parent_id','pages.name','pages.title','pages.short_description','pages.long_description','pages.status', 'page_metas.meta_keywords', 'page_metas.meta_description')
+            ->join('page_metas', 'page_metas.page_id', 'pages.id')
+            ->where('pages.id', $page->id)
+            ->first();
 
         $pages = Page::select('id', 'title')
                         ->where('parent_id', 0)
@@ -126,10 +136,14 @@ class PageController extends Controller
     {
         $page = Page::find($page->id);
 
+        $metaData = PageMetas::where('page_id', $page->id)->first();
+
         $status = $request->status == "on" ? 1 : 0 ;
         $request['status'] = $status ;
 
-        $page->update($request->all() );
+        $page->update( $request->except(['meta_keywords', 'meta_description']) );
+
+        $metaData->update($request->only('meta_keywords', 'meta_description'));
 
         Logs::add_log(Page::getTableName(), $page->id, $request->all, 'edit', 1);
         return redirect()->route('pages.index')->with('success','Record Updated !');

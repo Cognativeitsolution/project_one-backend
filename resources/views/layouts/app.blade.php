@@ -375,7 +375,7 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="second_footer-wrapper">
-                     <p>© 2022 Cognative IT Solution . All Rights Reserved.</p>
+                     <p>{{ $settings->footer_text }}</p>
                   </div>
                </div>
             </div>
@@ -393,7 +393,8 @@
    <script>
       var baseTitle = window.document.title;
       window.onblur = function () { document.title = 'Back to Cognitive IT Solution'; };
-      window.onfocus = function () {   document.title = baseTitle; };   
+      window.onfocus = function () {   document.title = baseTitle; }; 
+      // document.addEventListener('contextmenu', event => event.preventDefault());  
    </script>
 </body>
 </html>
