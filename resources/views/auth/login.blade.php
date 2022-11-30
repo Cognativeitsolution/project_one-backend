@@ -2,6 +2,16 @@
 
 @section('content')
 
+    @php
+        $remember_me = false;
+        $user_email = '';
+
+        if (Cookie::has('user_r')) {
+            $remember_me = true;
+            $user_email = Crypt::decryptString(Cookie::get('user_r'));
+        }
+    @endphp
+
     @if (session('error'))
     <div class="container">
         <div class="alert alert-danger">{!! session('error') !!}</div>
@@ -50,7 +60,7 @@
                             <form action="{{ route('login') }}" method="POST" class="sign_up-form-control">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="email" placeholder="Email Address" class="cand-email @error('email') is-invalid @enderror" name="email" required autofocus>
+                                    <input type="email" placeholder="Email Address" class="cand-email @error('email') is-invalid @enderror" name="email" value="{{ $user_email }}" required autofocus>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -69,7 +79,7 @@
                                 </div>
                                 <div class="form-group user_helper">
                                     <div class="remember_me">
-                                        <input class="rem-me" id="remember-me-check" type="checkbox" name="remember" value="1" old('remember') ? 'checked' : '' }}> <label for="remember-me-check"> Remember Me<label>
+                                        <input class="rem-me" id="remember-me-check" type="checkbox" name="remember" {{ $remember_me ? 'checked' : '' }}> <label for="remember-me-check"> Remember Me<label>
                                     </div>
                                     <div class="forgot_pwd">
                                         @if (Route::has('password.request'))
