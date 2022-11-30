@@ -104,6 +104,32 @@ class RegisterController extends Controller
         return redirect('/');
     }
 
+    protected function facebook() {
+        // Send user to facebook for signup with facebook
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    protected function facebookRedirect() {
+        // get user info comming from facebook
+        $user = Socialite::driver('facebook')->user();
+
+        dd($user);
+
+        $user = User::firstOrCreate([
+            'email' => $user->email
+        ], [
+            'name'              => $user->name,
+            'email'             => $user->email,
+            'email_verified_at' => Carbon::now(),
+            'password'          => Hash::make(Str::random(24)),
+            'is_admin'          => 0
+        ]);
+
+        Auth::login($user, true);
+
+        return redirect('/');
+    }
+
     protected function linkedin() {
         // Send user to linkedin for signup with linkedin
         return Socialite::driver('linkedin')->redirect();

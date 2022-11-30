@@ -6,6 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Cookie;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -84,6 +87,16 @@ class LoginController extends Controller
                 if (!is_null($user->email_verified_at)) {
                     if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']), $remember)) {
                         //return redirect('/');
+
+                        // Remember Me Functionality
+                        if ($remember) {
+                            Cookie::queue(Cookie::make('user_r', Crypt::encryptString($user->email), 525600));
+                        } else {
+                            if (Cookie::has('user_r')) {
+                                Cookie::queue(Cookie::forget('user_r'));
+                            }
+                        }
+
                         return redirect()->intended();
                     } else {
                         return redirect()->route('login')

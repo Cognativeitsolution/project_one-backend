@@ -73,7 +73,7 @@ Route::middleware([IsAdmin::class])->group(function(){
 });
 
 Route::middleware([IsUser::class])->group(function(){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [WebHomeController::class, 'index'])->name('home');
 });
 
 Route::group(['middleware' => ['auth']], function() {
@@ -85,6 +85,9 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::get('/google', [RegisterController::class, 'google']);
 Route::get('/google/redirect', [RegisterController::class, 'googleRedirect']);
+
+Route::get('/facebook', [RegisterController::class, 'facebook']);
+Route::get('/facebook/redirect', [RegisterController::class, 'facebookRedirect']);
 
 Route::get('/linkedin', [RegisterController::class, 'linkedin']);
 Route::get('/linkedin/redirect', [RegisterController::class, 'linkedinRedirect']);
