@@ -144,11 +144,20 @@
               @error('blog_image')<div class="error">{{ $message }}</div>@enderror
             </div>
 
-            <!-- <div class="form-group">
-              <label for="blog_additional_image">Blog Additional Image</label>
-              <input type="file" class="form-control" id="blog_additional_image" name="blog_additional_image" class="form-control" >
-              @error('blog_additional_image')<div class="error">{{ $message }}</div>@enderror
-            </div> -->
+            <hr>
+            <h3>Seo Section </h3>
+
+            <div class="form-group">
+              <label for="meta_keywords">Meta Keywords</label>
+              <input type="text" id="meta_keywords" name="meta_keywords" value="{{ old('meta_keywords') }}" class="form-control" placeholder="Enter minimum 50 characters and maximum 160 characters">
+              @error('meta_keywords')<div class="error">{{ $message }}</div>@enderror
+            </div>
+
+            <div class="form-group">
+              <label for="meta_description">Meta Description</label>
+              <input type="text" id="meta_description" name="meta_description" value="{{ old('meta_description') }}" class="form-control" placeholder="Enter minimum 50 characters and maximum 160 characters">
+              @error('meta_description')<div class="error">{{ $message }}</div>@enderror
+            </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

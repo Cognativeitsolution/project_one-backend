@@ -38,34 +38,40 @@
                   <div class="card_grid-container">
 
                      @if(!empty($record) && $record->count())
-                     @foreach($record as $blog)
-                     <div class="blog__card">
-                        <div class="blog__head">
-                           <img src="{{ url('images/' . $blog->blog_image) }}" alt="blog" class="blog_img">
-                        </div>
-                        <div class="blog_content">
-                 
-                           <div class="blog__title">
-                              {!! Str::words( $blog->name, 4, ' ') !!}
+                        @foreach($record as $blog)
+                        <div class="blog__card">
+                           <div class="blog__head">
+                              <img src="{{ url('images/' . $blog->blog_image) }}" alt="blog" class="blog_img">
                            </div>
-                           <div class="blog_info">
-                              {!! Str::words( $blog->short_description, 20, ' ...') !!}
-                           </div>
-                           <div class="blog_footer">
-                              <div class="blog__date">
-                                 {{ $blog->created_at->format('d M Y') }}
+                           <div class="blog_content">
+                  
+                              <div class="blog__title">
+                                 {!! Str::words( $blog->name, 4, ' ') !!}
                               </div>
-                              <div class="blog__btn">
-                                 <a href="{{ url('blogs/' .$blog->slug) }}" class="read-btn">Read More</a>
+                              <div class="blog_info">
+                                 {!! Str::words( $blog->short_description, 20, ' ...') !!}
+                              </div>
+                              <div class="blog_footer">
+                                 <div class="blog__date">
+                                    {{ $blog->created_at->format('d M Y') }}
+                                 </div>
+                                 <div class="blog__btn">
+                                    <a href="{{ url('blogs/' .$blog->slug) }}" class="read-btn">Read More</a>
+                                 </div>
                               </div>
                            </div>
                         </div>
-                     </div>
-                     @endforeach
+                        @endforeach
                      @endif
                   </div>
                </div>
             </div>
+
+            @if (!empty($record && $record->count()))
+               <div>
+                  {{ $record->links() }}
+               </div>
+            @endif
          </div>
       </section>
 

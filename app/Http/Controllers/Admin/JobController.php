@@ -101,7 +101,7 @@ class JobController extends Controller
      */
     public function edit(Job $job)
     {
-        $record = Job::select('jobs.id', 'jobs.name', 'jobs.title', 'jobs.short_description', 'jobs.long_description', 'jobs.location', 'job_metas.meta_keywords', 'job_metas.meta_description')
+        $record = Job::select('jobs.id', 'jobs.name', 'jobs.title', 'jobs.short_description', 'jobs.long_description', 'jobs.location', 'jobs.status', 'job_metas.meta_keywords', 'job_metas.meta_description')
                 ->join('job_metas', 'job_metas.job_id', 'jobs.id')
                 ->where('jobs.id', $job->id)
                 ->first();

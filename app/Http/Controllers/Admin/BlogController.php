@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Blog;
 use App\Models\Logs;
+use App\Models\BlogMetas;
 use App\Models\BlogRelated;
 use Illuminate\Http\Request;
+
 use App\Helpers\helper as Helper;
 
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 
@@ -73,23 +74,23 @@ class BlogController extends Controller
      */
     public function store(StoreBlogRequest $request)
     {
-        $data = [
-            'name'  => $request->name,
-            'title'  => $request->title,
-            'short_description'  => $request->short_description,
-            'long_description'  => $request->long_description,
-        ];
+        $blog = Blog::create($request->except(['meta_keywords', 'meta_description']));
+
+        $metaData = $request->only('meta_keywords', 'meta_description');
+
+        $metaData['blog_id'] = $blog->id;
+
+        BlogMetas::create($metaData);
 
         $related_blogs = $request->related_blogs ;
-        unset( $request['related_blogs'] );
 
-        $record = Blog::create( $data );
+        unset( $request['related_blogs'] );
 
         if(!empty($related_blogs)){
             foreach($related_blogs as $key => $value){
 
                 BlogRelated::create([
-                    'blog_id' => $record['id'],
+                    'blog_id' => $blog['id'],
                     'related_blog_id' => $value,
                 ]);
             }
@@ -103,11 +104,11 @@ class BlogController extends Controller
                 'blog_image'        => $blog_image,
             );
 
-            $record->update($data2);
+            $blog->update($data2);
 
         }
 
-        Logs::add_log(Blog::getTableName(), $record->id, $data, 'add', '');
+        Logs::add_log(Blog::getTableName(), $blog->id, $request->all(), 'add', '');
         return redirect()->route('blogs.index')->with('success','Record Added !');
     }
 
@@ -130,7 +131,10 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        $record = Blog::whereId($blog->id)->first();
+        $record = Blog::select('blogs.id', 'blogs.name', 'blogs.title', 'blogs.short_description', 'blogs.long_description', 'blogs.blog_image', 'blogs.status', 'blog_metas.meta_keywords', 'blog_metas.meta_description')
+                ->join('blog_metas', 'blog_metas.blog_id', 'blogs.id')
+                ->where('blogs.id', $blog->id)
+                ->first();
 
         $blogs = Blog::select('id', 'title')->whereNotIn('id', [$blog->id])->get();
 
@@ -157,13 +161,17 @@ class BlogController extends Controller
     {
         $blog = Blog::find($blog->id);
 
+        $metaData = BlogMetas::select('meta_keywords', 'meta_description')->where('blog_id', $blog->id);
+
         $status = $request->status == "on" ? 1 : 0 ;
         $request['status'] = $status ;
 
         $related_blogs = $request->related_blogs ;
         unset( $request['related_blogs'] );
 
-        $blog->update($request->all() );
+        $blog->update($request->except(['meta_keywords', 'meta_description']));
+
+        $metaData->update($request->only('meta_keywords', 'meta_description'));
 
         if(!empty($related_blogs)){
             BlogRelated::where('blog_id', $blog->id)->delete();
@@ -175,6 +183,8 @@ class BlogController extends Controller
                     'related_blog_id' => $value,
                 ]);
             }
+        } else {
+            BlogRelated::where('blog_id', $blog->id)->delete();
         }
 
         if(isset($request['blog_image'])){
@@ -189,7 +199,7 @@ class BlogController extends Controller
 
         }
         
-        Logs::add_log(Blog::getTableName(), $blog->id, $request->all, 'edit', 1);
+        Logs::add_log(Blog::getTableName(), $blog->id, $request->all(), 'edit', 1);
         return redirect()->route('blogs.index')->with('success','Record Updated !');
     }
 

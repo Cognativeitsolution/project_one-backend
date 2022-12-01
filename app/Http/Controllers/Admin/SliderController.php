@@ -80,7 +80,7 @@ class SliderController extends Controller
         $data = [
             'title'  => $request->title,
             'description'  => $request->description,
-            'url'  => $request->url,
+            'url'  => !is_null($request->url) ? $request->url : '#'
         ];
 
         $record = Slider::create( $data );

@@ -153,7 +153,7 @@
 
             <div class="form-group">
               <div class="custom-control custom-switch">
-              <input type="checkbox" name="status" {{ $record->status == 1 ? 'checked' : 'no' }} class="custom-control-input" id="customSwitch1">
+              <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" {{ $record->status == 1 ? 'checked' : 'no' }}>
               <label class="custom-control-label" for="customSwitch1">Show Job</label>
               </div>
             </div>

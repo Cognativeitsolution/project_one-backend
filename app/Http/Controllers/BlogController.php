@@ -13,7 +13,7 @@ class BlogController extends Controller
     {
         $record = Blog::select('id','name','short_description','slug','blog_image','created_at')
             ->where('status',1)->orderBy('blogs.id','DESC')
-            ->paginate(9);
+            ->simplePaginate(9);
 
         if($record != false){
             return view('blogs', compact('record') );
