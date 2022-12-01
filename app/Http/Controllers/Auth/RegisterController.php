@@ -113,8 +113,6 @@ class RegisterController extends Controller
         // get user info comming from facebook
         $user = Socialite::driver('facebook')->user();
 
-        dd($user);
-
         $user = User::firstOrCreate([
             'email' => $user->email
         ], [
@@ -127,7 +125,7 @@ class RegisterController extends Controller
 
         Auth::login($user, true);
 
-        return redirect('/');
+        return redirect()->route('web.home');
     }
 
     protected function linkedin() {

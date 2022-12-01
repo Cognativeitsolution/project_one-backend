@@ -87,7 +87,7 @@
                         <li class="sidebar_list"><a href="{{ url('/services') }}" class="sidebar_list_link">Services</a></li>
                         <li class="sidebar_list dropdown_sdlist"><a href="#" class="sidebar_list_link sddropbtn">Resources</a></li>
                         <li class="sidebar_list"><a href="{{ url('/about_us') }}" class="sidebar_list_link">About Us</a></li>
-                        <li class="sidebar_list"><a href="./career_page.html" class="sidebar_list_link">Career</a></li>
+                        <li class="sidebar_list"><a href="{{ url('/jobs') }}" class="sidebar_list_link">Career</a></li>
                         <li class="sidebar_list"><a href="{{ url('/contact_us') }}" class="sidebar_list_link">Contact Us</a></li>
                      </ul>
                   </div>
@@ -289,10 +289,25 @@
                         </div>
                         <div class="foo-social-icon">
                            <div class="foo-social-flex-wrapper">
-                              <span class="footer-social"><i class="fab fa-linkedin"></i></span>
-                              <span class="footer-social"><i class="fab fa-youtube"></i></span>
-                              <span class="footer-social"><i class="fab fa-facebook"></i></span>
-                              <span class="footer-social"><i class="fab fa-instagram"></i></span>
+                              @if ($settings->facebook_account_link)
+                                 <span class="footer-social"><i class="fab fa-facebook"></i></span>
+                              @endif
+
+                              @if ($settings->google_account_link)
+                                 <span class="footer-social"><i class="fab fa-google"></i></span>
+                              @endif
+
+                              @if ($settings->linkedin_account_link)
+                                 <span class="footer-social"><i class="fab fa-linkedin"></i></span>
+                              @endif
+
+                              @if ($settings->instagram_account_link)
+                                 <span class="footer-social"><i class="fab fa-instagram"></i></span>
+                              @endif
+
+                              @if ($settings->youtube_account_link)
+                                 <span class="footer-social"><i class="fab fa-youtube"></i></span>
+                              @endif
                            </div>
                         </div>
                      </div>

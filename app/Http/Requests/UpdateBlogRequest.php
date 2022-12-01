@@ -28,6 +28,8 @@ class UpdateBlogRequest extends FormRequest
             'title' => 'required|string|min:3|max:120',
             'short_description' => 'required|string|min:3|max:200',
             'long_description' => ['required'],
+            'meta_keywords' => ['required', 'min:50', 'max:160'],
+            'meta_description' => ['required', 'min:50', 'max:160']
         ];
     }
 }
