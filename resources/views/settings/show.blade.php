@@ -88,18 +88,12 @@
             </div>
 
             <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
-              <label for="google_account_link">Google URL</label>
-              <input type="text" id="google_account_link" name="google_account_link" value="{{ $record->google_account_link }}" class="form-control" readonly>
-              @error('google_account_link')<div class="error">{{ $message }}</div>@enderror
-            </div>
-
-            <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
               <label for="facebook_account_link">Facebook URL</label>
               <input type="text" id="facebook_account_link" name="facebook_account_link" value="{{ $record->facebook_account_link }}" class="form-control" readonly>
               @error('facebook_account_link')<div class="error">{{ $message }}</div>@enderror
             </div>
 
-            <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
+            <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
               <label for="youtube_account_link">Youtube URL</label>
               <input type="text" id="youtube_account_link" name="youtube_account_link" value="{{ $record->youtube_account_link }}" class="form-control" readonly>
               @error('youtube_account_link')<div class="error">{{ $message }}</div>@enderror
@@ -110,12 +104,6 @@
               <input type="text" id="location_address" name="location_address" value="{{ $record->location_address }}" class="form-control" readonly>
               @error('location_address')<div class="error">{{ $message }}</div>@enderror
             </div>
-            
-            <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
-              <label for="footer_location_text">Footer Location Text</label>
-              <input type="text" id="footer_location_text" name="footer_location_text" value="{{ $record->footer_location_text }}" class="form-control" readonly>
-              @error('footer_location_text')<div class="error">{{ $message }}</div>@enderror
-            </div>
 
             <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
               <label for="footer_text">Footer Text</label>
@@ -124,19 +112,19 @@
             </div>
 
             <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
-              <label for="title">Title</label>
+              <label for="title">Home Page Title</label>
               <input type="text" id="title" name="title" value="{{ $record->title }}" class="form-control" readonly>
               @error('title')<div class="error">{{ $message }}</div>@enderror
             </div>
 
             <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
-              <label for="keywords">Keywords</label>
+              <label for="keywords">Home Page Keywords</label>
               <input type="text" id="keywords" name="keywords" value="{{ $record->keywords }}" class="form-control" readonly>
               @error('keywords')<div class="error">{{ $message }}</div>@enderror
             </div>
 
             <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
-              <label for="description">Description</label>
+              <label for="description">Home Page Description</label>
               <input type="text" id="description" name="description" value="{{ $record->description }}" class="form-control" readonly>
               @error('description')<div class="error">{{ $message }}</div>@enderror
             </div>

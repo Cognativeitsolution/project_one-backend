@@ -23,8 +23,14 @@ class SettingsSeeder extends Seeder
                 'contact_email'=>'contact@website.com',
                 'location_address'=>'413 Park avenue, Near Downtown Brampton, Ontario',
                 'contact_whatsapp'=> '+923003111117',
+                'linkedin_account_link'=> 'https://www.linkedin.com/login',
+                'instagram_account_link'=> 'https://www.instagram.com/accounts/login/',
+                'facebook_account_link'=> 'https://www.facebook.com/login.php/',
+                'youtube_account_link'=> 'https://www.youtube.com/',
                 'footer_text'=> '© 2022 Cognitive IT Solution. All Rights Reserved.',
-                'title' => 'Cognitive IT Solutions'
+                'title' => 'Cognitive IT Solutions',
+                'keywords' => 'Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing',
+                'description' => 'Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
             ],           
         ];
   
