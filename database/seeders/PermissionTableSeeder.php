@@ -62,7 +62,11 @@ class PermissionTableSeeder extends Seeder
             'service-list',
             'service-create',
             'service-edit',
-            'service-delete'
+            'service-delete',
+            'admin-list',
+            'admin-create',
+            'admin-edit',
+            'admin-delete',
 
         ];
      

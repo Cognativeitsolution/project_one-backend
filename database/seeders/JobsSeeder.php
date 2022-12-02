@@ -20,7 +20,7 @@ class JobsSeeder extends Seeder
         for($i = 1; $i<=15; $i++){
 
             $job = new Job;
-            $job->title = $faker->realText(100);
+            $job->title = $faker->text(90);
             $job->name = $faker->words(6, true);
             $job->short_description = $faker->text(110);
             $job->long_description = $faker->paragraph(60);

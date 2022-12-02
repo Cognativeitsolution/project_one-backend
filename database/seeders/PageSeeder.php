@@ -51,7 +51,7 @@ class PageSeeder extends Seeder
             $page->parent_id = $faker->numberBetween(1,3);
             $page->name = $faker->name();
             $page->title = $faker->words(4, true);
-            $page->short_description = $faker->text(100);
+            $page->short_description = $faker->text(80);
             $page->long_description = $faker->text(1000);
             $page->save();
         }

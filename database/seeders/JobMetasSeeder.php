@@ -20,8 +20,8 @@ class JobMetasSeeder extends Seeder
         for($i=1; $i<=15; $i++){
             $meta = new JobMetas;
             $meta->job_id = $i;
-            $meta->meta_keywords = $faker->words(15, true);
-            $meta->meta_description = $faker->words(30, true);
+            $meta->meta_keywords = $faker->text(150);
+            $meta->meta_description = $faker->text(150);
             $meta->save();
         }
     }

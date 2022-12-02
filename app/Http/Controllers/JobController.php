@@ -16,9 +16,11 @@ class JobController extends Controller
 {
     public function index()
     {
-        $record = Job::select('id','name','short_description','slug','location','created_at')
-            ->where('status',1)->orderBy('jobs.id','DESC')
-            ->paginate(12);
+        $record = cache()->remember('jobs-listing', 60 * 60, function(){
+            return Job::select('id','name','short_description','slug','location','created_at')
+                ->where('status',1)->orderBy('jobs.id','DESC')
+                ->paginate(15);
+        });
 
         if($record != false){
             return view('jobs', compact('record') );

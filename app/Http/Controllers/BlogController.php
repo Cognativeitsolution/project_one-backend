@@ -11,9 +11,11 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $record = Blog::select('id','name','short_description','slug','blog_image','created_at')
-            ->where('status',1)->orderBy('blogs.id','DESC')
-            ->simplePaginate(9);
+        $record = cache()->remember('blogs-listing', 60 * 60, function(){
+            return Blog::select('id','name','short_description','slug','blog_image','created_at')
+                ->where('status',1)->orderBy('blogs.id','DESC')
+                ->simplePaginate(15);
+        });
 
         if($record != false){
             return view('blogs', compact('record') );

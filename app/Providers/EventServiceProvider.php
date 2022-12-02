@@ -7,6 +7,13 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
+use App\Models\Blog;
+use App\Models\Job;
+
+use App\Observers\BlogObserver;
+use App\Observers\JobObserver;
+
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -27,6 +34,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Blog::observe(BlogObserver::class);
+        Job::observe(JobObserver::class);
     }
 }

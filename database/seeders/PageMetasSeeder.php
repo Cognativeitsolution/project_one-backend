@@ -20,8 +20,8 @@ class PageMetasSeeder extends Seeder
         for($i=1; $i<=10; $i++){
             $meta = new PageMetas();
             $meta->page_id = $i;
-            $meta->meta_keywords = $faker->words(15, true);
-            $meta->meta_description = $faker->words(30, true);
+            $meta->meta_keywords = $faker->text(150);
+            $meta->meta_description = $faker->text(150);
             $meta->save();
         }
     }
