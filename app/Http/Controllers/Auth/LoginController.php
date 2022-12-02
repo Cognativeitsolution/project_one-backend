@@ -77,6 +77,19 @@ class LoginController extends Controller
             if ($user->is_admin == 1) {
                 // Handle admin login
                 if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']), $remember)) {
+
+                    // Remember Me Functionality
+                    if ($remember) {
+                        if (Cookie::has('user_r')) {
+                            Cookie::queue(Cookie::forget('user_r'));
+                        }
+                        Cookie::queue(Cookie::make('user_r', Crypt::encryptString($user->email), 525600));
+                    } else {
+                        if (Cookie::has('user_r')) {
+                            Cookie::queue(Cookie::forget('user_r'));
+                        }
+                    }
+                    
                     return redirect()->route('admin.home');
                 } else {
                     return redirect()->route('login')
@@ -90,6 +103,9 @@ class LoginController extends Controller
 
                         // Remember Me Functionality
                         if ($remember) {
+                            if (Cookie::has('user_r')) {
+                                Cookie::queue(Cookie::forget('user_r'));
+                            }
                             Cookie::queue(Cookie::make('user_r', Crypt::encryptString($user->email), 525600));
                         } else {
                             if (Cookie::has('user_r')) {

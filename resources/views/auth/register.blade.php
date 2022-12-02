@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('seo')
+    <title>Cognitive - Register</title>
+@endsection
+
 @section('content')
     <!---Sign_up-->
     <section class="sign_up-section">

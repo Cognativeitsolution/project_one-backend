@@ -51,6 +51,15 @@
 
               @can('user-list')
               <li class="nav-item">
+                <a href="{{ url('/admin/admins') }}" class="nav-link {{ Request::is('admin/admins') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Admins</p>
+                </a>
+              </li>
+              @endcan
+
+              @can('user-list')
+              <li class="nav-item">
                 <a href="{{ url('/admin/users') }}" class="nav-link {{ Request::is('admin/users') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Users</p>

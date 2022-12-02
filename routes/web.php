@@ -10,17 +10,19 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\WebHomeController;
+use App\Jobs\ResendEmailVerificationNotice;
 use App\Http\Controllers\WebAboutController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\PageController;
-use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\WebServiceController;
 use App\Http\Requests\EmailVerificationRequest;
+use App\Http\Controllers\Admin\AdminsController;
 use App\Http\Controllers\Admin\CareerController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\DegreesController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\ContactusCotroller;
@@ -28,7 +30,6 @@ use App\Http\Controllers\Admin\ExperiencesController;
 use App\Http\Controllers\JobController as WebJobController;
 use App\Http\Controllers\BlogController as WebBlogController;
 use App\Http\Controllers\PagesController as WebPagesController;
-use App\Jobs\ResendEmailVerificationNotice;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,7 @@ Route::middleware([IsAdmin::class])->group(function(){
     Route::resource('admin/experiences', ExperiencesController::class);
     Route::resource('admin/pages', PageController::class);
     Route::resource('admin/services', ServiceController::class);
+    Route::resource('admin/admins', AdminsController::class);
 
 });
 

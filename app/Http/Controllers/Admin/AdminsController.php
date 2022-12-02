@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
 use App\Models\Logs;
-use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\StoreUser;
-use Illuminate\Validation\Rule;
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StoreAdminRequest;
 
-class UserController extends Controller
+class AdminsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,41 +30,30 @@ class UserController extends Controller
         $this->middleware('permission:user-delete', ['only' => ['destroy']]);
 
     }
-	
-    public function index()
-    {
+
+    public function index() {
         $search = request('search');
 
         if (!empty($search)) {
-            $users = User::where('is_admin', '!=', 1)
-                ->orWhere('users.name', 'like', '%'.$search.'%')
+            $admins = User::where('users.is_admin', 1)
+                ->where('users.name', 'like', '%'.$search.'%')
                 ->orWhere('users.email', 'like', '%'.$search.'%')
                 ->orderBy('users.id','DESC')
                 ->paginate(10);
         } else {
-            $users = User::where('users.is_admin', '!=', 1)->orderBy('users.id','DESC')->paginate(15);
+            $admins = User::where('users.is_admin', 1)->orderBy('users.id','DESC')->paginate(15);
         }
 
-        return view('users.index', compact('users') );
+        return view('admins.index', compact('admins') );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('users.add');
+        $roles = Role::pluck('name','name')->all();
+        return view('admins.add', compact('roles'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreUser $request)
+    public function store(StoreAdminRequest $request)
     {
 
         $data = [
@@ -72,51 +63,33 @@ class UserController extends Controller
         ];
 
         $record = User::create( $data );
+        $record->assignRole($request->roles); // Add new line for Role
 
         Logs::add_log(User::getTableName(), $record->id, $data, 'add', '');
 
-        return redirect()->route('users.index')->with('success','Record Added !');
+        return redirect()->route('admins.index')->with('success','Record Added !');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        $record = User::whereId($id)->first();
+        $record = User::whereId($id)->where('users.is_admin', 1)->first();
 
         $logs = Logs::get_logs_details(User::getTableName(), $id);
 
+        $roles = Role::pluck('name','name')->all();
+
+        $userRole = $record->roles->pluck('name','name')->all();
+
         if($record != false){
-            return view('users.edit', compact('record','logs'));
+            return view('admins.edit', compact('record','logs', 'roles', 'userRole'));
         }else{
             abort(404);
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
+
         $this->validate($request, [
             'name' => 'required',
             'email' => [
@@ -136,21 +109,18 @@ class UserController extends Controller
 
         $user->update($input);
 
+        DB::table('model_has_roles')->where('model_id',$id)->delete(); // check this working or not 
+        $user->assignRole($request->input('roles')); // if $request->roles ; for input //
+
         Logs::add_log(User::getTableName(), $id, $input, 'edit', 1);
-        return redirect()->route('users.index')->with('success','Record Updated !');
+        return redirect()->route('admins.index')->with('success','Record Updated !');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $user = User::find($id);
         $user->delete();
  
-        return redirect()->route('users.index')->with('success', 'Record Deleted !');
+        return redirect()->route('admins.index')->with('success', 'Record Deleted !');
     }
 }

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('seo')
+    <title>Cognitive - Login</title>
+@endsection
+
 @section('content')
 
     @php
