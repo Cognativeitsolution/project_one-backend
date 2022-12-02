@@ -34,13 +34,13 @@ class UserController extends Controller
         $search = request('search');
 
         if (!empty($search)) {
-            $users = User::where('is_admin', '!=', 1)
+            $users = User::where('users.is_admin', 0)
                 ->orWhere('users.name', 'like', '%'.$search.'%')
                 ->orWhere('users.email', 'like', '%'.$search.'%')
                 ->orderBy('users.id','DESC')
                 ->paginate(10);
         } else {
-            $users = User::where('users.is_admin', '!=', 1)->orderBy('users.id','DESC')->paginate(15);
+            $users = User::where('users.is_admin', 0)->orderBy('users.id','DESC')->paginate(15);
         }
 
         return view('users.index', compact('users') );
@@ -69,6 +69,7 @@ class UserController extends Controller
             'name'  => $request->name,
             'email'  => $request->email,
             'password' => Hash::make($request->password),
+            'is_admin' => 0
         ];
 
         $record = User::create( $data );
