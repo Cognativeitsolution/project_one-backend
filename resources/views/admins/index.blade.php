@@ -20,7 +20,7 @@
 
             @can('user-create')
             <div class="col-sm-4">
-              <a href="{{ route('users.create') }}" class="btn btn-block btn-primary">Add User</a>
+              <a href="{{ route('admins.create') }}" class="btn btn-block btn-primary">Add Admin</a>
             </div>
             @endcan
             
@@ -28,7 +28,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Home</a></li>
-              <li class="breadcrumb-item">All Users</li>
+              <li class="breadcrumb-item">All Admins</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -46,10 +46,10 @@
                   <!--<h3 class="card-title">Responsive Hover Table</h3>-->
 
                   <p>
-                    Displaying {{$users->count()}} of {{ $users->total() }} user(s).
+                    Displaying {{$admins->count()}} of {{ $admins->total() }} admin(s).
                   </p>
 
-                  <form name="user_search" id="" method="get" action="{{ route('users.index')}}">
+                  <form name="user_search" id="" method="get" action="{{ route('admins.index')}}">
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 250px;">
                       <input type="text" name="search" class="form-control float-right" placeholder="{{ app('request')->input('search') }} Search">
@@ -71,6 +71,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Role</th>
                         <th>Created</th>
                         <th>Updated</th>
                         <th>Action</th>
@@ -78,28 +79,37 @@
                     </thead>
                     <tbody>
 
-                    @if ($users->count() == 0)
+                    @if ($admins->count() == 0)
                     <tr>
-                        <td colspan="6">No users to display.</td>
+                        <td colspan="6">No admins to display.</td>
                     </tr>
                     @endif
                     
-                    @if(!empty($users) && $users->count())
-                      @foreach( $users as $user)
+                    @if(!empty($admins) && $admins->count())
+                      @foreach( $admins as $admin)
                         <tr>
-                          <td>{{ $user->id }}</td>
-                          <td>{{ $user->name }}</td>
-                          <td>{{ $user->email }}</td>
-                          <td>{{ $user->created_diff }}</td>
-                          <td>{{ $user->updated_at->format('Y-m-d H:i:s') }}</td>
+                          <td>{{ $admin->id }}</td>
+                          <td>{{ $admin->name }}</td>
+                          <td>{{ $admin->email }}</td> 
+                          
+                          <td>
+                            @if(!empty($admin->getRoleNames()))
+                              @foreach($admin->getRoleNames() as $v)
+                                <label class="badge badge-success">{{ $v }}</label>
+                              @endforeach
+                            @endif
+                          </td>
+
+                          <td>{{ $admin->created_diff }}</td>
+                          <td>{{ $admin->updated_at->format('Y-m-d H:i:s') }}</td>
                           <td>
                             @can('user-edit')
-                            <a href="{{ route('users.edit', $user->id)}}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('admins.edit', $admin->id)}}" class="btn btn-primary">Edit</a>
                             @endcan
                             
                             @can('user-delete')
                               <td>
-                              <form action="{{ route('users.destroy', $user->id)}}" method="post">
+                              <form action="{{ route('admins.destroy', $admin->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
@@ -115,7 +125,7 @@
                     </tbody>
                   </table>
                   
-                  {!! $users->appends(Request::all())->links() !!}
+                  {!! $admins->appends(Request::all())->links() !!}
 
                 </div>
                 <!-- /.card-body -->
