@@ -18,7 +18,7 @@
           <div class="col-sm-6">
             <div class="col-sm-4"></div>
 
-            @can('user-create')
+            @can('admin-create')
             <div class="col-sm-4">
               <a href="{{ route('admins.create') }}" class="btn btn-block btn-primary">Add Admin</a>
             </div>
@@ -103,11 +103,11 @@
                           <td>{{ $admin->created_diff }}</td>
                           <td>{{ $admin->updated_at->format('Y-m-d H:i:s') }}</td>
                           <td>
-                            @can('user-edit')
+                            @can('admin-edit')
                             <a href="{{ route('admins.edit', $admin->id)}}" class="btn btn-primary">Edit</a>
                             @endcan
                             
-                            @can('user-delete')
+                            @can('admin-delete')
                               <td>
                               <form action="{{ route('admins.destroy', $admin->id)}}" method="post">
                                 @csrf

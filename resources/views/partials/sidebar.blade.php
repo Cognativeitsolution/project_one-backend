@@ -49,7 +49,7 @@
               </li>
               @endcan
 
-              @can('user-list')
+              @can('admin-list')
               <li class="nav-item">
                 <a href="{{ url('/admin/admins') }}" class="nav-link {{ Request::is('admin/admins') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
