@@ -1,5 +1,13 @@
 @extends('layouts.admin')
 
+@section('css')
+<style>
+.error{
+  color:red;
+}
+</style>
+@endsection
+
 @section('content')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

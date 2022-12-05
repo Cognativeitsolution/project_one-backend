@@ -95,7 +95,7 @@ class AdminsController extends Controller
             'email' => [
                 'required',
                 Rule::unique('users')->ignore($id),
-            ]
+            ],
         ]);
 
         $user = User::find($id);
