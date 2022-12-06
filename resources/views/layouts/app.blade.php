@@ -405,11 +405,13 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
    <!---custom js file-->
    <script src="{{ url('assets/js/app.js') }}"></script>
+   
    <script>
       var baseTitle = window.document.title;
       window.onblur = function () { document.title = 'Back to Cognitive IT Solution'; };
       window.onfocus = function () {   document.title = baseTitle; }; 
       // document.addEventListener('contextmenu', event => event.preventDefault());  
+      
    </script>
 </body>
 </html>

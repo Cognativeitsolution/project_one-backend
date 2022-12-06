@@ -20,23 +20,22 @@
         </div><!-- /.col -->
       </div><!-- /.row -->
 
-      <div class="">
-        <div class="">
-          <div class="form-group">
-            <strong>Name:</strong>
+      <div class="col-sm-12">
+          <br>
+          <h1>
+            <b>Name:</b>
             {{ $role->name }}
-          </div>
-        </div>
-        <div class="">
-          <div class="form-group">
-            <strong>Permissions:</strong><br/>
+          </h1>
+          <br>
+          <h5>Permissions:</h5>
+          <p>
             @if(!empty($rolePermissions))
               @foreach($rolePermissions as $v)
-                <label class="label label-success">{{ $v->name }}, </label>                            
+                <label class="btn btn-info">{{ $v->name }}, </label>                            
               @endforeach
             @endif
-          </div>
-        </div>
+          </p>
+          
       </div>
     </div>
   </div>
