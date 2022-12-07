@@ -44,23 +44,28 @@
               <div class="card">
                 <div class="card-header">
                   <!--<h3 class="card-title">Responsive Hover Table</h3>-->
-
-                  <p>
+                  <div class="row">
+                    <div class="col-sm-6">
                     Displaying {{$admins->count()}} of {{ $admins->total() }} admin(s).
-                  </p>
+                    </div>
+                    <div class="col-sm-6">
+                      <form class="float-right" name="user_search" id="" method="get" action="{{ route('admins.index')}}">
+                      <div class="card-tools">
+                        <div class="input-group input-group-sm" style="width: 250px;">
+                          <input type="text" name="search" class="form-control float-right" placeholder="{{ app('request')->input('search') }} Search">
 
-                  <form name="user_search" id="" method="get" action="{{ route('admins.index')}}">
-                  <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 250px;">
-                      <input type="text" name="search" class="form-control float-right" placeholder="{{ app('request')->input('search') }} Search">
-
-                      <div class="input-group-append">
-                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                          <div class="input-group-append">
+                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                          </div>
+                        </div>
                       </div>
+                      </div>
+                      </form>
                     </div>
                   </div>
-                </div>
-                </form>
+                  
+
+                  
 
 
                 <!-- /.card-header -->
@@ -70,11 +75,11 @@
                       <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Created</th>
-                        <th>Updated</th>
-                        <th>Action</th>
+                        <th style="text-align:center;">Email</th>
+                        <th style="text-align:center;">Role</th>
+                        <th style="text-align:center;">Created</th>
+                        <th style="text-align:center;">Updated</th>
+                        <th width="150px" style="text-align:center;">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -90,9 +95,9 @@
                         <tr>
                           <td>{{ $admin->id }}</td>
                           <td>{{ $admin->name }}</td>
-                          <td>{{ $admin->email }}</td> 
+                          <td style="text-align:center;">{{ $admin->email }}</td> 
                           
-                          <td>
+                          <td style="text-align:center;">
                             @if(!empty($admin->getRoleNames()))
                               @foreach($admin->getRoleNames() as $v)
                                 <label class="badge badge-success">{{ $v }}</label>
@@ -100,16 +105,16 @@
                             @endif
                           </td>
 
-                          <td>{{ $admin->created_diff }}</td>
-                          <td>{{ $admin->updated_at->format('Y-m-d H:i:s') }}</td>
-                          <td>
+                          <td style="text-align:center;">{{ $admin->created_diff }}</td>
+                          <td style="text-align:center;">{{ $admin->updated_at->format('Y-m-d H:i:s') }}</td>
+                          <td width="150px" style="text-align:center;float:right;">
                             @can('admin-edit')
-                            <a href="{{ route('admins.edit', $admin->id)}}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('admins.edit', $admin->id)}}" class="btn btn-primary tableaction">Edit</a>
                             @endcan
                             
                             @can('admin-delete')
-                              <td>
-                              <form action="{{ route('admins.destroy', $admin->id)}}" method="post">
+                              
+                              <form class="tableaction" action="{{ route('admins.destroy', $admin->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>

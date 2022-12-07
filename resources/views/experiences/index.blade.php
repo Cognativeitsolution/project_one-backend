@@ -43,12 +43,12 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-
-                  <p>
+                <div class="row">
+                    <div class="col-sm-6">
                     Displaying {{$experiences->count()}} of {{ $experiences->total() }} blog(s).
-                  </p>
-
-                  <form name="user_search" id="" method="get" action="{{ route('experiences.index')}}">
+                    </div>
+                    <div class="col-sm-6">
+                    <form class="float-right" name="user_search" id="" method="get" action="{{ route('experiences.index')}}">
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 250px;">
                       <input type="text" name="search" class="form-control float-right" placeholder="{{ app('request')->input('search') }} Search">
@@ -60,6 +60,9 @@
                   </div>
                 </div>
                 </form>
+                    </div>
+                  </div>
+                  
 
 
                 <!-- /.card-header -->
@@ -69,9 +72,9 @@
                       <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Status</th>
-                        <th>Updated</th>
-                        <th>Action</th>
+                        <th style="text-align:center;">Status</th>
+                        <th style="text-align:center;">Updated</th>
+                        <th width="150" style="text-align:center;">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -87,27 +90,27 @@
                         <tr>
                           <td>{{ $experience->id }}</td>
                           <td>{{ $experience->name }}</td>
-                          <td>
+                          <td style="text-align:center;">
                             @if ($experience->status == 1)
                               active
                             @else
                               inactive
                             @endif                          
                           </td>                        
-                          <td>{{ $experience->updated_at->format('Y-m-d H:i:s') }}</td>
-                          <td>
+                          <td style="text-align:center;">{{ $experience->updated_at->format('Y-m-d H:i:s') }}</td>
+                          <td width="150" style="text-align:center;float:right;">
                             @can('experience-edit')
-                              <a href="{{ route('experiences.edit', $experience->id)}}" class="btn btn-primary">Edit</a>
+                              <a href="{{ route('experiences.edit', $experience->id)}}" class="btn btn-primary tableaction">Edit</a>
                             @endcan
                             
                             @can('experience-delete')   
-                              <td>                        
-                                <form action="{{ route('experiences.destroy', $experience->id)}}" method="post">
+                                                   
+                                <form class="tableaction" action="{{ route('experiences.destroy', $experience->id)}}" method="post">
                                   @csrf
                                   @method('DELETE')
                                   <button class="btn btn-danger" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
                                 </form> 
-                              </td>                            
+                          </td>                            
                             @endcan
                           </td>
                         </tr>

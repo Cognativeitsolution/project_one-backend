@@ -31,8 +31,12 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-
-                  <form name="user_search" id="" method="get" action="{{ route('contactus.home')}}">
+                <div class="row">
+                    <div class="col-sm-6">
+                    
+                    </div>
+                    <div class="col-sm-6">
+                    <form class="float-right" name="user_search" id="" method="get" action="{{ route('contactus.home')}}">
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 250px;">
                       <input type="text" name="search" class="form-control float-right" placeholder="{{ app('request')->input('search') }} Search">
@@ -44,6 +48,9 @@
                   </div>
                 </div>
                 </form>
+                    </div>
+                  </div>
+                  
 
 
                 <!-- /.card-header -->
@@ -53,10 +60,10 @@
                       <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Message</th>
-                        <th>Created</th>
-                        <th>Action</th>
+                        <th style="text-align:center;">Email</th>
+                        <th style="text-align:center;">Message</th>
+                        <th style="text-align:center;">Created</th>
+                        <th width="100">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -72,12 +79,12 @@
                         <tr>
                           <td>{{ $contact->id }}</td>
                           <td>{{ $contact->name }}</td>
-                          <td>{{ $contact->email }}</td>
-                          <td>{{ Str::words( $contact->message, 5, ' ...') }}</td>                        
-                          <td>{{ $contact->created_at->format('Y-m-d H:i:s') }}</td>
+                          <td style="text-align:center;">{{ $contact->email }}</td>
+                          <td style="text-align:center;">{{ Str::words( $contact->message, 5, ' ...') }}</td>                        
+                          <td width="100" style="text-align:center;">{{ $contact->created_at->format('Y-m-d H:i:s') }}</td>
                           @can('contact-edit')
                           <td>                            
-                            <a href="{{ route('contactus.show', $contact->id) }}" class="btn btn-info">Show</a>  
+                            <a href="{{ route('contactus.show', $contact->id) }}" class="btn btn-info tableaction">Show</a>  
                           </td>
                           @endcan
                         </tr>
@@ -86,11 +93,15 @@
 
                     </tbody>
                   </table>
-
-                  @if(!empty($contact_us))
-                    {!! $contact_us->appends(Request::all())->links() !!}
-                  @endif
-                  
+                <div class="col-sm-12">
+                  <div class="float-right">
+                    <p>
+                      @if(!empty($contact_us))
+                        {!! $contact_us->appends(Request::all())->links() !!}
+                      @endif
+                    </p>
+                  </div>
+                </div>  
 
                 </div>
                 <!-- /.card-body -->

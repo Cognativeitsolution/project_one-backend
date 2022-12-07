@@ -43,12 +43,12 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-
-                  <p>
+                <div class="row">
+                    <div class="col-sm-6">
                     Displaying {{$record->count()}} of {{ $record->total() }} job(s).
-                  </p>
-
-                  <form name="user_search" id="" method="get" action="{{ route('jobs.index')}}">
+                    </div>
+                    <div class="col-sm-6">
+                    <form class="float-right" name="user_search" id="" method="get" action="{{ route('jobs.index')}}">
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 250px;">
                       <input type="text" name="search" class="form-control float-right" placeholder="{{ app('request')->input('search') }} Search">
@@ -60,6 +60,9 @@
                   </div>
                 </div>
                 </form>
+                    </div>
+                  </div>
+                  
 
 
                 <!-- /.card-header -->
@@ -69,10 +72,10 @@
                       <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Title</th>
-                        <th>Short Description</th>
-                        <th>Created</th>
-                        <th>Action</th>
+                        <th style="text-align:center;">Title</th>
+                        <th style="text-align:center;">Short Description</th>
+                        <th style="text-align:center;">Created</th>
+                        <th width="150" style="text-align:center;">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -87,25 +90,25 @@
                       @foreach( $record as $job)
                         <tr>
                           <td>{{ $job->id }}</td>
-                          <td>{!! Str::words( $job->name, 3, ' ...') !!}</td>
-                          <td>{!! Str::words( $job->title, 3, ' ...') !!}</td>
-                          <td>{!! Str::words( $job->short_description, 5, ' ...') !!}</td>
+                          <td >{!! Str::words( $job->name, 3, ' ...') !!}</td>
+                          <td style="text-align:center;">{!! Str::words( $job->title, 3, ' ...') !!}</td>
+                          <td style="text-align:center;">{!! Str::words( $job->short_description, 5, ' ...') !!}</td>
                         
-                          <td>{{ $job->created_at->format('Y-m-d H:i:s') }}</td>
-                          <td>
+                          <td style="text-align:center;">{{ $job->created_at->format('Y-m-d H:i:s') }}</td>
+                          <td width="150" style="text-align:center;float:right;">
                             @can('job-edit')
-                            <a href="{{ route('jobs.edit', $job->id)}}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('jobs.edit', $job->id)}}" class="btn btn-primary tableaction">Edit</a>
                             @endcan
                             
                             @can('job-delete')
-                              <td>
-                              <form action="{{ route('jobs.destroy', $job->id)}}" method="post">
+                              
+                              <form class="tableaction" action="{{ route('jobs.destroy', $job->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
                               </form>
 
-                              </td>
+                          </td>
                               @endcan
                           </td>
                         </tr>
@@ -114,10 +117,16 @@
 
                     </tbody>
                   </table>
-
-                  @if(!empty($record))
+                  <div class="col-sm-12">
+                  <div class="float-right">
+                    <p>
+                    @if(!empty($record))
                     {!! $record->appends(Request::all())->links() !!}
                   @endif
+                    </p>
+                  </div>
+                </div>  
+                  
 
                 </div>
                 <!-- /.card-body -->

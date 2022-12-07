@@ -43,12 +43,12 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-
-                  <p>
+                <div class="row">
+                    <div class="col-sm-6">
                     Displaying {{$record->count()}} of {{ $record->total() }} page(s).
-                  </p>
-
-                  <form name="user_search" id="" method="get" action="{{ route('pages.index')}}">
+                    </div>
+                    <div class="col-sm-6">
+                    <form class="float-right" name="user_search" id="" method="get" action="{{ route('pages.index')}}">
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 250px;">
                       <input type="text" name="search" class="form-control float-right" placeholder="{{ app('request')->input('search') }} Search">
@@ -60,6 +60,9 @@
                   </div>
                 </div>
                 </form>
+                    </div>
+                  </div>
+                  
 
 
                 <!-- /.card-header -->
@@ -69,10 +72,10 @@
                       <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Title</th>
-                        <th>Short Description</th>
-                        <th>Updated</th>
-                        <th>Action</th>
+                        <th style="text-align:center;">Title</th>
+                        <th style="text-align:center;">Short Description</th>
+                        <th style="text-align:center;">Updated</th>
+                        <th width="150" style="text-align:center;">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -88,18 +91,18 @@
                         <tr>
                           <td>{{ $page->id }}</td>
                           <td>{!! Str::words( $page->name, 3, ' ...') !!}</td>
-                          <td>{!! Str::words( $page->title, 3, ' ...') !!}</td>
-                          <td>{!! Str::words( $page->short_description, 5, ' ...') !!}</td>
+                          <td style="text-align:center;">{!! Str::words( $page->title, 3, ' ...') !!}</td>
+                          <td style="text-align:center;">{!! Str::words( $page->short_description, 5, ' ...') !!}</td>
                         
-                          <td>{{ $page->updated_at->format('Y-m-d H:i:s') }}</td>
-                          <td>
+                          <td style="text-align:center;">{{ $page->updated_at->format('Y-m-d H:i:s') }}</td>
+                          <td width="150" style="text-align:center;float:right;">
                             @can('page-edit')
-                            <a href="{{ route('pages.edit', $page->id)}}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('pages.edit', $page->id)}}" class="btn btn-primary tableaction">Edit</a>
                             @endcan
                             
                             @can('page-delete')
-                              <td>
-                              <form action="{{ route('pages.destroy', $page->id)}}" method="post">
+                              
+                              <form class="tableaction" action="{{ route('pages.destroy', $page->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>

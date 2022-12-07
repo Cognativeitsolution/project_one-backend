@@ -43,12 +43,12 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-
-                  <p>
+                <div class="row">
+                    <div class="col-sm-6">
                     Displaying {{$degrees->count()}} of {{ $degrees->total() }} blog(s).
-                  </p>
-
-                  <form name="user_search" id="" method="get" action="{{ route('degrees.index')}}">
+                    </div>
+                    <div class="col-sm-6">
+                    <form class="float-right" name="user_search" id="" method="get" action="{{ route('degrees.index')}}">
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 250px;">
                       <input type="text" name="search" class="form-control float-right" placeholder="{{ app('request')->input('search') }} Search">
@@ -60,6 +60,9 @@
                   </div>
                 </div>
                 </form>
+                    </div>
+                  </div>
+                  
 
 
                 <!-- /.card-header -->
@@ -67,11 +70,11 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
-                        <th>ID</th>
+                        <th >ID</th>
                         <th>Name</th>
-                        <th>Status</th>
-                        <th>Updated</th>
-                        <th>Action</th>
+                        <th style="text-align:center;">Status</th>
+                        <th style="text-align:center;">Updated</th>
+                        <th width="150" style="text-align:center;">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -87,27 +90,27 @@
                         <tr>
                           <td>{{ $degree->id }}</td>
                           <td>{{ $degree->name }}</td>
-                          <td>
+                          <td style="text-align:center;">
                             @if ($degree->status == 1)
                               active
                             @else
                               inactive
                             @endif                          
                           </td>                        
-                          <td>{{ $degree->updated_at->format('Y-m-d H:i:s') }}</td>
-                          <td>
+                          <td style="text-align:center;">{{ $degree->updated_at->format('Y-m-d H:i:s') }}</td>
+                          <td width="150" style="text-align:center;float:right;">
                             @can('degree-edit')
-                              <a href="{{ route('degrees.edit', $degree->id)}}" class="btn btn-primary">Edit</a>
+                              <a href="{{ route('degrees.edit', $degree->id)}}" class="btn btn-primary tableaction">Edit</a>
                             @endcan
                             
                             @can('degree-delete')   
-                              <td>                        
-                                <form action="{{ route('degrees.destroy', $degree->id)}}" method="post">
+                                                      
+                                <form action="{{ route('degrees.destroy', $degree->id)}}" method="post" class="tableaction">
                                   @csrf
                                   @method('DELETE')
                                   <button class="btn btn-danger" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
                                 </form> 
-                              </td>                            
+                          </td>                            
                             @endcan
                           </td>
                         </tr>

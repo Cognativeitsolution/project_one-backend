@@ -31,7 +31,7 @@
           <p>
             @if(!empty($rolePermissions))
               @foreach($rolePermissions as $v)
-                <label class="btn btn-info">{{ $v->name }}, </label>                            
+                <label class="btn btn-info lbl">{{ $v->name }}, </label>                            
               @endforeach
             @endif
           </p>

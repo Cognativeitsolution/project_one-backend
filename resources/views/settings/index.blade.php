@@ -42,8 +42,12 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-
-                  <form name="user_search" id="" method="get" action="{{ route('settings.index')}}">
+                <div class="row">
+                    <div class="col-sm-6">
+                    
+                    </div>
+                    <div class="col-sm-6">
+                    <form class="float-right" name="user_search" id="" method="get" action="{{ route('settings.index')}}">
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 250px;">
                       <input type="text" name="search" class="form-control float-right" placeholder="{{ app('request')->input('search') }} Search">
@@ -55,6 +59,9 @@
                   </div>
                 </div>
                 </form>
+                    </div>
+                  </div>
+                  
 
 
                 <!-- /.card-header -->
@@ -64,11 +71,11 @@
                       <tr>
                         <th>ID</th>
                         <th>Email</th>
-                        <th>Contact</th>
-                        <th>WhatsApp Contact</th>
-                        <th>Created</th>
-                        <th>Updated</th>
-                        <th>Action</th>
+                        <th style="text-align:center;">Contact</th>
+                        <th style="text-align:center;">WhatsApp Contact</th>
+                        <th style="text-align:center;">Created</th>
+                        <th style="text-align:center;">Updated</th>
+                        <th width="150" style="text-align:center;">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -84,12 +91,12 @@
                         <tr>
                           <td>{{ $setting->id }}</td>
                           <td>{{ $setting->contact_email }}</td>
-                          <td>{{ $setting->contact_number }}</td>
-                          <td>{{ $setting->contact_whatsapp }}</td>
+                          <td style="text-align:center;">{{ $setting->contact_number }}</td>
+                          <td style="text-align:center;">{{ $setting->contact_whatsapp }}</td>
                         
-                          <td>{{ $setting->created_at->format('Y-m-d H:i:s') }}</td>
-                          <td>{{ $setting->updated_at->format('Y-m-d H:i:s') }}</td>
-                          <td>
+                          <td style="text-align:center;">{{ $setting->created_at->format('Y-m-d H:i:s') }}</td>
+                          <td style="text-align:center;">{{ $setting->updated_at->format('Y-m-d H:i:s') }}</td>
+                          <td width="150" style="text-align:center;">
                             @can('setting-edit')
                             <a href="{{ route('settings.show', $setting->id)}}" class="btn btn-info">Show</a>
                             <a href="{{ route('settings.edit', $setting->id)}}" class="btn btn-primary">Edit</a>

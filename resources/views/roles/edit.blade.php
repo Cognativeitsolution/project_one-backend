@@ -1,5 +1,12 @@
 @extends('layouts.admin')
+<style>
 
+  .name{
+    position: relative;
+    top: 2px;
+    left: -3px;
+  }
+</style>
 @section('content')
 
 <div class="content-wrapper">
@@ -55,21 +62,23 @@
             @error('name')<div class="error">{{ $message }}</div>@enderror
           </div>
 
-          <div class="form-group">
-            <strong>Permission:</strong>
-            <br/>
+          <div class="col-sm-12">
+          <h5>Permission:</h5>
+            
             <?php $count = 0; ?>
             @foreach($permission as $value)
               <?php $count = $count + 1; ?>
-              <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
+              <label class="btn btn-primary btn-primary-outline">{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
               {{ $value->name }} &nbsp;&nbsp;</label>
               <?php if($count == 4){ ?>
               <br/>
               <?php $count = 0; } ?>
             @endforeach
+                  <br>
+            <button type="submit" class="btn btn-primary">Update</button>
           </div>
           
-          <button type="submit" class="btn btn-primary">Update</button>
+          
         </div>
         {!! Form::close() !!}
       </div>

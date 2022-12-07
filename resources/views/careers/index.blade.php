@@ -30,12 +30,12 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-
-                <p>
-                  Displaying {{$careers->count()}} of {{ $careers->total() }} career(s).
-                </p>
-
-                <form name="user_search" id="" method="get" action="{{ route('careers.index')}}">
+              <div class="row">
+                    <div class="col-sm-6">
+                    <p>Displaying {{$careers->count()}} of {{ $careers->total() }} career(s).</p>
+                    </div>
+                    <div class="col-sm-6">
+                    <form class="float-right" name="user_search" id="" method="get" action="{{ route('careers.index')}}">
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 250px;">
                       <input type="text" name="search" class="form-control float-right" placeholder="{{ app('request')->input('search') }} Search">
@@ -46,6 +46,9 @@
                     </div>
                   </div>
                 </form>
+                    </div>
+                  </div>
+                
 
 
                 <!-- /.card-header -->

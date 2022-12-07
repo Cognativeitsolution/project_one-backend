@@ -44,12 +44,12 @@
               <div class="card">
                 <div class="card-header">
                   <!--<h3 class="card-title">Responsive Hover Table</h3>-->
-
-                  <p>
+                  <div class="row">
+                    <div class="col-sm-6">
                     Displaying {{$users->count()}} of {{ $users->total() }} user(s).
-                  </p>
-
-                  <form name="user_search" id="" method="get" action="{{ route('users.index')}}">
+                    </div>
+                    <div class="col-sm-6">
+                    <form class="float-right" name="user_search" id="" method="get" action="{{ route('users.index')}}">
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 250px;">
                       <input type="text" name="search" class="form-control float-right" placeholder="{{ app('request')->input('search') }} Search">
@@ -61,6 +61,9 @@
                   </div>
                 </div>
                 </form>
+                    </div>
+                  </div>
+                  
 
 
                 <!-- /.card-header -->
@@ -80,7 +83,7 @@
 
                     @if ($users->count() == 0)
                     <tr>
-                        <td colspan="6">No users to display.</td>
+                        <td colspan="6" style="text-align:center;">No users to display.</td>
                     </tr>
                     @endif
                     

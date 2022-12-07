@@ -40,18 +40,23 @@
         <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-
-                    <p>
-                      Displaying {{$roles->count()}} of {{ $roles->total() }} role(s).
-                    </p>
+                  <div class="row">
+                    <div class="col-sm-6">
+                    <p>Displaying {{$roles->count()}} of {{ $roles->total() }} role(s).</p>
+                    </div>
+                    <div class="col-sm-6">
+                    
+                    </div>
+                  </div>
+                    
 
                     <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
                       <thead>
                         <tr>
-                          <th>No</th>
+                          <th width="50px" style="text-align:center;">No</th>
                           <th>Name</th>
-                          <th width="280px">Action</th>
+                          <th width="250px" style="text-align:center;">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -64,10 +69,10 @@
 
                       @foreach ($roles as $key => $role)
                       <tr>
-                          <td>{{ $role->id }}</td>
+                          <td style="text-align:center;">{{ $role->id }}</td>
                           <td>{{ $role->name }}</td>
 
-                          <td>
+                          <td width="250px" style="text-align:center;float:right;">
                               
                               @can('role-edit')
                                   <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">Show</a>

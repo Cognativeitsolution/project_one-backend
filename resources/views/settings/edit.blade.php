@@ -133,23 +133,23 @@
               @error('description')<div class="error">{{ $message }}</div>@enderror
             </div>
 
-              <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
+              <div class="form-group col-md-4 col-sm-4 col-lg-4 col-xs-6">
                 <label for="header_logo">Header Logo</label>
                 <input type="file" class="form-control" id="header_logo" name="header_logo">
               </div>
 
-              <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
+              <div class="form-group col-md-4 col-sm-4 col-lg-4 col-xs-6">
                 <label for="footer_logo">Footer Logo</label>
                 <input type="file" class="form-control" id="footer_logo" name="footer_logo">
               </div>
 
-              <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
+              <div class="form-group col-md-4 col-sm-4 col-lg-4 col-xs-6">
                 <label for="favicon">Favicon</label>
                 <input type="file" class="form-control" id="favicon" name="favicon">
               </div>
 
               @if( !empty($record->header_logo) )
-              <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
+              <div class="form-group col-md-4 col-sm-4 col-lg-4 col-xs-6">
                 <strong>Thumbnail Header Logo </strong>
                 <br/>
                 <img src="{{ url('/thumbnail/') }}/{{ $record->header_logo }}" >
@@ -157,7 +157,7 @@
               @endif
 
               @if( !empty($record->footer_logo) )
-              <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
+              <div class="form-group col-md-4 col-sm-4 col-lg-4 col-xs-6">
                 <strong>Thumbnail Footer Logo </strong>
                 <br/>
                 <img src="{{ url('/thumbnail/') }}/{{ $record->footer_logo }}" >
@@ -165,7 +165,7 @@
               @endif
 
               @if( !empty($record->favicon) )
-              <div class="form-group col-md-6 col-sm-6 col-lg-6 col-xs-6">
+              <div class="form-group col-md-4 col-sm-4 col-lg-4 col-xs-6">
                 <strong>Thumbnail Favicon </strong>
                 <br/>
                 <img src="{{ asset('images/' . $record->favicon) }}" >

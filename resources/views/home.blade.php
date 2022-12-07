@@ -99,6 +99,7 @@ footer:hover {
 footer:active {
   color: red;
 }
+
 </style>
 @endsection
 
