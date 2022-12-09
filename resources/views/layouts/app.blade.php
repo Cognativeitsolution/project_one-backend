@@ -77,15 +77,42 @@
                      <img src="{{ asset('images/' . $settings->header_logo) }}" alt="group" class="sidebarlogo">
                   </div>
                   <div class="sidebar_close">
-                     <span class="close_border" id="close_cross"><img src="./assets/images/close_menu.png" alt="close_menu" class="close_menu-img"></span>
+                     <span class="close_border" id="close_cross"><img src="{{ asset('assets/images/close_menu.png') }}" alt="close_menu" class="close_menu-img"></span>
                   </div>
                </div>
                <div class="sidebar_body">
                   <div class="sidebar_nav_box">
-                     <ul class="un_sidebar">
+                     <ul class="un_sidebar mobile_menu">
                         <li class="sidebar_list"><a href="{{ url('/') }}" class="sidebar_list_link">Home</a></li>
-                        <li class="sidebar_list"><a href="{{ url('/services') }}" class="sidebar_list_link">Services</a></li>
-                        <li class="sidebar_list dropdown_sdlist"><a href="#" class="sidebar_list_link sddropbtn">Resources</a></li>
+                        <li class="sidebar_list"><a href="#" style="cursor:default;" class="sidebar_list_link">Services<i class="fa fa-chevron-down"></i></a>
+                           <ul>
+                           @foreach($services as $service)
+                              @if($service->parent_id == 1)
+                                 <li><a class="sidebar_list_link" href="{{ route('web.service_detail', $service->slug) }}">{{ $service->name }}</a></li>
+                              @endif
+                           @endforeach
+                           @foreach($services as $service)
+                              @if($service->parent_id == 2)
+                                 <li><a class="sidebar_list_link" href="{{ route('web.service_detail', $service->slug) }}">{{ $service->name }}</a></li>
+                              @endif
+                           @endforeach
+                           @foreach($services as $service)
+                              @if($service->parent_id == 3)
+                                 <li><a class="sidebar_list_link" href="{{ route('web.service_detail', $service->slug) }}">{{ $service->name }}</a></li>
+                              @endif
+                           @endforeach
+                           @foreach($services as $service)
+                              @if($service->parent_id == 4)
+                                 <li><a class="sidebar_list_link" href="{{ route('web.service_detail', $service->slug) }}">{{ $service->name }}</a></li>
+                              @endif
+                           @endforeach
+                           </ul>
+                        </li>
+                        <li class="sidebar_list dropdown_sdlist"><a href="#" style="cursor:default;" class="sidebar_list_link sddropbtn">Resources<i class="fa fa-chevron-down"></i></a>
+                           <ul>
+                              <li><a href="{{ url('/blogs') }}" class="sidebar_list_link">Blogs</a></li>
+                           </ul>
+                        </li>
                         <li class="sidebar_list"><a href="{{ url('/about_us') }}" class="sidebar_list_link">About Us</a></li>
                         <li class="sidebar_list"><a href="{{ url('/jobs') }}" class="sidebar_list_link">Career</a></li>
                         <li class="sidebar_list"><a href="{{ url('/contact_us') }}" class="sidebar_list_link">Contact Us</a></li>
@@ -113,7 +140,7 @@
                         <ul>
                            <li><a href="{{ url('/') }}" class="primary_nav-menu">Home</a></li>
                            <li class="service-dropdown" id="service_dropbtn">
-                              <a href="#" class="service_dropbtn primary_nav-menu">Services</a>
+                              <a href="#" style="cursor:default;" class="service_dropbtn primary_nav-menu">Services</a>
                               <!---Service Mega Menu-->
                               <div class="mm-s-menu-container">
                                  <div class="container">
@@ -184,7 +211,7 @@
                               </div>
                            </li>
                            <li class="resources_dropdown">
-                              <a href="#" class="res_dropbtn primary_nav-menu">Resources</a>
+                              <a href="#" style="cursor:default;" class="res_dropbtn primary_nav-menu">Resources</a>
                               <!---Resource Mega Menu-->
                               <div class="mm-r-menu-container">
                                  <div class="container">
@@ -204,29 +231,29 @@
                                                    <h2 class="s_one">Blog</h2>
                                                    <p class="one_content">Stuff that Matters</p>
                                                 </a>
-                                                <a href="#" class="resource_g-content-wrapper service-one_wrapper">
+                                                <a href="#" style="cursor:default;" class="resource_g-content-wrapper service-one_wrapper">
                                                    <h2 class="s_one">Our News and Events</h2>
                                                    <p class="one_content">Stay informed about us</p>
                                                 </a>
                                              </div>
                                              <div class="resource_g-item res_g-item-second">
                                                 <div class="r_g-content-flex-wrapper">
-                                                   <a href="#" class="resource_g-content-wrapper resource-two_wrapper">
+                                                   <a href="#" style="cursor:default;" class="resource_g-content-wrapper resource-two_wrapper">
                                                       <h2 class="s_one">Meet Our leads</h2>
                                                       <p class="one_content">Our expert Team leads</p>
                                                    </a>
-                                                   <a href="#" class="resource_g-content-wrapper resource-three_wrapper">
+                                                   <a href="#" style="cursor:default;" class="resource_g-content-wrapper resource-three_wrapper">
                                                       <h2 class="s_one">Case Studies</h2>
                                                       <p class="one_content">From our media desk</p>
                                                    </a>
                                                 </div>
                                              </div>
                                              <div class="resource_g-item res_g-item-second">
-                                                <a href="#" class="resource_g-content-wrapper resource-one_wrapper">
+                                                <a href="#" style="cursor:default;" class="resource_g-content-wrapper resource-one_wrapper">
                                                    <h2 class="s_one">Partnerships</h2>
                                                    <p class="one_content">Our Partnerships worldwide nation</p>
                                                 </a>
-                                                <a href="#" class="resource_g-content-wrapper resource-one_wrapper">
+                                                <a href="#" style="cursor:default;" class="resource_g-content-wrapper resource-one_wrapper">
                                                    <h2 class="s_one">Podcast</h2>
                                                    <p class="one_content">Global tech events</p>
                                                 </a>
@@ -243,7 +270,7 @@
                         </ul>
                      </nav>
                      <div class="menu_toggle-button" id="menu_toggle-btn">
-                        <span class="bar-btn"><img src="./assets/images/menu_bar.png" alt="bar_menu" class="bar_menu-img"></span>
+                        <span class="bar-btn"><img src="{{ asset('assets/images/menu_bar.png') }}" alt="bar_menu" class="bar_menu-img"></span>
                      </div>
                   </div>
                </div>
@@ -290,23 +317,23 @@
                         <div class="foo-social-icon">
                            <div class="foo-social-flex-wrapper">
                               @if ($settings->facebook_account_link)
-                                 <span class="footer-social"><i class="fab fa-facebook"></i></span>
+                                 <a target="_blank" href="https://www.facebook.com" class="footer-social"><i class="fab fa-facebook"></i></a>
                               @endif
 
                               @if ($settings->google_account_link)
-                                 <span class="footer-social"><i class="fab fa-google"></i></span>
+                                 <a target="_blank" href="https://www.google.com" class="footer-social"><i class="fab fa-google"></i></a>
                               @endif
 
                               @if ($settings->linkedin_account_link)
-                                 <span class="footer-social"><i class="fab fa-linkedin"></i></span>
+                                 <a target="_blank" href="https://www.linkedin.com/login" class="footer-social"><i class="fab fa-linkedin"></i></a>
                               @endif
 
                               @if ($settings->instagram_account_link)
-                                 <span class="footer-social"><i class="fab fa-instagram"></i></span>
+                                 <a target="_blank" href="https://www.instagram.com/" class="footer-social"><i class="fab fa-instagram"></i></a>
                               @endif
 
                               @if ($settings->youtube_account_link)
-                                 <span class="footer-social"><i class="fab fa-youtube"></i></span>
+                                 <a target="_blank" href="https://www.youtube.com/" class="footer-social"><i class="fab fa-youtube"></i></a>
                               @endif
                            </div>
                         </div>

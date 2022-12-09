@@ -201,6 +201,8 @@ a.top_head-link span i {
 .sidebar_container.active {
 	right: 0;
 	box-shadow: 500px 0px 0px 500px #0000004a;
+	height: 100%;
+    overflow-y: scroll;
 }
 
 .sidebar_head {
@@ -369,6 +371,7 @@ a.top_head-link span i {
 	margin-top: 0;
 	visibility: visible;
 	opacity: 1;
+	cursor:default;
 }
 
 .service_flex_wrapper {
@@ -2549,6 +2552,30 @@ a.apply_btn:hover, a.apply_btn:active, a.apply_btn:visited{
 .privacy {
     background-color: #f1f1f1;
 }
+.mobile_menu li{
+	padding:0px;
+}
+.mobile_menu li ul{
+	padding: 0;
+	background-color:#fff;
+	display: none;
+}
+.mobile_menu li ul li{
+	list-style: none;
+	border-bottom:1px solid rgb(230,230,230);
+}
+.mobile_menu li ul li:nth-child(1){
+	border-top:1px solid rgb(230,230,230);
+}
+.mobile_menu li:hover{
+	background-color:#fafafa;
+} 
+.mobile_menu a:hover{
+	color:#333;
+	text-decoration: none;
+}
+.sidebar_head{
+	background-color: #fff;
+}
 
-  
 
