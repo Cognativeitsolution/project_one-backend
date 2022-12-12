@@ -27,50 +27,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/custom.css') }}">
 
-    <style>
-    .log_information{
-        font-size:13px;
-    }
-    .modified_log{
-        font-size:13px;
-        margin-top:-15px;
-    }
-    .badge{
-        padding:5px;
-    }
-    .table thead{
-        padding:2px;
-        width:100%;
-        background:#343a40;
-        color:#fff;
-    }
-    .table td{
-        padding:2px;
-        margin:0px;
-        vertical-align: middle;
-        font-size:14px;
-    }
-    .table tr:nth-child(even){
-        background:#d7d7d7;
-    }
-    .table th{
-        padding:5px;
-        margin:0px;
-        vertical-align: middle;
-        font-size:14px;
-    }
-    .tableaction{
-        display:inline-block;
-    }
-    .btn-primary-outline{
-        border:1px solid #0075ff;
-        color:#0075ff;
-        background:#fff;
-    }
-    .lbl{
-        cursor:default;
-    }
-    </style>
+  
 
     @yield('css')
 </head>

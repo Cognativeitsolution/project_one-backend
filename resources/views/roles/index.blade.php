@@ -13,7 +13,7 @@
 
             @can('role-create')
             <div class="col-sm-4">
-              <a href="{{ route('roles.create') }}" class="btn btn-block btn-primary">Create Role</a>
+              <a href="{{ route('roles.create') }}" class="btn btn-block btn-primary main-btn">Create Role</a>
             </div>
             @endcan
             
@@ -42,7 +42,7 @@
                   <div class="card-header">
                   <div class="row">
                     <div class="col-sm-6">
-                    <p>Displaying {{$roles->count()}} of {{ $roles->total() }} role(s).</p>
+                    <span class="tbl-head"> Displaying {{$roles->count()}} of {{ $roles->total() }} role(s).</span>
                     </div>
                     <div class="col-sm-6">
                     
@@ -75,13 +75,13 @@
                           <td width="250px" style="text-align:center;float:right;">
                               
                               @can('role-edit')
-                                  <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">Show</a>
-                                  <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Edit</a>
+                                  <a class="btn btn-info info_btn" href="{{ route('roles.show',$role->id) }}">Show</a>
+                                  <a class="btn btn-primary tableaction" href="{{ route('roles.edit',$role->id) }}">Edit</a>
                               @endcan
 
                               @can('role-delete')
                                   {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
-                                      {!! Form::submit('Delete', ['class' => 'btn btn-danger', 'onclick' => 'return confirm("Are you sure to delete role?")']) !!}
+                                      {!! Form::submit('Delete', ['class' => 'btn btn-danger del-btn', 'onclick' => 'return confirm("Are you sure to delete role?")']) !!}
                                   {!! Form::close() !!}
 
                                   

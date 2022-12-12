@@ -1,11 +1,235 @@
 
 /* This is custom file for Admin Panel Css
 Created 25-Nov-2022 */
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
 	font-family: 'Poppins', sans-serif;
+	
+}
+
+/* admin.blade */
+
+.content-header .breadcrumb li{
+	font-size: 14px;
+}
+
+.tbl-head {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.float-right {
+    float: right!important;
+    margin-bottom: 0.5rem;
+}
+
+.log_information{
+	font-size:13px;
+}
+
+.modified_log{
+	font-size:13px;
+	margin-top:-15px;
+}
+
+.badge{
+	padding:5px;
+}
+
+.table thead{
+	padding:2px;
+	width:100%;
+	background:#343a40;
+	color:#fff;
+}
+
+.main-btn{
+	box-shadow: 0 0 10px #0003;
+}
+
+.table td{
+	padding:2px;
+	margin:0px;
+	vertical-align: middle;
+	font-size:14px;
+}
+
+.table tr:nth-child(even){
+	background:#d7d7d7;
+}
+
+.table th{
+	padding:5px;
+	margin:0px;
+	vertical-align: middle;
+	font-size:14px;
+}
+
+.tableaction,.del-btn,.info_btn {
+    display: inline-block;
+    font-size: 14px;
+    box-shadow: 0 0 10px #0002;
+    border-radius: 4px;
+}
+
+label.table-badge {
+    font-weight: 500;
+    box-shadow: 0 0 10px #0003;
+}
+
+.btn-primary-outline{
+	border:1px solid #0075ff;
+	color:#0075ff;
+	background:#fff;
+}
+
+.lbl{
+	cursor:default;
+}
+
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active{
+    background-color: #ff8839de !important;
+}
+
+[class*=sidebar-dark-] {
+    background-color: #0c7dc2;
+}
+ 
+/* sidebar nav */
+
+.nav-sidebar .nav-item>.nav-link {
+    color: #fff;
+}
+
+a.nav-link:hover {
+    background: #e0864b !important;
+}
+
+[class*=sidebar-dark-] .sidebar a {
+    color: #ffffff;
+}
+
+[class*=sidebar-dark] .user-panel {
+    border-bottom: 1px solid #000000;
+}
+
+.navbar-white {
+    background-color: #eaeaea;
+}
+
+.navbar-white {
+    background-color: #f1f1f1;
+}
+
+.content-wrapper {
+    background: #ededed;
+}
+
+.text-dark-main {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    text-shadow: 0 0 10px #0003;
+}
+
+span.dash-icon {
+    background-image: linear-gradient(89deg, #da8cff, #9a55ff);
+    padding: 2px 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #0003;
+}
+
+i.fa.fa-home {
+    font-size: 24px;
+    color: #FFF;
+    border-radius: 5px;
+}
+
+span.text-dark-sub {
+    font-size: 22px;
+}
+
+a#navbarDropdown {
+    padding: 15px;
+}
+
+/* three dot icon */
+
+i.fa.fa-ellipsis-v {
+    color: #333;
+}
+
+a#navbarDropdown {
+    padding: 15px;
+}
+
+.float-right {
+    color: #333;
+}
+
+.main-footer,.main-footer strong {
+    color: #333;
+    font-weight: 400;
+}
+.sidebar_close-container {
+    text-align: right;
+    padding: 0 10px;
+	display: none;
+}
+
+.sidebar_close-container i {
+    font-size: 28px;
+    color: #fff;
+    margin: 10px 0;
 }
 
 
+/* Sidebar */
 
-  
+.nav-sidebar .nav-link p{
+    font-size:14px;
+}
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active{
+    background-color: #1175b1;
+}
+.active {
+    color: blue;
+}
+.brand-link{
+    height:30%;
+    border-bottom:none !important;
+}
+.brand-link .brand-image{
+    width:100%;
+    margin-left:0;
+    margin-right:0;
+    max-height:100px;
+}
+.user_image{
+    width: 95%;
+    text-align: center;
+}
+.user_image img{
+    width: 4rem;
+    margin-bottom:20px;
+}
+.push_menu{
+      display:none;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .push_menu{
+        display:block;
+    }
+}
+
 

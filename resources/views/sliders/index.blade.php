@@ -20,7 +20,7 @@
 
            @can('slider-create')
             <div class="col-sm-4">
-              <a href="{{ route('sliders.create') }}" class="btn btn-block btn-primary">Add Slider</a>
+              <a href="{{ route('sliders.create') }}" class="btn btn-block btn-primary main-btn">Add Slider</a>
             </div>
            @endcan
             
@@ -45,7 +45,7 @@
                 <div class="card-header">
                 <div class="row">
                     <div class="col-sm-6">
-                    Displaying {{$record->count()}} of {{ $record->total() }} slider(s).
+                    <span class="tbl-head">Displaying {{$record->count()}} of {{ $record->total() }} slider(s).</span>
                     </div>
                     <div class="col-sm-6">
                     <form class="float-right" name="user_search" id="" method="get" action="{{ route('sliders.index')}}">
@@ -112,7 +112,7 @@
                               <form class="tableaction" action="{{ route('sliders.destroy', $slider->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
+                                <button class="btn btn-danger del-btn" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
                               </form>
 
                               </td>

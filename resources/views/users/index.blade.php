@@ -46,7 +46,7 @@
                   <!--<h3 class="card-title">Responsive Hover Table</h3>-->
                   <div class="row">
                     <div class="col-sm-6">
-                    Displaying {{$users->count()}} of {{ $users->total() }} user(s).
+                    <span class="tbl-head"> Displaying {{$users->count()}} of {{ $users->total() }} user(s).</span>
                     </div>
                     <div class="col-sm-6">
                     <form class="float-right" name="user_search" id="" method="get" action="{{ route('users.index')}}">

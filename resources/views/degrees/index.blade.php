@@ -20,7 +20,7 @@
 
            @can('degree-create')
             <div class="col-sm-4">
-              <a href="{{ route('degrees.create') }}" class="btn btn-block btn-primary">Add Degree</a>
+              <a href="{{ route('degrees.create') }}" class="btn btn-block btn-primary main-btn">Add Degree</a>
             </div>
            @endcan
             
@@ -45,7 +45,7 @@
                 <div class="card-header">
                 <div class="row">
                     <div class="col-sm-6">
-                    Displaying {{$degrees->count()}} of {{ $degrees->total() }} blog(s).
+                    <span class="tbl-head">Displaying {{$degrees->count()}} of {{ $degrees->total() }} blog(s).</span>
                     </div>
                     <div class="col-sm-6">
                     <form class="float-right" name="user_search" id="" method="get" action="{{ route('degrees.index')}}">
@@ -108,7 +108,7 @@
                                 <form action="{{ route('degrees.destroy', $degree->id)}}" method="post" class="tableaction">
                                   @csrf
                                   @method('DELETE')
-                                  <button class="btn btn-danger" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
+                                  <button class="btn btn-danger del-btn" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
                                 </form> 
                           </td>                            
                             @endcan

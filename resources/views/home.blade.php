@@ -112,7 +112,12 @@ footer:active {
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Admin Dashboard</h1>
+            <h1 class="m-0 text-dark">
+              <span class="text-dark-main">Hi, Welcome back!</span>
+              <span class="text-dark-sub">
+              <span class="dash-icon"><i class="fa fa-home"></i></span>
+              Dashboard</span>
+            </h1>
 
             @if(Session::has('error'))
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -142,7 +147,7 @@ footer:active {
         <!-- Info boxes -->
         <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
+            <div class="info-box service-info">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
               <div class="info-box-content">
@@ -161,7 +166,7 @@ footer:active {
             <div class="info-box mb-3">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
-              <div class="info-box-content">
+              <div class="info-box-content career-info">
                 <span class="info-box-text">Careers</span>
                 <span class="info-box-number">41,410</span>
               </div>
@@ -173,7 +178,7 @@ footer:active {
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-briefcase"></i></span>
+              <span class="info-box-icon bg-success elevation-1 job-info"><i class="fas fa-briefcase"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Jobs</span>
@@ -188,7 +193,7 @@ footer:active {
             <div class="info-box mb-3">
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
-              <div class="info-box-content">
+              <div class="info-box-content user-info">
                 <span class="info-box-text">Users</span>
                 <span class="info-box-number">23,000</span>
               </div>

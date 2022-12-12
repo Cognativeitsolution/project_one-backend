@@ -1,7 +1,7 @@
 @section('css')
   
 @endsection
-<style>
+<!-- <style>
   .nav-sidebar .nav-link p{
     font-size:14px;
   }
@@ -37,12 +37,16 @@
         display:block;
       }
     }
-  </style>
+  </style> -->
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <div class="sidebar_close-container" id="close_btn">
+    <i class="fas fa-times-circle"></i>
+    </div>
+
     <!-- Brand Logo -->
     <a href="{{ url('/admin/home') }}" class="brand-link">
-      <img src="{{ asset('images/logoWHite.png') }}" alt="AdminLTE Logo" class="brand-image" >
+      <img src="{{ asset('images/logowhite2.png') }}" alt="AdminLTE Logo" class="brand-image" >
       
     </a>
 

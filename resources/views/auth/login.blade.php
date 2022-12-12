@@ -98,7 +98,7 @@
                             </form>
                             <div class="connection_box">
                                 <a href="{{ url('/google') }}" class="link_google"><img src="./assets/images/google_logo.jpg" alt="google_logo"> &nbsp; &nbsp; Connect with Google</a>
-                                <a href="{{ url('/facebook') }}" class="link_facebook">Connect with Facebook</a>
+                                <a href="{{ url('/facebook') }}" class="link_facebook"><img src="./assets/images/fb_icon.png" alt="facebook_logo"> &nbsp; &nbsp; Connect with Facebook</a>
                                 <a href="{{ url('/linkedin') }}" class="link_linkedin"><i class="fab fa-linkedin-in"></i> &nbsp; &nbsp; Connect with LinkedIn</a>
                             </div>
                         </div>

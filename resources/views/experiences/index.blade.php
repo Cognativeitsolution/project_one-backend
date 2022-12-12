@@ -20,7 +20,7 @@
 
            @can('experience-create')
             <div class="col-sm-4">
-              <a href="{{ route('experiences.create') }}" class="btn btn-block btn-primary">Add Experience</a>
+              <a href="{{ route('experiences.create') }}" class="btn btn-block btn-primary main-btn">Add Experience</a>
             </div>
            @endcan
             
@@ -45,7 +45,7 @@
                 <div class="card-header">
                 <div class="row">
                     <div class="col-sm-6">
-                    Displaying {{$experiences->count()}} of {{ $experiences->total() }} blog(s).
+                    <span class="tbl-head">Displaying {{$experiences->count()}} of {{ $experiences->total() }} blog(s).</span>
                     </div>
                     <div class="col-sm-6">
                     <form class="float-right" name="user_search" id="" method="get" action="{{ route('experiences.index')}}">
@@ -108,7 +108,7 @@
                                 <form class="tableaction" action="{{ route('experiences.destroy', $experience->id)}}" method="post">
                                   @csrf
                                   @method('DELETE')
-                                  <button class="btn btn-danger" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
+                                  <button class="btn btn-danger del-btn" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
                                 </form> 
                           </td>                            
                             @endcan

@@ -1823,6 +1823,30 @@ input#fileuploadfield {
 	align-items: center;
 }
 
+.link_facebook {
+    position: relative;
+    padding: 14px 16px;
+    border: none;
+    outline: none;
+    width: 300px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    color: #333;
+    box-shadow: 0 0 10px #0002;
+    border-radius: 5px;
+    text-decoration: none;
+	background: #fff;
+}
+
+.link_facebook img {
+    position: absolute;
+    left: 20px;
+    width: 3rem;
+    height: 3rem;
+    top: 10px;
+}
+
 .cand-email,
 .cand-pwd {
 	border: none;
@@ -1883,6 +1907,15 @@ form.sign_up-form-control>p {
 .link_google:visited,
 .link_google:hover,
 .link_google:active {
+	text-decoration: none !important;
+	color: #333;
+	position: relative;
+}
+
+.link_facebook,
+.link_facebook:visited,
+.link_facebook:hover,
+.link_facebook:active {
 	text-decoration: none !important;
 	color: #333;
 	position: relative;

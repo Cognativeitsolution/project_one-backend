@@ -32,7 +32,7 @@
               <div class="card-header">
               <div class="row">
                     <div class="col-sm-6">
-                    <p>Displaying {{$careers->count()}} of {{ $careers->total() }} career(s).</p>
+                    <span class="tbl-head"> Displaying {{$careers->count()}} of {{ $careers->total() }} career(s).</span>
                     </div>
                     <div class="col-sm-6">
                     <form class="float-right" name="user_search" id="" method="get" action="{{ route('careers.index')}}">

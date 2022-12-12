@@ -20,7 +20,7 @@
 
            @can('blog-create')
             <div class="col-sm-4">
-              <a href="{{ route('blogs.create') }}" class="btn btn-block btn-primary">Add Blog</a>
+              <a href="{{ route('blogs.create') }}" class="btn btn-block btn-primary main-btn">Add Blog</a>
             </div>
            @endcan
             
@@ -45,7 +45,8 @@
                 <div class="card-header">
                 <div class="row">
                     <div class="col-sm-6">
-                    Displaying {{$record->count()}} of {{ $record->total() }} blog(s).
+                    <span class="tbl-head">Displaying {{$record->count()}} of {{ $record->total() }} blog(s).</span> 
+
                     </div>
                     <div class="col-sm-6">
                     <form class="float-right" name="user_search" id="" method="get" action="{{ route('blogs.index')}}">
@@ -114,7 +115,7 @@
                               <form class="tableaction" action="{{ route('blogs.destroy', $blog->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
+                                <button class="btn btn-danger del-btn" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
                               </form>
 
                               </td>

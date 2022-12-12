@@ -20,7 +20,7 @@
 
             @can('admin-create')
             <div class="col-sm-4">
-              <a href="{{ route('admins.create') }}" class="btn btn-block btn-primary">Add Admin</a>
+              <a href="{{ route('admins.create') }}" class="btn btn-block btn-primary main-btn">Add Admin</a>
             </div>
             @endcan
             
@@ -46,7 +46,7 @@
                   <!--<h3 class="card-title">Responsive Hover Table</h3>-->
                   <div class="row">
                     <div class="col-sm-6">
-                    Displaying {{$admins->count()}} of {{ $admins->total() }} admin(s).
+                   <span class="tbl-head"> Displaying {{$admins->count()}} of {{ $admins->total() }} admin(s).</span>
                     </div>
                     <div class="col-sm-6">
                       <form class="float-right" name="user_search" id="" method="get" action="{{ route('admins.index')}}">
@@ -64,10 +64,6 @@
                     </div>
                   </div>
                   
-
-                  
-
-
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
                   <table class="table table-hover text-nowrap">
@@ -100,7 +96,7 @@
                           <td style="text-align:center;">
                             @if(!empty($admin->getRoleNames()))
                               @foreach($admin->getRoleNames() as $v)
-                                <label class="badge badge-success">{{ $v }}</label>
+                                <label class="badge badge-success table-badge">{{ $v }}</label>
                               @endforeach
                             @endif
                           </td>
@@ -117,7 +113,7 @@
                               <form class="tableaction" action="{{ route('admins.destroy', $admin->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
+                                <button class="btn btn-danger del-btn" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
                               </form>
 
                               </td>
