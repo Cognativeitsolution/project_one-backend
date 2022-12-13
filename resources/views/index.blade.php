@@ -626,75 +626,19 @@
                   <span class="primary_sub-heading">Customer Satisfaction is our priority, There are many great reasons to trust in Cognitive.</span>
                </div>
                <div class="wcu_grid-container">
-                  <div class="wcu_item">
-                     <div class="icon_box">
-                        <span><i class="fa fa-code"></i></span>
-                     </div>
-                     <div class="wcu_content">
-                        <div class="wcu_head">
-                           <span>Clean Code</span> 
+                  @if(!empty($customer_satisfactions) && $customer_satisfactions->count())
+                     @foreach($customer_satisfactions as $satisfaction)
+                        <div class="wcu_item">
+                           <div class="icon_box">
+                              <span><i class="fa {{ $satisfaction->font_awsome }}"></i></span>
+                           </div>
+                           <div class="wcu_content">
+                              <div class="wcu_head"><span>{!! Str::words( $satisfaction->title, 4, ' ') !!}</span></div>
+                              <p>{{ $satisfaction->short_description }}</p>
+                           </div>
                         </div>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, eveniet. Esse natus hic voluptatem quibusdam.</p>
-                     </div>
-                  </div>
-                  <div class="wcu_item">
-                     <div class="icon_box">
-                        <span><i class="fa fa-users"></i></span>
-                     </div>
-                     <div class="wcu_content">
-                        <div class="wcu_head">
-                           <span>Client Centric Approach</span> 
-                        </div>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, eveniet. Esse natus hic voluptatem quibusdam.</p>
-                     </div>
-                  </div>
-                  <div class="wcu_item">
-                     <div class="icon_box">
-                        <span><i class="fa fa-tasks"></i></span>
-                     </div>
-                     <div class="wcu_content">
-                        <div class="wcu_head">
-                           <span>Devoted Project Management
-                           </span> 
-                        </div>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, eveniet. Esse natus hic voluptatem quibusdam.</p>
-                     </div>
-                  </div>
-                  <div class="wcu_item">
-                     <div class="icon_box">
-                        <span><i class="fas fa-clock"></i></span>
-                     </div>
-                     <div class="wcu_content">
-                        <div class="wcu_head">
-                           <span>Time delivery
-                           </span> 
-                        </div>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, eveniet. Esse natus hic voluptatem quibusdam.</p>
-                     </div>
-                  </div>
-                  <div class="wcu_item">
-                     <div class="icon_box">
-                        <span><i class="fas fa-cogs"></i></span>
-                     </div>
-                     <div class="wcu_content">
-                        <div class="wcu_head">
-                           <span>Technical Expertise
-                           </span> 
-                        </div>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, eveniet. Esse natus hic voluptatem quibusdam.</p>
-                     </div>
-                  </div>
-                  <div class="wcu_item">
-                     <div class="icon_box">
-                        <span><i class="fas fa-handshake"></i></span>
-                     </div>
-                     <div class="wcu_content">
-                        <div class="wcu_head">
-                           <span>Responsive Communication</span> 
-                        </div>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, eveniet. Esse natus hic voluptatem quibusdam.</p>
-                     </div>
-                  </div>
+                     @endforeach
+                  @endif
                </div>
             </div>
          </div>

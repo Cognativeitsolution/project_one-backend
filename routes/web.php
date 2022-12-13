@@ -14,6 +14,8 @@ use App\Jobs\ResendEmailVerificationNotice;
 use App\Http\Controllers\WebAboutController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\SatisfactionController;
+use App\Http\Controllers\Admin\CoreServiceController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\WebServiceController;
@@ -63,6 +65,8 @@ Route::middleware([IsAdmin::class])->group(function(){
     Route::get('admin/contact_us', [ContactusCotroller::class, 'index'])->name('contactus.home');    
     Route::resource('admin/sliders', SliderController::class);
     Route::resource('admin/blogs', BlogController::class);
+    Route::resource('admin/satisfactions', SatisfactionController::class);
+    Route::resource('admin/core_services', CoreServiceController::class);
     Route::resource('admin/jobs', JobController::class);
     Route::resource('admin/settings', SettingController::class);
     Route::resource('admin/careers', CareerController::class);

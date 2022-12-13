@@ -165,6 +165,24 @@
               </li>
               @endcan
 
+              @can('customerSatisfaction-list')
+              <li class="nav-item">
+                <a href="{{ url('/admin/satisfactions')}}" class="nav-link {{ Request::is('admin/satisfactions') ? 'active' : '' }}">
+                  <i class="fa fa-cogs nav-icon"></i>
+                  <p>Customer Satisfactions</p>
+                </a>
+              </li>
+              @endcan
+
+              @can('coreService-list')
+              <li class="nav-item">
+                <a href="{{ url('/admin/core_services')}}" class="nav-link {{ Request::is('admin/core_services') ? 'active' : '' }}">
+                  <i class="fa fa-users nav-icon"></i>
+                  <p>Core Services</p>
+                </a>
+              </li>
+              @endcan
+
               @can('page-list')
               <li class="nav-item">
                 <a href="{{ url('/admin/pages')}}" class="nav-link {{ Request::is('admin/pages') ? 'active' : '' }}">
