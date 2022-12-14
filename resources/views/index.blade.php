@@ -75,48 +75,21 @@
                   <span class="primary_sub-heading">Core Services</span>
                </div>
                <div class="core_grid-container">
-                  <div class="s_item">
-                     <div class="img_box">
-                        <img src="{{ url('assets/images/UI-UX.png') }}" alt="uiux" class="ui_img">
+                  @if(!empty($core_services) && $core_services->count())
+                     @foreach($core_services as $core_service)
+                     <div class="s_item">
+                        <div class="img_box">
+                           <img src="{{ url('thumbnail/' . $core_service->image) }}" alt="{{ $core_service->title }}" class="ui_img">
+                        </div>
+                        <h4 class="cs-head">
+                           {!! Str::words( $core_service->title, 4, ' ') !!}
+                        </h4>
+                        <p>
+                           {{ $core_service->short_description }}
+                        </p>
                      </div>
-                     <h4 class="cs-head">UI/UX Design</h4>
-                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad accusantium voluptas quas sint ab, dolorem minima et.</p>
-                  </div>
-                  <div class="s_item">
-                     <div class="img_box">
-                        <img src="{{ url('assets/images/software_development.png') }}" alt="software_develop" class="sd_img">
-                     </div>
-                     <h4 class="cs-head">Software Development</h4>
-                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad accusantium voluptas quas sint ab, dolorem minima et.</p>
-                  </div>
-                  <div class="s_item">
-                     <div class="img_box">
-                        <img src="{{ url('assets/images/mobile_app.png') }}" alt="mob" class="mb_img">
-                     </div>
-                     <h4 class="cs-head">Mobile App</h4>
-                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad accusantium voluptas quas sint ab, dolorem minima et.</p>
-                  </div>
-                  <div class="s_item">
-                     <div class="img_box">
-                        <img src="{{ url('assets/images/Programming-pana.png') }}" alt="programming" class="pp_img">
-                     </div>
-                     <h4 class="cs-head">Web Development</h4>
-                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad accusantium voluptas quas sint ab, dolorem minima et.</p>
-                  </div>
-                  <div class="s_item">
-                     <div class="img_box">
-                        <img src="{{ url('assets/images/data_analytic.png') }}" alt="da" class="da_img">
-                     </div>
-                     <h4 class="cs-head">Data Analytic</h4>
-                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad accusantium voluptas quas sint ab, dolorem minima et.</p>
-                  </div>
-                  <div class="s_item">
-                     <div class="img_box">
-                        <img src="{{ url('assets/images/Cloud sync-pana.png') }}" alt="cloud" class="cloud_img">
-                     </div>
-                     <h4 class="cs-head">Cloud Service</h4>
-                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad accusantium voluptas quas sint ab, dolorem minima et.</p>
-                  </div>
+                     @endforeach
+                  @endif
                </div>
             </div>
          </div>
@@ -676,24 +649,13 @@
                   </span>
                </div>
                <div class="oc_grid-container">
-                  <div class="oc_item">
-                     <img src="./assets/images/EP-Logo.png" alt="c1" class="client_one">
-                  </div>
-                  <div class="oc_item">
-                     <img src="./assets/images/ipo-logo.png" alt="c1" class="client_two">
-                  </div>
-                  <div class="oc_item">
-                     <img src="./assets/images/pseb-logo.png" alt="c1" class="client_one">
-                  </div>
-                  <div class="oc_item">
-                     <img src="./assets/images/themanifest.png" alt="c1" class="client_one">
-                  </div>
-                  <div class="oc_item">
-                     <img src="./assets/images/SECP-logo.png" alt="c1" class="client_one">
-                  </div>
-                  <div class="oc_item">
-                     <img src="./assets/images/EP-Logo.png" alt="c1" class="client_one">
-                  </div>
+                  @if(!empty($our_clients) && $our_clients->count())
+                     @foreach($our_clients as $our_client)
+                     <div class="oc_item">
+                        <img src="{{ url('thumbnail/' . $our_client->image ) }}" alt="c1" class="client_one">
+                     </div>
+                     @endforeach
+                  @endif                  
                </div>
             </div>
          </div>

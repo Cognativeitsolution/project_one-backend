@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SatisfactionController;
 use App\Http\Controllers\Admin\CoreServiceController;
+use App\Http\Controllers\Admin\OurClientController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\WebServiceController;
@@ -67,6 +68,7 @@ Route::middleware([IsAdmin::class])->group(function(){
     Route::resource('admin/blogs', BlogController::class);
     Route::resource('admin/satisfactions', SatisfactionController::class);
     Route::resource('admin/core_services', CoreServiceController::class);
+    Route::resource('admin/our_clients', OurClientController::class);
     Route::resource('admin/jobs', JobController::class);
     Route::resource('admin/settings', SettingController::class);
     Route::resource('admin/careers', CareerController::class);

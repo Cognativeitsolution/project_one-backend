@@ -34,5 +34,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PageMetasSeeder::class);
         $this->call(SatisfactionSeeder::class);
         $this->call(CoreServiceSeeder::class);
+        $this->call(OurClientSeeder::class);
     }
 }

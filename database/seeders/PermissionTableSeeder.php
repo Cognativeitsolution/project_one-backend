@@ -74,7 +74,11 @@ class PermissionTableSeeder extends Seeder
             'customerSatisfaction-list',
             'customerSatisfaction-create',
             'customerSatisfaction-edit',
-            'customerSatisfaction-delete'
+            'customerSatisfaction-delete',
+            'ourClient-list',
+            'ourClient-create',
+            'ourClient-edit',
+            'ourClient-delete'
         ];
      
         foreach ($permissions as $permission) {

@@ -177,8 +177,17 @@
               @can('coreService-list')
               <li class="nav-item">
                 <a href="{{ url('/admin/core_services')}}" class="nav-link {{ Request::is('admin/core_services') ? 'active' : '' }}">
-                  <i class="fa fa-users nav-icon"></i>
+                  <i class="fa fa-arrows-alt nav-icon"></i>
                   <p>Core Services</p>
+                </a>
+              </li>
+              @endcan
+
+              @can('ourClient-list')
+              <li class="nav-item">
+                <a href="{{ url('/admin/our_clients')}}" class="nav-link {{ Request::is('admin/our_clients') ? 'active' : '' }}">
+                  <i class="fa fa-users nav-icon"></i>
+                  <p>Our Clients</p>
                 </a>
               </li>
               @endcan

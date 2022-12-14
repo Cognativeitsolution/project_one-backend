@@ -958,6 +958,7 @@ ul.sub-service-link li a:hover {
 	height: 10rem;
 	border-radius: 50%;
 	position: relative;
+	/* overflow: hidden; */
 }
 
 .img_box img {

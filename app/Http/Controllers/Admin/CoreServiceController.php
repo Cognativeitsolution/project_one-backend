@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCoreServiceRequest;
 use App\Http\Requests\UpdateCoreServiceRequest;
 
+use App\Helpers\helper as Helper;
+
 class CoreServiceController extends Controller
 {
     /**
@@ -54,7 +56,7 @@ class CoreServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('core_services.add');
     }
 
     /**
@@ -65,7 +67,22 @@ class CoreServiceController extends Controller
      */
     public function store(StoreCoreServiceRequest $request)
     {
-        //
+        $core_service = CoreService::create($request->except(['image']));
+
+        if(isset($request['image'])){
+
+            $core_service_image = Helper::upload_image($request->file('image'));
+
+            $data2 = array(
+                'image'        => $core_service_image,
+            );
+
+            $core_service->update($data2);
+        }
+
+        Logs::add_log(CoreService::getTableName(), $core_service->id, $request->all(), 'add', '');
+        return redirect()->route('core_services.index')->with('success','Record Added !');
+
     }
 
     /**
@@ -87,7 +104,17 @@ class CoreServiceController extends Controller
      */
     public function edit(CoreService $coreService)
     {
-        //
+        $record = CoreService::select('core_services.*')
+            ->where('core_services.id', $coreService->id)
+            ->first();
+
+        $logs = Logs::get_logs_details(CoreService::getTableName(), $coreService->id);
+
+        if($record != false){
+            return view('core_services.edit', compact('record','logs'));
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -99,7 +126,26 @@ class CoreServiceController extends Controller
      */
     public function update(UpdateCoreServiceRequest $request, CoreService $coreService)
     {
-        //
+        $core_service = CoreService::find($coreService->id);
+
+        $status = $request->status == "on" ? 1 : 0 ;
+        $request['status'] = $status ;
+
+        $core_service->update($request->except(['image']));
+
+        if(isset($request['image'])){
+
+            $image = Helper::upload_image($request->file('image'));
+
+            $data2 = array(
+                'image'        => $image,
+            );
+
+            $core_service->update($data2);
+        }
+
+        Logs::add_log(CoreService::getTableName(), $core_service->id, $request->all(), 'edit', 1);
+        return redirect()->route('core_services.index')->with('success','Record Updated !');
     }
 
     /**
@@ -110,6 +156,9 @@ class CoreServiceController extends Controller
      */
     public function destroy(CoreService $coreService)
     {
-        //
+        $coreService = CoreService::find($coreService->id);
+        $coreService->delete();
+
+        return redirect()->route('core_services.index')->with('success', 'Record Deleted !');
     }
 }
