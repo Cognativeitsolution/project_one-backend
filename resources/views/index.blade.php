@@ -652,7 +652,7 @@
                   @if(!empty($our_clients) && $our_clients->count())
                      @foreach($our_clients as $our_client)
                      <div class="oc_item">
-                        <img src="{{ url('thumbnail/' . $our_client->image ) }}" alt="c1" class="client_one">
+                        <img src="{{ url('thumbnail/' . $our_client->image ) }}" alt="c1" class="client_one" width="120px">
                      </div>
                      @endforeach
                   @endif                  
