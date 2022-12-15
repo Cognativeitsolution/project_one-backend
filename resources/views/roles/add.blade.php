@@ -27,7 +27,10 @@
       </div>
 
     </div>
-
+  
+  
+    <div class="container mt-4">
+  
 
     @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -40,7 +43,7 @@
         </div>
     @endif
 
-<div class="container mt-4">
+
 
     <div class="card">
         
@@ -54,13 +57,13 @@
                 @error('name')<div class="error">{{ $message }}</div>@enderror
             </div>
 
-            <div class="form-group">
-                <strong>Permission:</strong>
-                <br/>
+            <div class="col-sm-12">
+              <h5>Permission:</h5>
+                
                 <?php $count = 0; ?>
                 @foreach($permission as $value)
                 <?php $count = $count + 1; ?>
-                    <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
+                    <label class="btn btn-primary btn-primary-outline">{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
                     {{ $value->name }} &nbsp;&nbsp; </label>
                     <?php if($count == 4){ ?>
                     <br/>
@@ -69,12 +72,13 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
+            
             </form>
 
         </div>
 
     </div>
-
+    
 </div>
-
+</div>
 @endsection

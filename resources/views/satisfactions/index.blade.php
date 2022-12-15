@@ -20,7 +20,7 @@
 
            @can('customerSatisfaction-create')
             <div class="col-sm-4">
-              <a href="{{ route('satisfactions.create') }}" class="btn btn-block btn-primary main-btn">Add Customer Satisfaction</a>
+              <a href="{{ route('satisfactions.create') }}" class="btn btn-block btn-primary main-btn">Add Satisfaction</a>
             </div>
            @endcan
             

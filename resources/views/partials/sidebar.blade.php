@@ -123,7 +123,7 @@
               @can('degree-list')
               <li class="nav-item">
                 <a href="{{ route('degrees.index') }}" class="nav-link {{ Request::is('admin/degrees') ? 'active' : '' }}">
-                  <i class="fa fa-file nav-icon"></i>
+                  <i class="fa fa-graduation-cap nav-icon"></i>
                   <p>Degrees</p>
                 </a>
               </li>
@@ -150,7 +150,7 @@
               @can('blog-list')
               <li class="nav-item">
                 <a href="{{ url('/admin/blogs')}}" class="nav-link {{ Request::is('admin/blogs') ? 'active' : '' }}">
-                  <i class="fa fa-brush nav-icon"></i>
+                  <i class="fa fa-cubes nav-icon"></i>
                   <p>Blogs</p>
                 </a>
               </li>
@@ -168,8 +168,8 @@
               @can('customerSatisfaction-list')
               <li class="nav-item">
                 <a href="{{ url('/admin/satisfactions')}}" class="nav-link {{ Request::is('admin/satisfactions') ? 'active' : '' }}">
-                  <i class="fa fa-cogs nav-icon"></i>
-                  <p>Customer Satisfactions</p>
+                  <i class="fa fa-check-circle nav-icon"></i>
+                  <p>Satisfactions</p>
                 </a>
               </li>
               @endcan
@@ -177,7 +177,7 @@
               @can('coreService-list')
               <li class="nav-item">
                 <a href="{{ url('/admin/core_services')}}" class="nav-link {{ Request::is('admin/core_services') ? 'active' : '' }}">
-                  <i class="fa fa-arrows-alt nav-icon"></i>
+                  <i class="fa fa-spinner nav-icon"></i>
                   <p>Core Services</p>
                 </a>
               </li>

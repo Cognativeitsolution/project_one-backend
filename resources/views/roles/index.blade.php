@@ -7,9 +7,10 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
+      
         <div class="row mb-2">
           <div class="col-sm-6">
-            <div class="col-sm-4"></div>
+            <div class="col-sm-3"></div>
 
             @can('role-create')
             <div class="col-sm-4">

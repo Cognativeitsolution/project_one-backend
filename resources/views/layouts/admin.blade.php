@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <link rel="shortcut icon" href="{{ asset('images/' . $settings->favicon) }}" type="image/x-icon">
     <!-- Fonts  -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -47,4 +47,13 @@
     @yield('js')
 
 </body>
+<script>
+    $(document).ready(function(){
+        
+            setInterval(function () {
+                $('.content-wrapper').css('min-height','1000px');
+            }, 1500);
+    
+    });
+</script>
 </html>

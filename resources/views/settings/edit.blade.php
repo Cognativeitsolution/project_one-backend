@@ -152,7 +152,7 @@
               <div class="form-group col-md-4 col-sm-4 col-lg-4 col-xs-6">
                 <strong>Thumbnail Header Logo </strong>
                 <br/>
-                <img src="{{ url('/thumbnail/') }}/{{ $record->header_logo }}" >
+                <img src="{{ url('/thumbnail/') }}/{{ $record->header_logo }}" width="150" >
               </div>
               @endif
 
@@ -160,7 +160,7 @@
               <div class="form-group col-md-4 col-sm-4 col-lg-4 col-xs-6">
                 <strong>Thumbnail Footer Logo </strong>
                 <br/>
-                <img src="{{ url('/thumbnail/') }}/{{ $record->footer_logo }}" >
+                <img src="{{ url('/thumbnail/') }}/{{ $record->footer_logo }}" width="150" >
               </div>
               @endif
 
