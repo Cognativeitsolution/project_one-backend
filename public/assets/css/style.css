@@ -95,7 +95,7 @@ a.top_head-link span i {
 
 /* Header Styling */
 .header {
-	padding: 20px;
+	padding: 10px;
 	background-color: #fff;
 }
 
@@ -104,6 +104,19 @@ a.top_head-link span i {
 	justify-content: space-between;
 	align-items: center;
 	color: #ffff;
+	grid-gap: 20px;
+}
+
+.logo_box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 0 0 150px;
+}
+
+.logo_box .nav-brand {
+    display: block;
+    width: auto;
 }
 
 .primary_header ul {
@@ -145,7 +158,7 @@ a.top_head-link span i {
 }
 
 .nav-brand_inner-box .logo_img {
-	width: 130px;
+	width: 100%;
 }
 
 .menu_toggle-button {
@@ -452,6 +465,7 @@ ul.sub-service-link li a:hover {
 
 .footer-col>ul {
 	list-style: none;
+	padding-left: 0 !important;
 }
 
 .footer-col h4 {
@@ -461,6 +475,10 @@ ul.sub-service-link li a:hover {
 	margin-bottom: 35px;
 	font-weight: 500;
 	position: relative;
+}
+
+.foo-logo-box {
+    flex: 0 0 150px;
 }
 
 .footer-col h4::before {
