@@ -45,7 +45,7 @@
                 <div class="card-header">
                 <div class="row">
                     <div class="col-sm-6">
-                    <span class="tbl-head">Displaying {{$experiences->count()}} of {{ $experiences->total() }} blog(s).</span>
+                    <span class="tbl-head">Displaying {{$experiences->count()}} of {{ $experiences->total() }} experience(s).</span>
                     </div>
                     <div class="col-sm-6">
                     <form class="float-right" name="user_search" id="" method="get" action="{{ route('experiences.index')}}">
@@ -70,7 +70,7 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
-                        <th>ID</th>
+                        <th>S.No</th>
                         <th>Name</th>
                         <th style="text-align:center;">Status</th>
                         <th style="text-align:center;">Updated</th>
@@ -86,9 +86,10 @@
                     @endif
                     
                     @if(!empty($experiences) && $experiences->count())
+                    @php $no=1; @endphp
                       @foreach( $experiences as $experience)
                         <tr>
-                          <td>{{ $experience->id }}</td>
+                          <td>{{ $no++ }}</td>
                           <td>{{ $experience->name }}</td>
                           <td style="text-align:center;">
                             @if ($experience->status == 1)

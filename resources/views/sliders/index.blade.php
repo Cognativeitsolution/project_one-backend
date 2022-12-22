@@ -70,7 +70,7 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
-                        <th>ID</th>
+                        <th>S.No</th>
                         <th>Image</th>
                         <th>Title</th>
                         <th style="text-align:center;">Description</th>
@@ -87,9 +87,10 @@
                     @endif
                     
                     @if(!empty($record) && $record->count())
+                    @php $no=1; @endphp
                       @foreach( $record as $slider)
                         <tr>
-                          <td>{{ $slider->id }}</td>
+                          <td>{{ $no++ }}</td>
                           <td>
                             @if( !empty($slider->image) )
                             <img width="50px" src="{{ url('/thumbnail/') }}/{{ $slider->image }}" >
