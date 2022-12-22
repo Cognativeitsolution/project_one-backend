@@ -71,7 +71,7 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
-                        <th>ID</th>
+                        <th>S.No</th>
                         <th>Image</th>
                         <th>Name</th>
                         <th style="text-align:center;">Title</th>
@@ -89,9 +89,10 @@
                     @endif
                     
                     @if(!empty($record) && $record->count())
+                    @php $no=1; @endphp
                       @foreach( $record as $blog)
                         <tr>
-                          <td>{{ $blog->id }}</td>
+                          <td>{{ $no++ }}</td>
                           <td>
                             @if( !empty($blog->blog_image) )
                             <img width="50px" src="{{ url('/thumbnail/') }}/{{ $blog->blog_image }}" >
