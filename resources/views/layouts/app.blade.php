@@ -84,30 +84,7 @@
                   <div class="sidebar_nav_box">
                      <ul class="un_sidebar mobile_menu">
                         <li class="sidebar_list"><a href="{{ url('/') }}" class="sidebar_list_link">Home</a></li>
-                        <li class="sidebar_list"><a href="{{ url('/services') }}" class="sidebar_list_link">Services<i class="fa fa-chevron-down"></i></a>
-                           <ul>
-                           @foreach($services as $service)
-                              @if($service->parent_id == 1)
-                                 <li><a class="sidebar_list_link" href="{{ route('web.service_detail', $service->slug) }}">{{ $service->name }}</a></li>
-                              @endif
-                           @endforeach
-                           @foreach($services as $service)
-                              @if($service->parent_id == 2)
-                                 <li><a class="sidebar_list_link" href="{{ route('web.service_detail', $service->slug) }}">{{ $service->name }}</a></li>
-                              @endif
-                           @endforeach
-                           @foreach($services as $service)
-                              @if($service->parent_id == 3)
-                                 <li><a class="sidebar_list_link" href="{{ route('web.service_detail', $service->slug) }}">{{ $service->name }}</a></li>
-                              @endif
-                           @endforeach
-                           @foreach($services as $service)
-                              @if($service->parent_id == 4)
-                                 <li><a class="sidebar_list_link" href="{{ route('web.service_detail', $service->slug) }}">{{ $service->name }}</a></li>
-                              @endif
-                           @endforeach
-                           </ul>
-                        </li>
+                        <li class="sidebar_list"><a href="{{ url('/services') }}" class="sidebar_list_link">Services</a></li>
                         <li class="sidebar_list dropdown_sdlist"><a href="#" style="cursor:default;" class="sidebar_list_link sddropbtn">Resources<i class="fa fa-chevron-down"></i></a>
                            <ul>
                               <li><a href="{{ url('/blogs') }}" class="sidebar_list_link">Blogs</a></li>
@@ -140,7 +117,7 @@
                         <ul>
                            <li><a href="{{ url('/') }}" class="primary_nav-menu">Home</a></li>
                            <li class="service-dropdown" id="service_dropbtn">
-                              <a href="#" style="cursor:default;" class="service_dropbtn primary_nav-menu">Services</a>
+                              <a href="{{ url('/services') }}" class="service_dropbtn primary_nav-menu">Services</a>
                               <!---Service Mega Menu-->
                               <div class="mm-s-menu-container">
                                  <div class="container">

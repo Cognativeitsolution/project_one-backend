@@ -205,12 +205,10 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
   //previous tab
   console.log(e.relatedTarget);
 })
-var chk = 0;
-$('.mobile_menu li').click(function (evt) {
-  evt.preventDefault();
-  //$(this).children().hide();
-  //$('.mobile_menu li ul').hide();
+
+$('.mobile_menu li').click(function () {
   
+    
   $(this).find('ul').slideToggle();
   
   
