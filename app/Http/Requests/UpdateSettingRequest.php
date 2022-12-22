@@ -24,9 +24,9 @@ class UpdateSettingRequest extends FormRequest
     public function rules()
     {
         return [
-            'header_logo'               => ['mimes: jpg, png, jpeg'],
-            'footer_logo'               => ['mimes: jpg, png, jpeg'],
-            'favicon'                   => ['mimes: jpg, png, jpeg', 'ico'],
+            'header_logo'               => 'mimes:jpeg,png,jpg',
+            'footer_logo'               => 'mimes:jpeg,png,jpg',
+            'favicon'                   => 'mimes:jpeg,png,jpg',
             'contact_number'            => ['required'],
             'contact_email'             => ['required', 'email'],
             'location_address'          => ['nullable', 'string', 'min:10', 'max:100'],
