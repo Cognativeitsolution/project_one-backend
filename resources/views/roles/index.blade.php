@@ -55,7 +55,7 @@
                     <table class="table table-hover text-nowrap">
                       <thead>
                         <tr>
-                          <th width="50px" style="text-align:center;">No</th>
+                          <th width="50px" style="text-align:center;">S.No</th>
                           <th>Name</th>
                           <th width="250px" style="text-align:center;">Action</th>
                         </tr>
@@ -67,10 +67,10 @@
                           <td colspan="3">No roles to display.</td>
                       </tr>
                       @endif
-
+                      @php $no=1; @endphp
                       @foreach ($roles as $key => $role)
                       <tr>
-                          <td style="text-align:center;">{{ $role->id }}</td>
+                          <td style="text-align:center;">{{ $no++ }}</td>
                           <td>{{ $role->name }}</td>
 
                           <td width="250px" style="text-align:center;float:right;">

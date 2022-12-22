@@ -45,7 +45,7 @@
                 <div class="card-header">
                 <div class="row">
                     <div class="col-sm-6">
-                    <span class="tbl-head">Displaying {{$degrees->count()}} of {{ $degrees->total() }} blog(s).</span>
+                    <span class="tbl-head">Displaying {{$degrees->count()}} of {{ $degrees->total() }} degree(s).</span>
                     </div>
                     <div class="col-sm-6">
                     <form class="float-right" name="user_search" id="" method="get" action="{{ route('degrees.index')}}">
@@ -70,7 +70,7 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
-                        <th >ID</th>
+                        <th>S.No</th>
                         <th>Name</th>
                         <th style="text-align:center;">Status</th>
                         <th style="text-align:center;">Updated</th>
@@ -86,9 +86,10 @@
                     @endif
                     
                     @if(!empty($degrees) && $degrees->count())
+                    @php $no=1; @endphp
                       @foreach( $degrees as $degree)
                         <tr>
-                          <td>{{ $degree->id }}</td>
+                          <td>{{ $no++ }}</td>
                           <td>{{ $degree->name }}</td>
                           <td style="text-align:center;">
                             @if ($degree->status == 1)

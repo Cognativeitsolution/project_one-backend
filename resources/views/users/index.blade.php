@@ -71,9 +71,10 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
-                        <th>ID</th>
+                        <th>S.No</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Status</th>
                         <th>Created</th>
                         <th>Updated</th>
                         <th>Action</th>
@@ -88,27 +89,28 @@
                     @endif
                     
                     @if(!empty($users) && $users->count())
+                      @php $no = 1; @endphp
                       @foreach( $users as $user)
                         <tr>
-                          <td>{{ $user->id }}</td>
+                          <td>{{ $no++ }}</td>
                           <td>{{ $user->name }}</td>
                           <td>{{ $user->email }}</td>
+                          <td>{{ $user->email_verified_at ? 'Active' : 'Inactive'}}</td>
                           <td>{{ $user->created_diff }}</td>
                           <td>{{ $user->updated_at->format('Y-m-d H:i:s') }}</td>
                           <td>
                             @can('user-edit')
-                            <a href="{{ route('users.edit', $user->id)}}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('users.edit', $user->id)}}" class="btn btn-primary tableaction">Edit</a>
                             @endcan
                             
                             @can('user-delete')
-                              <td>
-                              <form action="{{ route('users.destroy', $user->id)}}" method="post">
+                              
+                              <form action="{{ route('users.destroy', $user->id)}}" style="display: inline;" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
+                                <button class="btn btn-danger del-btn" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
                               </form>
 
-                              </td>
                               @endcan
                           </td>
                         </tr>

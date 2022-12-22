@@ -115,7 +115,7 @@
               <li class="nav-item">
                 <a href="{{ route('careers.index') }}" class="nav-link {{ Request::is('admin/careers') ? 'active' : '' }}">
                   <i class="fa fa-paste nav-icon"></i>
-                  <p>Careers</p>
+                  <p>Applications</p>
                 </a>
               </li>
               @endcan

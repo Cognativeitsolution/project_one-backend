@@ -15,7 +15,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Home</a></li>
-              <li class="breadcrumb-item">All Careers</li>
+              <li class="breadcrumb-item">All Applications</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -32,7 +32,7 @@
               <div class="card-header">
               <div class="row">
                     <div class="col-sm-6">
-                    <span class="tbl-head"> Displaying {{$careers->count()}} of {{ $careers->total() }} career(s).</span>
+                    <span class="tbl-head"> Displaying {{$careers->count()}} of {{ $careers->total() }} applications(s).</span>
                     </div>
                     <div class="col-sm-6">
                     <form class="float-right" name="user_search" id="" method="get" action="{{ route('careers.index')}}">
@@ -56,7 +56,7 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
-                        <th>ID</th>
+                        <th>S.NO</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Job Title</th>
@@ -75,9 +75,10 @@
                     @endif
                     
                     @if(!empty($careers) && $careers->count())
+                    @php $no=1; @endphp
                       @foreach( $careers as $career)
                         <tr>
-                          <td>{{ $career->id }}</td>
+                          <td>{{ $no++ }}</td>
                           <td>{{ $career->name }}</td>
                           <td>{{ $career->email }}</td>
                           <td>{{ $career->title }}</td>

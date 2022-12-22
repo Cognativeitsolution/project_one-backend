@@ -69,7 +69,7 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
-                        <th>ID</th>
+                        <th>S.No</th>
                         <th>Name</th>
                         <th style="text-align:center;">Email</th>
                         <th style="text-align:center;">Role</th>
@@ -87,9 +87,10 @@
                     @endif
                     
                     @if(!empty($admins) && $admins->count())
+                    @php $no=1; @endphp
                       @foreach( $admins as $admin)
                         <tr>
-                          <td>{{ $admin->id }}</td>
+                          <td>{{ $no++ }}</td>
                           <td>{{ $admin->name }}</td>
                           <td style="text-align:center;">{{ $admin->email }}</td> 
                           

@@ -58,7 +58,7 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
-                        <th>ID</th>
+                        <th>S.No</th>
                         <th>Name</th>
                         <th style="text-align:center;">Email</th>
                         <th style="text-align:center;">Message</th>
@@ -75,9 +75,10 @@
                     @endif
                     
                     @if(!empty($contact_us) && $contact_us->count())
+                    @php $no=1; @endphp
                       @foreach( $contact_us as $contact)
                         <tr>
-                          <td>{{ $contact->id }}</td>
+                          <td>{{ $no++ }}</td>
                           <td>{{ $contact->name }}</td>
                           <td style="text-align:center;">{{ $contact->email }}</td>
                           <td style="text-align:center;">{{ Str::words( $contact->message, 5, ' ...') }}</td>                        

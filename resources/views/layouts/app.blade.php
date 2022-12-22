@@ -84,7 +84,7 @@
                   <div class="sidebar_nav_box">
                      <ul class="un_sidebar mobile_menu">
                         <li class="sidebar_list"><a href="{{ url('/') }}" class="sidebar_list_link">Home</a></li>
-                        <li class="sidebar_list"><a href="#" style="cursor:default;" class="sidebar_list_link">Services<i class="fa fa-chevron-down"></i></a>
+                        <li class="sidebar_list"><a href="{{ url('/services') }}" class="sidebar_list_link">Services<i class="fa fa-chevron-down"></i></a>
                            <ul>
                            @foreach($services as $service)
                               @if($service->parent_id == 1)
