@@ -56,7 +56,14 @@
 		justify-content: center;
 		grid-gap: 10px;
 	}
+	
+	.secondary_about_slider, .secondary_career_slider {
+		height: 100px;
+	}
 
+	nav.primary_menu {
+		flex: 0 0 fit-content;
+	}
 
 	.col-1,.col-2,.col-3 {
 		flex: 1 !important;
@@ -109,11 +116,17 @@
 	}
 
 	.connection_box {
-		flex-direction: row;
+		flex-direction: column;
+		align-items: flex-start;
 	}
 }
 
 @media(max-width: 767px) {
+
+	.secondary_about_slider, .secondary_career_slider {
+		height: 110px;
+	}
+
 	.related_head {
 		text-align: center;
 	}

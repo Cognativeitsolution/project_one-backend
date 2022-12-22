@@ -127,7 +127,7 @@
       <header class="header">
          <div class="container">
             <div class="row">
-               <div class="col md-12">
+               <div class="col-md-12">
                   <div class="primary_header">
                      <div class="logo_box">
                         <a href="{{ url('/') }}" class="nav-brand">
