@@ -101,7 +101,6 @@ Route::get('/linkedin', [RegisterController::class, 'linkedin']);
 Route::get('/linkedin/redirect', [RegisterController::class, 'linkedinRedirect']);
 
 
-
 // Perform email verification
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
@@ -112,8 +111,6 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
     return redirect()->route('web.home')->with('message', $message)->with('status', $status);
 })->middleware(['signed'])->name('verification.verify');
-
-
 
 // Resend verification email on user request
 Route::post('/email/verification-notification', function (Request $request) {
@@ -134,3 +131,13 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', $message)->with('status', $status);
     
 })->middleware('guest')->name('verification.send');
+
+Route::get('clear_cache', function () {
+
+    \Artisan::call('config:clear');
+    \Artisan::call('cache:clear');
+    \Artisan::call('route:clear');
+
+    return "Cleared";
+
+});

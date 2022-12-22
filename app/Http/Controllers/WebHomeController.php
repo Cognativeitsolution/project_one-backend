@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class WebHomeController extends Controller
 {
-    public function index() {        
+    public function index() {
         $slider = Slider::get();
         $customer_satisfactions = Satisfaction::where('status', 1)->get();
         $core_services = CoreService::where('status', 1)->get();

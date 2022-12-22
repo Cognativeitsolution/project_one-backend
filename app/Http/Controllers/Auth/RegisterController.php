@@ -16,6 +16,8 @@ use App\Providers\RouteServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Mail;
+use App\Mail\MyTestMail;
 
 class RegisterController extends Controller
 {
@@ -158,7 +160,13 @@ class RegisterController extends Controller
 
         $user = $this->create($request->all());
 
-        dispatch(new VerifyEmailJob($user));
+        //dispatch(new VerifyEmailJob($user));
+        $details['email'] = $user->email ;
+        $details['id'] = $user->id ;
+
+        //Mail::to($request->email)->send(new MyTestMail($details));
+
+        event(new Registered($user));
 
         if (!is_null($user->emailVerifiedAt)) {
             $this->guard()->login($user);
