@@ -33,14 +33,14 @@
             <div class="col-sm-4"></div>
 
             <div class="col-sm-4">
-              <a href="{{ route('careers.index') }}" class="btn btn-block btn-primary">View Careers</a>
+              <a href="{{ route('careers.index') }}" class="btn btn-block btn-primary">View Applications</a>
             </div>
 
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Home</a></li>
-              <li class="breadcrumb-item">View Career</li>
+              <li class="breadcrumb-item">View Application</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

@@ -79,7 +79,11 @@
                       @foreach( $careers as $career)
                         <tr>
                           <td>{{ $no++ }}</td>
-                          <td>{{ $career->name }}</td>
+                          <td>{{ $career->name }}
+                            <?php if($career->new_apply == 1){ ?>
+                              <label class='badge badge-success table-badge'>New</label>
+                            <?php }?>
+                          </td>
                           <td>{{ $career->email }}</td>
                           <td>{{ $career->title }}</td>
                           <td>{{ $career->experience }}</td>

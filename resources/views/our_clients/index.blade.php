@@ -69,7 +69,7 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
-                        <th>ID</th>
+                        <th>S.No</th>
                         <th>Image</th>
                         <th style="text-align:center;">Title</th>
                         <th style="text-align:center;">Updated</th>
@@ -85,9 +85,10 @@
                     @endif
                     
                     @if(!empty($record) && $record->count())
+                    @php $no = 1; @endphp
                       @foreach( $record as $our_client)
                         <tr>
-                          <td>{{ $our_client->id }}</td>
+                          <td>{{ $no++ }}</td>
                           <td>
                             @if( !empty($our_client->image) )
                             <img width="50px" src="{{ url('/images/') }}/{{ $our_client->image }}" >

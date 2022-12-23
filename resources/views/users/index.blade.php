@@ -84,7 +84,7 @@
 
                     @if ($users->count() == 0)
                     <tr>
-                        <td colspan="6" style="text-align:center;">No users to display.</td>
+                        <td colspan="7" style="text-align:center;">No users to display.</td>
                     </tr>
                     @endif
                     
@@ -95,7 +95,13 @@
                           <td>{{ $no++ }}</td>
                           <td>{{ $user->name }}</td>
                           <td>{{ $user->email }}</td>
-                          <td>{{ $user->email_verified_at ? 'Active' : 'Inactive'}}</td>
+                          <td>
+                            <?php if($user->email_verified_at){ ?>
+                              <label class='badge badge-success table-badge'>Active</label>
+                              <?php }else{ ?>
+                              <label class='badge badge-danger table-badge'>InActive</label>
+                              <?php } ?>
+                          </td>
                           <td>{{ $user->created_diff }}</td>
                           <td>{{ $user->updated_at->format('Y-m-d H:i:s') }}</td>
                           <td>

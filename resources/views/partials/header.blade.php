@@ -37,6 +37,15 @@
     <!-- Right navbar links -->
      <ul class="navbar-nav ml-auto"> 
       <!-- Messages Dropdown Menu -->
+      <li>
+        <a class="nav-link2" href="{{ route('careers.index') }}" >
+        <i class="fa fa-paste"></i>
+          <span class="badge badge-danger navbar-badge">
+            {{ isset($new_applications) ? $new_applications : 0 }}
+          </span>
+        </a>
+      </li>
+
        <li class="nav-item dropdown">
         
 
@@ -53,6 +62,14 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                      <a class="dropdown-item" href="{{ url('/admin/settings')}}">
+                        <span class="logout_icon">
+                          <i class="fa fa-cogs" width="24" height="24"></i>
+                        </span>
+                            Settings
+                      </a>
+
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">

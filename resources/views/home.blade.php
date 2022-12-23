@@ -1,108 +1,8 @@
 @extends('layouts.admin')
 
 @section('css')
-<style>
 
-
-.calendar {
-  margin: 20px 0;
-}
-
-.calendar > * {
-  margin: 10px 0;
-}
-
-.heading {
-  position: relative;
-  background-color: #1f2d3d;
-  padding: 8px 30px;
-  text-align: center;
-  color: #fff;
-  border-radius: 5px;
-}
-.btn-custom{
-  margin-top:33px;
-}
-.heading .btn {
-  position: absolute;
-  top: 24%;
-  height: 60%;
-  border: 0;
-  background: none;
-  font-size: 1.2em;
-  line-height: 0;
-  color: white;
-  cursor: pointer;
-  opacity: 0.5;
-}
-
-.heading .btn:active {
-  text-shadow: 0 0 2px rgb(35, 35, 46);
-  color: #fff;
-  opacity: 1;
-}
-
-.heading .prev {
-  left: 10px;
-}
-
-.heading .next {
-  right: 10px;
-}
-
-.calendar ul {
-  list-style-type: none;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 1px;
-  padding-left: 0;
-}
-
-.calendar li:nth-child(7n) {
-  color: #ffc107;
-}
-
-.calendar li:nth-child(7n-1) {
-  color: #dc3545;
-}
-
-.weekdays {
-  text-align: center;
-  background-color: rgb(31 45 61);
-  color: #17a2b8;
-  padding: 5px;
-}
-
-.days li {
-  text-align: right;
-  border: 1px solid rgb(31 45 61);
-  background-color: rgb(31 45 61);
-  border-radius: 3px;
-  padding: 5px 30% 5px 5px;
-  color: #fff;
-}
-
-footer {
-  font-size: 0.8em;
-  text-decoration: underline;
-  font-weight: 600;
-  background-color: #7fffd4;
-  text-align: center;
-  padding: 4px;
-}
-
-footer:hover {
-  cursor: pointer;
-  text-decoration: none;
-}
-
-footer:active {
-  color: red;
-}
-
-</style>
 @endsection
-
 
 @section('content')
   <!-- Content Wrapper. Contains page content -->
@@ -147,58 +47,148 @@ footer:active {
         <!-- Info boxes -->
         <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box service-info">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+            <a href="{{ url('/admin/blogs')}}">
+              <div class="info-box service-info">
+              <span class="info-box-icon bg-maroon elevation-1"><i class="fas fa-cubes"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Services</span>
+                <span class="info-box-text">Blogs</span>
                 <span class="info-box-number">
-                  10
-                  <small>%</small>
+                  {{ isset($blogs_count) ? $blogs_count : 50 }}
                 </span>
               </div>
               <!-- /.info-box-content -->
             </div>
+            </a>
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
+          <a href="{{ url('/admin/users')}}">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+              <span class="info-box-icon bg-blue elevation-1"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content career-info">
-                <span class="info-box-text">Careers</span>
-                <span class="info-box-number">41,410</span>
+                <span class="info-box-text">Users</span>
+                <span class="info-box-number">
+                  {{ isset($users_count) ? $users_count : 50 }}  
+                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
+          </a>
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
 
           <div class="col-12 col-sm-6 col-md-3">
+          <a href="{{ route('careers.index') }}">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1 job-info"><i class="fas fa-briefcase"></i></span>
+              <span class="info-box-icon bg-success elevation-1 job-info"><i class="fa fa-paste"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Jobs</span>
-                <span class="info-box-number">760</span>
+                <span class="info-box-text">Applications</span>
+                <span class="info-box-number">
+                  {{ isset($applications_count) ? $applications_count : 50 }} 
+                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
+          </a>
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
+          <a href="{{ url('/admin/sliders')}}">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+            
+              <span class="info-box-icon bg-purple elevation-1"><i class="fa fa-newspaper"></i></span>
 
               <div class="info-box-content user-info">
-                <span class="info-box-text">Users</span>
-                <span class="info-box-number">23,000</span>
+                <span class="info-box-text">Sliders</span>
+                <span class="info-box-number">
+                  {{ isset($sliders_count) ? $sliders_count : 50 }}   
+                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
+            </a>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+          <a href="{{ url('/admin/core_services')}}">
+            <div class="info-box mb-3">
+            
+              <span class="info-box-icon bg-teal elevation-1"><i class="fa fa-spinner"></i></span>
+
+              <div class="info-box-content user-info">
+                <span class="info-box-text">Core Services</span>
+                <span class="info-box-number">
+                  {{ isset($coreServices_count) ? $coreServices_count : 50 }}
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            </a>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+          <a href="{{ url('/admin/pages')}}">
+            <div class="info-box mb-3">
+            
+              <span class="info-box-icon bg-navy elevation-1"><i class="fa fa-file"></i></span>
+
+              <div class="info-box-content user-info">
+                <span class="info-box-text">Pages</span>
+                <span class="info-box-number">
+                  {{ isset($pages_count) ? $pages_count : 50 }}
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            </a>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+          <a href="{{ url('/admin/jobs')}}">
+            <div class="info-box mb-3">
+            
+              <span class="info-box-icon bg-pink elevation-1"><i class="fa fa-briefcase"></i></span>
+
+              <div class="info-box-content user-info">
+                <span class="info-box-text">Jobs</span>
+                <span class="info-box-number">
+                  {{ isset($jobs_count) ? $jobs_count : 50 }}
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            </a>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+          <a href="{{ url('/admin/our_clients')}}">
+            <div class="info-box mb-3">
+            
+              <span class="info-box-icon bg-lightblue elevation-1"><i class="fa fa-users"></i></span>
+
+              <div class="info-box-content user-info">
+                <span class="info-box-text">Our Clients</span>
+                <span class="info-box-number">
+                  {{ isset($ourClients_count) ? $ourClients_count : 50 }}
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            </a>
             <!-- /.info-box -->
           </div>
           <!-- /.col -->

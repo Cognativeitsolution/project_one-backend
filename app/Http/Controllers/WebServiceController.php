@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Models\CoreService;
 use Illuminate\Http\Request;
 
 class WebServiceController extends Controller
 {
     // Render services view
     public function index() {
-        return view('services');
+        $records = CoreService::where('status',1)
+            ->select('id','title','short_description','image')
+            ->get();
+
+        return view('services', compact('records'));
     }
 
     public function service_detail($slug){

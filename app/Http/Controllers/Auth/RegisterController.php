@@ -162,11 +162,12 @@ class RegisterController extends Controller
 
         //dispatch(new VerifyEmailJob($user));
         $details['email'] = $user->email ;
+        $details['verification_code'] = rand(10000,9999999);
         $details['id'] = $user->id ;
 
-        //Mail::to($request->email)->send(new MyTestMail($details));
+        Mail::to($request->email)->send(new MyTestMail($details));
 
-        event(new Registered($user));
+        //event(new Registered($user));
 
         if (!is_null($user->emailVerifiedAt)) {
             $this->guard()->login($user);
