@@ -4,15 +4,11 @@
     <title>Email Verification Mail</title>
 </head>
 <body>
-    <h1>Title</h1>
-    <p>{{ $details['verification_code'] }}</p>
+    <h1>Welcome - {{ $user_name }}</h1>
    
-    <p>Thank you</p>
-
-  
-    Please verify your email with bellow link: 
-    {{-- some thing issue in this route  --}}
-    <a href="#">Verify Email</a>
+    <p>Thank you for registration, Please verify your email with bellow link: </p>
+    
+    <a href="{{ url('/verify-email/'. $code ) }}">Verify Email</a>
 
 </body>
 </html>

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\ContactUsJob;
 use App\Rules\Captcha;
 use App\Models\Contact;
 use App\Models\Setting;
+use App\Mail\ContactMail;
+use App\Jobs\ContactUsJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -28,7 +29,20 @@ class ContactController extends Controller
 
         $settings = Setting::select('contact_email')->first();
 
-        dispatch(new ContactUsJob($settings->contact_email, $request->all()));
+        // dispatch(new ContactUsJob($settings->contact_email, $request->all()));
+
+        // Mail::to($settings->contact_email, env('COMPANY_NAME'))->send(new ContactMail($request->all()));
+
+        $data = [
+            'name'  => $request->name,
+            'email'  => $request->email,
+            'body_message' => $request->message
+            ];
+
+        Mail::send('emails.contact_mail', $data, function($message) use ($settings) {
+            $message->to($settings->contact_email , "Cognitive Contact Us")
+            ->subject('Cognitive IT Solutions - Contact Us');
+        });
 
         // Store message
         $contact = Contact::create($request->except('g-recaptcha-response', '_token'));
