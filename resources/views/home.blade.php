@@ -54,11 +54,9 @@
               <div class="info-box-content">
                 <span class="info-box-text">Blogs</span>
                 <span class="info-box-number">
-<<<<<<< HEAD
-                  10
-=======
+
                   {{ isset($blogs_count) ? $blogs_count : 50 }}
->>>>>>> origin
+
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -74,13 +72,9 @@
 
               <div class="info-box-content career-info">
                 <span class="info-box-text">Users</span>
-<<<<<<< HEAD
-                <span class="info-box-number">41</span>
-=======
                 <span class="info-box-number">
                   {{ isset($users_count) ? $users_count : 50 }}  
                 </span>
->>>>>>> origin
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -96,13 +90,11 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Applications</span>
-<<<<<<< HEAD
-                <span class="info-box-number">760</span>
-=======
+
                 <span class="info-box-number">
                   {{ isset($applications_count) ? $applications_count : 50 }} 
                 </span>
->>>>>>> origin
+
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -118,13 +110,11 @@
 
               <div class="info-box-content user-info">
                 <span class="info-box-text">Sliders</span>
-<<<<<<< HEAD
-                <span class="info-box-number">23</span>
-=======
+
                 <span class="info-box-number">
                   {{ isset($sliders_count) ? $sliders_count : 50 }}   
                 </span>
->>>>>>> origin
+
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -141,13 +131,11 @@
 
               <div class="info-box-content user-info">
                 <span class="info-box-text">Core Services</span>
-<<<<<<< HEAD
-                <span class="info-box-number">53</span>
-=======
+
                 <span class="info-box-number">
                   {{ isset($coreServices_count) ? $coreServices_count : 50 }}
                 </span>
->>>>>>> origin
+
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -164,13 +152,11 @@
 
               <div class="info-box-content user-info">
                 <span class="info-box-text">Pages</span>
-<<<<<<< HEAD
-                <span class="info-box-number">8</span>
-=======
+
                 <span class="info-box-number">
                   {{ isset($pages_count) ? $pages_count : 50 }}
                 </span>
->>>>>>> origin
+
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -187,13 +173,11 @@
 
               <div class="info-box-content user-info">
                 <span class="info-box-text">Jobs</span>
-<<<<<<< HEAD
-                <span class="info-box-number">23</span>
-=======
+
                 <span class="info-box-number">
                   {{ isset($jobs_count) ? $jobs_count : 50 }}
                 </span>
->>>>>>> origin
+
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -210,13 +194,11 @@
 
               <div class="info-box-content user-info">
                 <span class="info-box-text">Our Clients</span>
-<<<<<<< HEAD
-                <span class="info-box-number">25</span>
-=======
+
                 <span class="info-box-number">
                   {{ isset($ourClients_count) ? $ourClients_count : 50 }}
                 </span>
->>>>>>> origin
+
               </div>
               <!-- /.info-box-content -->
             </div>
