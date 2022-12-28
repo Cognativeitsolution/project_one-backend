@@ -95,7 +95,7 @@
                            @foreach($records as $core_service)
                               <div class="ocs_grid-item">
                                  <div class="image_box">
-                                    <img src="{{ url('thumbnail/' . $core_service->image) }}" alt="{{ $core_service->title }}" class="ocs_img">
+                                    <img src="{{ url('images/' . $core_service->image) }}" alt="{{ $core_service->title }}" class="ocs_img">
                                  </div>
                                  <div class="ocs-head">
                                     {!! Str::words( $core_service->title, 4, ' ') !!}
