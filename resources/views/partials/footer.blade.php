@@ -29,6 +29,15 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
 <!-- <script>
+    $(document).ready(function(){
+        
+            setInterval(function () {
+                $('.content-wrapper').css('min-height','1000px');
+            }, 1500);
+    
+    });
+</script> -->
+<!-- <script>
   const selectMonth = document.querySelector("select");
 const yearInput = document.querySelector("input");
 const enterBtn = document.querySelector("button");

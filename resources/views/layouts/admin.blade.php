@@ -47,13 +47,5 @@
     @yield('js')
 
 </body>
-<script>
-    $(document).ready(function(){
-        
-            setInterval(function () {
-                $('.content-wrapper').css('min-height','1000px');
-            }, 1500);
-    
-    });
-</script>
+
 </html>
