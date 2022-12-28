@@ -82,22 +82,16 @@
 	.h-banner-content {
 		/* transform: translate(-50%, -50%); */
 		/* text-align: inherit; */
-		width:60%;
-		top:25%;
+		width:80%;
+		
 		left:10%;
 	}
-	.h-banner-content h2 {
-		font-size: 18px;
+	
+	.wwa_img-wrapper{
+		width:100%;
 	}
 	
-	.h-banner-content p {
-		font-size: 12px;
-	}
-	.talk_btn {
-		/* background-image: linear-gradient(138deg, #4968A6, #810aff75); */
-		padding: 6px 12px;
-		font-size:13px;
-	}
+	
 
 	.wwa_grid-container {
 		flex-wrap: wrap;
@@ -236,24 +230,9 @@
 	.h-banner-content {
 		/* transform: translate(-50%, -50%); */
 		/* text-align: inherit; */
-		width:50%;
-		top:18%;
-		left:12%;
-	}
-	.h-banner-content h2 {
-		font-size: 14px;
-		margin-bottom:8px;
+		text-align: center;
 	}
 	
-	.h-banner-content p {
-		font-size: 10px;
-		margin-bottom:8px;
-	}
-	.talk_btn {
-		/* background-image: linear-gradient(138deg, #4968A6, #810aff75); */
-		padding: 6px 12px;
-		font-size:12px;
-	}
 
 	/* ABOUT US */
 	/* .prod_grid_container {

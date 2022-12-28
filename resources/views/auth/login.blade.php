@@ -41,7 +41,7 @@
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
                                             <div class="inner_custom-banner">
-                                                <img src="./assets/images/Wall post-pana.png" alt="slide-one-img" class="slide_img">
+                                                <img src="./assets/images/Wall-post-pana.png" alt="slide-one-img" class="slide_img">
                                             </div>
                                         </div>
                                         <div class="swiper-slide">

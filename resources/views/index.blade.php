@@ -15,8 +15,8 @@
          <div class="swiper mySwiper hero_slider">
             <div class="swiper-wrapper">
                @foreach ($slider as $slider_item)
-                  <div class="swiper-slide bg_img" data-bg="">
-                     <img src="{{ url('images/' . $slider_item->image) }}" width="100%">
+                  <div class="swiper-slide bg_img" data-bg="{{ url('images/' . $slider_item->image) }}">
+                     
                      <div class="h-banner-content">
                         <h2>{{ $slider_item->title }}</h2>
                         <p>{{ $slider_item->description }}</p>

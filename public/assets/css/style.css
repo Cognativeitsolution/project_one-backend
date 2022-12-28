@@ -300,12 +300,12 @@ a.top_head-link span i {
 	position: absolute;
 	border-radius: 5px;
 	left: 50%;
-	transition: all .5s;
+	transition: ease-in 0.2s;
 	transform: translateX(-50%);
 	z-index: 500;
 	max-width: 1300px;
 	width: 100%;
-	margin-top: 25px;
+	margin-top: 2px;
 	opacity: 0;
 	visibility: hidden;
 }
@@ -757,11 +757,11 @@ ul.sub-service-link li a:hover {
 	display: flex;
 	grid-gap: 15px;
 	position: relative;
-	/* padding: 60px 100px; */
+	padding: 60px 100px;
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-end;
-	/* min-height: 660px; */
+	min-height: 600px;
 	/* background: #3333336b;
 	background-blend-mode: multiply; */
 	background-size: cover;
@@ -771,45 +771,40 @@ ul.sub-service-link li a:hover {
 
 .h-banner-content {
 	position: absolute;
-	left: 5%;
+	left: 10%;
 	top: 40%;
+	width:55%;
 	/* transform: translate(-90%, -50%); */
 	text-align: left;
 }
 
 .h-banner-content h2 {
-	color: #232323;
+	color: #fff;
 	margin-bottom: 15px;
 	text-transform: capitalize;
-	font-weight:bold;
 }
 
 .h-banner-content p {
-	color: #232323;
+	color: #fff;
 	font-size: 14px;
-	font-weight: bold;
 	margin-bottom: 15px;
 	text-transform: capitalize;
 }
 
 .talk_btn {
-	/* background-image: linear-gradient(138deg, #4968A6, #810aff75); */
+	background-image: linear-gradient(138deg, #4968A6, #810aff75);
 	padding: 8px 16px;
-	border:2px solid #232323;
 	border-radius: 5px;
-	color: #232323;
+	color: #fff;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 15px;
-	font-weight: bold;
 	transition:0.5s;
 }
 
 .talk_btn:hover {
 	text-decoration: none;
-	color: #e2e2e2;
-	font-weight: bold;
-	background:rgba(0,0,0,0.9);
+	color: #fff;
 	transition:0.5s;
 }
 
