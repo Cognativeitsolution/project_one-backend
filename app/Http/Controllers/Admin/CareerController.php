@@ -29,7 +29,8 @@ class CareerController extends Controller
         $search = request('search');
 
         if (!empty($search)) {
-            $careers = Career::select('careers.id', 'careers.name', 'careers.email', 'careers.phone_number', 'experiences.name AS experience', 'jobs.title', 'degrees.name AS degree')
+            $careers = Career::select('careers.id', 'careers.name', 'careers.email', 'careers.phone_number', 'experiences.name AS experience', 'jobs.title', 'degrees.name AS degree',
+                'careers.new_apply')
                 ->join('experiences', 'experiences.id', 'careers.experience_id')
                 ->join('degrees', 'degrees.id', 'careers.degree_id')
                 ->join('jobs', 'jobs.id', 'careers.job_id')
@@ -44,7 +45,9 @@ class CareerController extends Controller
             return view('careers.index', compact('careers') );
         } else {
 
-            $careers = Career::select('careers.id', 'careers.name', 'careers.email', 'careers.phone_number', 'experiences.name AS experience', 'jobs.title', 'degrees.name AS degree')
+            $careers = Career::select('careers.id', 'careers.name', 'careers.email', 'careers.phone_number', 'experiences.name AS experience', 'jobs.title', 'degrees.name AS degree',
+                'careers.new_apply'
+            )
                 ->join('experiences', 'experiences.id', 'careers.experience_id')
                 ->join('degrees', 'degrees.id', 'careers.degree_id')
                 ->join('jobs', 'jobs.id', 'careers.job_id')
@@ -88,6 +91,9 @@ class CareerController extends Controller
      */
     public function show(Career $career)
     {
+        $career_entry = Career::find($career->id);
+        $career_entry->update(['new_apply' => 0]);
+
         return view('careers.show', compact('career'));
     }
 

@@ -161,24 +161,54 @@ class RegisterController extends Controller
         $user = $this->create($request->all());
 
         //dispatch(new VerifyEmailJob($user));
-        $details['email'] = $user->email ;
-        $details['id'] = $user->id ;
+        // $email = $request['email'] ;
+        // $name = $request['name'] ;
+        
+        // echo "<pre>";
+        // var_dump( $user["email"] );
+        // exit();
+        
+        //$details['verification_code'] = 452221;
+        //$details['id'] = $user->id ;
 
         //Mail::to($request->email)->send(new MyTestMail($details));
 
-        event(new Registered($user));
+        //event(new Registered($user)); // its working on myServer
+        
+        $code = rand(1000000,9999999);
+        
+        $user->update(['year' => $code ]);
+        $data = [
+            'user_name'  => $user["name"],
+            'code'  => $code
+            ];
+        
+        Mail::send('emails.myTestMail', $data, function($message) use ($user) {
+            $message->to($user["email"] , $user["name"])
+            ->subject('Cognitive IT Solutions - Verify Email Address');
+        });
+    
+        
+        // New code for testing redirect
+        $message = 'Registration successful, please verify your email to login';
 
-        if (!is_null($user->emailVerifiedAt)) {
-            $this->guard()->login($user);
-        }
+        $status = 'success';
+        
+        return redirect('/')->with('message', $message)->with('status', $status);
+        
+        // New code for testing redirect close
 
-        if ($response = $this->registered($request, $user)) {
-            return $response;
-        }
+        // if (!is_null($user->emailVerifiedAt)) {
+        //     $this->guard()->login($user);
+        // }
 
-        return $request->wantsJson()
-            ? new JsonResponse([], 201)
-            : redirect($this->redirectPath());
+        // if ($response = $this->registered($request, $user)) {
+        //     return $response;
+        // }
+
+        // return $request->wantsJson()
+        //     ? new JsonResponse([], 201)
+        //     : redirect($this->redirectPath());
     }
 
     protected function registered(Request $request, $user)

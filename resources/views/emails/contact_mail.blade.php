@@ -1,7 +1,7 @@
 <h2>Hello</h2> <br><br>
-You have got an email from : {{ $details['name'] }} <br><br>
+You have got an email from : {{ $name }} <br><br>
 User details: <br><br>
-Name: {{ $details['name'] }} <br>
-Email: {{ $details['email'] }} <br>
-Message: {{ $details['message'] }} <br><br>
+Name: {{ $name }} <br>
+Email: {{ $email }} <br>
+Message: {{ $body_message }} <br><br>
 Thanks

@@ -38,12 +38,16 @@
      <ul class="navbar-nav ml-auto"> 
       <!-- Messages Dropdown Menu -->
       <li>
-        
-      <a class="nav-link2" href="{{ route('careers.index') }}" >
-      <i class="fa fa-paste"></i>
-        <span class="badge badge-danger navbar-badge">34</span>
-      </a>
+
+        <a class="nav-link2" href="{{ route('careers.index') }}" >
+        <i class="fa fa-paste"></i>
+          <span class="badge badge-danger navbar-badge">
+            {{ isset($new_applications) ? $new_applications : 0 }}
+          </span>
+        </a>
       </li>
+
+
        <li class="nav-item dropdown">
         
 
@@ -66,9 +70,6 @@
                       </span>
                             Settings
                         </a>
-
-
-
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">

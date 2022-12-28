@@ -70,7 +70,7 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
-                        <th>ID</th>
+                        <th>S.No</th>
                         <th>Name</th>
                         <th style="text-align:center;">Title</th>
                         <th style="text-align:center;">Short Description</th>
@@ -87,9 +87,10 @@
                     @endif
                     
                     @if(!empty($record) && $record->count())
+                    @php $no = 1; @endphp
                       @foreach( $record as $service)
                         <tr>
-                          <td>{{ $service->id }}</td>
+                          <td>{{ $no++ }}</td>
                           <td>{!! Str::words( $service->name, 3, ' ...') !!}</td>
                           <td style="text-align:center;">{!! Str::words( $service->title, 3, ' ...') !!}</td>
                           <td style="text-align:center;">{!! Str::words( $service->short_description, 5, ' ...') !!}</td>

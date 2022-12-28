@@ -95,11 +95,15 @@
                           <td>{{ $no++ }}</td>
                           <td>{{ $user->name }}</td>
                           <td>{{ $user->email }}</td>
-                          <td><?php if($user->email_verified_at){ ?>
-                          <label class='badge badge-success table-badge'>Active</label>
-                          <?php }else{ ?>
-                          <label class='badge badge-danger table-badge'>InActive</label>
-                          <?php } ?>
+
+
+                          <td>
+                            <?php if($user->email_verified_at){ ?>
+                              <label class='badge badge-success table-badge'>Active</label>
+                              <?php }else{ ?>
+                              <label class='badge badge-danger table-badge'>InActive</label>
+                              <?php } ?>
+
                           </td>
                           <td>{{ $user->created_diff }}</td>
                           <td>{{ $user->updated_at->format('Y-m-d H:i:s') }}</td>

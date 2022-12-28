@@ -14,9 +14,6 @@ use App\Jobs\ResendEmailVerificationNotice;
 use App\Http\Controllers\WebAboutController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\SatisfactionController;
-use App\Http\Controllers\Admin\CoreServiceController;
-use App\Http\Controllers\Admin\OurClientController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\WebServiceController;
@@ -29,7 +26,10 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\ContactusCotroller;
+use App\Http\Controllers\Admin\OurClientController;
+use App\Http\Controllers\Admin\CoreServiceController;
 use App\Http\Controllers\Admin\ExperiencesController;
+use App\Http\Controllers\Admin\SatisfactionController;
 use App\Http\Controllers\JobController as WebJobController;
 use App\Http\Controllers\BlogController as WebBlogController;
 use App\Http\Controllers\PagesController as WebPagesController;
@@ -44,6 +44,27 @@ use App\Http\Controllers\PagesController as WebPagesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Verify Email
+Route::get('/verify-email/{code}', function ($code) {
+
+    $user = User::where('year', $code)->first();
+
+    if( !$user ){
+        abort(404);
+    }
+
+    $user->update([
+        'email_verified_at' => now(),
+        'year' => NULL
+    ]);
+
+    $message = 'Your email has been verified';
+
+    $status = 'success';
+
+    return redirect()->route('web.home')->with('message', $message)->with('status', $status);
+});
 
 Route::get('/', [WebHomeController::class, 'index'])->name('web.home');
 Route::get('/contact_us', [ContactController::class, 'index']);
@@ -117,7 +138,20 @@ Route::post('/email/verification-notification', function (Request $request) {
     $user = User::find($request->user_id);
 
     if (!empty($user)) {
-        dispatch(new ResendEmailVerificationNotice($user));
+        // dispatch(new ResendEmailVerificationNotice($user));
+
+        $code = rand(1000000,9999999);
+        
+        $user->update(['year' => $code ]);
+        $data = [
+            'user_name'  => $user["name"],
+            'code'  => $code
+            ];
+        
+        Mail::send('emails.myTestMail', $data, function($message) use ($user) {
+            $message->to($user["email"] , $user["name"])
+            ->subject('Cognitive IT Solutions - Verify Email Address');
+        });
 
         $message = 'Verification link sent!';
         

@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('seo')
+   <title>Cognitive IT Solutions</title>
+   <meta name="keywords" content="Cognitive IT Solutions Our Core Services"/>
+   <meta name="description" content="Cognitive IT Solutions provide best projcts and software with Our Core Services, we have done many projects."/>
+@endsection
+
 @section('content')
     <!---About Us Banner Container-->
     <section class="service_hero-banner">
@@ -85,66 +91,21 @@
                         <span class="primary_sub-heading">Services</span>
                      </div>
                      <div class="ocs_grid-container">
-                        <div class="ocs_grid-item">
-                           <div class="image_box">
-                              <img src="{{ asset('assets/images/ui_ux-min.png') }}" alt="uiux" class="ocs_img">
-                           </div>
-                           <div class="ocs-head">UI/UX Designs</div>
-                           <p class="ocs_content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                              Laboriosam non eos facilis id doloribus porro? 
-                              Enim eaque eum nesciunt earum blanditiis modi voluptatem deserunt sint.
-                           </p>
-                        </div>
-                        <div class="ocs_grid-item">
-                           <div class="image_box">
-                              <img src="{{ asset('assets/images/programming-pana-min.png') }}" alt="uiux" class="ocs_img">
-                           </div>
-                           <div class="ocs-head">UI/UX Designs</div>
-                           <p class="ocs_content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                              Laboriosam non eos facilis id doloribus porro? 
-                              Enim eaque eum nesciunt earum blanditiis modi voluptatem deserunt sint.
-                           </p>
-                        </div>
-                        <div class="ocs_grid-item">
-                           <div class="image_box">
-                              <img src="{{ asset('assets//images/software_development-min.png') }}" alt="uiux" class="ocs_img">
-                           </div>
-                           <div class="ocs-head">UI/UX Designs</div>
-                           <p class="ocs_content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                              Laboriosam non eos facilis id doloribus porro? 
-                              Enim eaque eum nesciunt earum blanditiis modi voluptatem deserunt sint.
-                           </p>
-                        </div>
-                        <div class="ocs_grid-item">
-                           <div class="image_box">
-                              <img src="{{ asset('assets/images/mobile_app-min.png') }}" alt="uiux" class="ocs_img">
-                           </div>
-                           <div class="ocs-head">UI/UX Designs</div>
-                           <p class="ocs_content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                              Laboriosam non eos facilis id doloribus porro? 
-                              Enim eaque eum nesciunt earum blanditiis modi voluptatem deserunt sint.
-                           </p>
-                        </div>
-                        <div class="ocs_grid-item">
-                           <div class="image_box">
-                              <img src="{{ asset('assets/images/data_analytic-min.png') }}" alt="uiux" class="ocs_img">
-                           </div>
-                           <div class="ocs-head">UI/UX Designs</div>
-                           <p class="ocs_content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                              Laboriosam non eos facilis id doloribus porro? 
-                              Enim eaque eum nesciunt earum blanditiis modi voluptatem deserunt sint.
-                           </p>
-                        </div>
-                        <div class="ocs_grid-item">
-                           <div class="image_box">
-                              <img src="{{ asset('assets/images/cloud_sync-pana-min.png') }}" alt="uiux" class="ocs_img">
-                           </div>
-                           <div class="ocs-head">UI/UX Designs</div>
-                           <p class="ocs_content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                              Laboriosam non eos facilis id doloribus porro? 
-                              Enim eaque eum nesciunt earum blanditiis modi voluptatem deserunt sint.
-                           </p>
-                        </div>
+                        @if(!empty($records) && $records->count())
+                           @foreach($records as $core_service)
+                              <div class="ocs_grid-item">
+                                 <div class="image_box">
+                                    <img src="{{ url('thumbnail/' . $core_service->image) }}" alt="{{ $core_service->title }}" class="ocs_img">
+                                 </div>
+                                 <div class="ocs-head">
+                                    {!! Str::words( $core_service->title, 4, ' ') !!}
+                                 </div>
+                                 <p class="ocs_content">
+                                    {{ $core_service->short_description }}
+                                 </p>
+                              </div>
+                           @endforeach
+                        @endif
                      </div>
                   </div>
                </div>
