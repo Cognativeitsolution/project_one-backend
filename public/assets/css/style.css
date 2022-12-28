@@ -761,9 +761,9 @@ ul.sub-service-link li a:hover {
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-end;
-	min-height: 660px;
-	background: #3333336b;
-	background-blend-mode: multiply;
+	/* min-height: 660px; */
+	/* background: #3333336b;
+	background-blend-mode: multiply; */
 	background-size: cover;
 	background-position: center;
 
@@ -771,40 +771,46 @@ ul.sub-service-link li a:hover {
 
 .h-banner-content {
 	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-90%, -50%);
+	left: 5%;
+	top: 40%;
+	/* transform: translate(-90%, -50%); */
 	text-align: left;
 }
 
 .h-banner-content h2 {
-	color: #e1e1e1;
+	color: #232323;
 	margin-bottom: 15px;
 	text-transform: capitalize;
+	font-weight:bold;
 }
 
 .h-banner-content p {
-	color: #e1e1e1;
+	color: #232323;
 	font-size: 14px;
+	font-weight: bold;
 	margin-bottom: 15px;
 	text-transform: capitalize;
 }
 
 .talk_btn {
-	background-image: linear-gradient(138deg, #4968A6, #810aff75);
+	/* background-image: linear-gradient(138deg, #4968A6, #810aff75); */
 	padding: 8px 16px;
+	border:2px solid #232323;
 	border-radius: 5px;
-	color: #e1e1e1;
+	color: #232323;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 15px;
+	font-weight: bold;
+	transition:0.5s;
 }
 
-.talk_btn:hover,
-.talk_btn:active,
-.talk_btn:visited {
+.talk_btn:hover {
 	text-decoration: none;
-	color: #e1e1e1;
+	color: #e2e2e2;
+	font-weight: bold;
+	background:rgba(0,0,0,0.9);
+	transition:0.5s;
 }
 
 .arrows {

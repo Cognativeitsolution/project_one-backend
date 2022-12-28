@@ -80,8 +80,23 @@
 	/* index.html styling */
 	/* banner slider */
 	.h-banner-content {
-		transform: translate(-50%, -50%);
-		text-align: inherit;
+		/* transform: translate(-50%, -50%); */
+		/* text-align: inherit; */
+		width:60%;
+		top:25%;
+		left:10%;
+	}
+	.h-banner-content h2 {
+		font-size: 18px;
+	}
+	
+	.h-banner-content p {
+		font-size: 12px;
+	}
+	.talk_btn {
+		/* background-image: linear-gradient(138deg, #4968A6, #810aff75); */
+		padding: 6px 12px;
+		font-size:13px;
 	}
 
 	.wwa_grid-container {
@@ -218,12 +233,26 @@
 
 	/* index.html styling */
 	/* banner content */
-	.h-banner-content h2 {
-		font-size: 18px;
+	.h-banner-content {
+		/* transform: translate(-50%, -50%); */
+		/* text-align: inherit; */
+		width:50%;
+		top:18%;
+		left:12%;
 	}
-
+	.h-banner-content h2 {
+		font-size: 14px;
+		margin-bottom:8px;
+	}
+	
 	.h-banner-content p {
-		font-size: 13px;
+		font-size: 10px;
+		margin-bottom:8px;
+	}
+	.talk_btn {
+		/* background-image: linear-gradient(138deg, #4968A6, #810aff75); */
+		padding: 6px 12px;
+		font-size:12px;
 	}
 
 	/* ABOUT US */
