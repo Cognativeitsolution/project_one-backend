@@ -28,9 +28,9 @@ class UpdateJobRequest extends FormRequest
             'title' => 'required|string|min:8|max:120',
             'short_description' => 'required|string|min:15|max:100',
             'long_description' => ['required'],
-            'location' => 'required|string|min:8|max:120',
-            'meta_keywords' => 'required|min:50|max:160',
-            'meta_description' => 'required|min:50|max:160'
+            'location' => 'required|string|min:3|max:120',
+            'meta_keywords' => 'required|min:3|max:160',
+            'meta_description' => 'required|min:3|max:160'
         ];
     }
 }

@@ -54,10 +54,10 @@
                                        <span class="social_icon"><i class="fas fa-phone-alt"></i></span> &nbsp;
                                        <span class="social_content"> {{ $settings->contact_number }}</span>
                                     </div>
-                                    <div class="social_icon-container">
+                                    <!-- <div class="social_icon-container">
                                        <span class="social_icon"><i class="fas fa-fax"></i></span> &nbsp;
                                        <span class="social_content"> {{ $settings->contact_whatsapp }} </span>
-                                    </div>
+                                    </div> -->
                                  </div>
                               </div>
                            </div>

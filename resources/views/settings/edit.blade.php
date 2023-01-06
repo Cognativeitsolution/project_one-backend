@@ -98,7 +98,7 @@
             </div>
 
             <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
-              <label for="youtube_account_link">Youtube URL</label>
+              <label for="youtube_account_link">Google PLUS URL</label>
               <input type="text" id="youtube_account_link" name="youtube_account_link" value="{{ $record->youtube_account_link }}" class="form-control">
               @error('youtube_account_link')<div class="error">{{ $message }}</div>@enderror
             </div>
@@ -107,6 +107,12 @@
               <label for="location_address">Front Website Address Text</label>
               <input type="text" id="location_address" name="location_address" value="{{ $record->location_address }}" class="form-control">
               @error('location_address')<div class="error">{{ $message }}</div>@enderror
+            </div>
+
+            <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
+              <label for="branch">Branch</label>
+              <input type="text" id="branch" name="branch" value="{{ $record->branch }}" class="form-control">
+              @error('branch')<div class="error">{{ $message }}</div>@enderror
             </div>
 
             <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
