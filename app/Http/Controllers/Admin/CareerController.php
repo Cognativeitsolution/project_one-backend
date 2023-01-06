@@ -128,6 +128,9 @@ class CareerController extends Controller
      */
     public function destroy(Career $career)
     {
-        //
+        $career = Career::find($career->id);
+        $career->delete();
+
+        return redirect()->route('careers.index')->with('success', 'Record Deleted !');
     }
 }

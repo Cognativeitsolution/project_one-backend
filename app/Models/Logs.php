@@ -74,7 +74,9 @@ class Logs extends Model
         if (count($logs_records) > 0) {
             $log = $logs_records[0];
             $create_log_data = json_decode($log->data);
-            $created_by = User::where('id', $log->created_by)->get()->first();
+            //$created_by = User::where('id', $log->created_by)->get()->first();
+
+            $created_by = DB::table('users')->where('id', $log->created_by)->get()->first();
 
             $data_modified_log = array(
                 'timestamp' => date('d-m-Y h:i A', strtotime($log->created_at)),

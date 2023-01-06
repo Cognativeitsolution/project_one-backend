@@ -6,6 +6,13 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
+
+      @if (session('success'))
+          <div class="alert alert-success" role="alert">
+              <strong>Success!</strong> {{ session('success') }}
+          </div>
+      @endif
+
                     
         <div class="row mb-2">
 
@@ -33,7 +40,7 @@
                 <div class="card-header">
                 <div class="row">
                     <div class="col-sm-6">
-                    
+                    <span class="tbl-head"> Displaying {{$contact_us->count()}} of {{ $contact_us->total() }} contact(s).</span>
                     </div>
                     <div class="col-sm-6">
                     <form class="float-right" name="user_search" id="" method="get" action="{{ route('contactus.home')}}">
@@ -81,13 +88,30 @@
                           <td>{{ $no++ }}</td>
                           <td>{{ $contact->name }}</td>
                           <td style="text-align:center;">{{ $contact->email }}</td>
-                          <td style="text-align:center;">{{ Str::words( $contact->message, 5, ' ...') }}</td>                        
+                          <td style="text-align:center;">
+                            {{ Str::of( $contact->message )->limit(30) }}
+                          </td>                        
                           <td width="100" style="text-align:center;">{{ $contact->created_at->format('Y-m-d H:i:s') }}</td>
-                          @can('contact-edit')
-                          <td>                            
+                          
+                          <td width="150" style="text-align:center;float:right;">
+                            @can('contact-edit')                         
                             <a href="{{ route('contactus.show', $contact->id) }}" class="btn btn-info tableaction">Show</a>  
-                          </td>
-                          @endcan
+                            @endcan
+                          
+
+
+                          @can('contact-delete')   
+                                                      
+                                <form action="{{ route('contactus.destroy', $contact->id)}}" method="post" class="tableaction">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button class="btn btn-danger del-btn" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
+                                </form> 
+                          @endcan      
+                          </td>                            
+                         
+
+
                         </tr>
                       @endforeach
                     @endif

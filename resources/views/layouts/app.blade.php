@@ -312,6 +312,9 @@
                               @if ($settings->youtube_account_link)
                                  <a target="_blank" href="https://www.youtube.com/" class="footer-social"><i class="fab fa-youtube"></i></a>
                               @endif
+
+                              <a target="_blank" href="https://wa.me/{{ $settings->contact_whatsapp}}" class="footer-social"><i class="fab fa-whatsapp-square"></i></a>
+
                            </div>
                         </div>
                      </div>

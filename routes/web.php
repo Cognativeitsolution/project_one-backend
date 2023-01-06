@@ -84,7 +84,8 @@ Route::middleware([IsAdmin::class])->group(function(){
     Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
     Route::resource('admin/users', UserController::class);
     Route::get('admin/contact_us/{id}', [ContactusCotroller::class, 'show'])->name('contactus.show');
-    Route::get('admin/contact_us', [ContactusCotroller::class, 'index'])->name('contactus.home');    
+    Route::get('admin/contact_us', [ContactusCotroller::class, 'index'])->name('contactus.home');
+    Route::delete('admin/contact_us/{id}', [ContactusCotroller::class, 'destroy'])->name('contactus.destroy');
     Route::resource('admin/sliders', SliderController::class);
     Route::resource('admin/blogs', BlogController::class);
     Route::resource('admin/satisfactions', SatisfactionController::class);

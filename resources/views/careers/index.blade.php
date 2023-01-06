@@ -6,6 +6,12 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
+
+      @if (session('success'))
+          <div class="alert alert-success" role="alert">
+              <strong>Success!</strong> {{ session('success') }}
+          </div>
+      @endif
                     
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -85,14 +91,27 @@
                             <?php }?>
                           </td>
                           <td>{{ $career->email }}</td>
-                          <td>{{ $career->title }}</td>
+                          <td>{{ Str::of( $career->title )->limit(25) }}</td>
                           <td>{{ $career->experience }}</td>
                           <td>{{ $career->phone_number }}</td>
                           <td>{{ $career->degree }}</td>
-                          <td>
+                          <td width="150" style="text-align:center;float:right;">
+
                             @can('career-create')
                               <a href="{{ route('careers.show', $career->id) }}" class="btn btn-info">Show</a>                           
                             @endcan
+
+
+                            @can('career-delete')   
+                                                      
+                                <form action="{{ route('careers.destroy', $career->id)}}" method="post" class="tableaction">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button class="btn btn-danger del-btn" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
+                                </form> 
+                            @endcan 
+
+
                           </td>
                         </tr>
                       @endforeach
