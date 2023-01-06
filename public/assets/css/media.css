@@ -80,9 +80,18 @@
 	/* index.html styling */
 	/* banner slider */
 	.h-banner-content {
-		transform: translate(-50%, -50%);
-		text-align: inherit;
+		/* transform: translate(-50%, -50%); */
+		/* text-align: inherit; */
+		width:80%;
+		
+		left:10%;
 	}
+	
+	.wwa_img-wrapper{
+		width:100%;
+	}
+	
+	
 
 	.wwa_grid-container {
 		flex-wrap: wrap;
@@ -218,13 +227,12 @@
 
 	/* index.html styling */
 	/* banner content */
-	.h-banner-content h2 {
-		font-size: 18px;
+	.h-banner-content {
+		/* transform: translate(-50%, -50%); */
+		/* text-align: inherit; */
+		text-align: center;
 	}
-
-	.h-banner-content p {
-		font-size: 13px;
-	}
+	
 
 	/* ABOUT US */
 	/* .prod_grid_container {
