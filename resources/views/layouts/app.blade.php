@@ -294,23 +294,23 @@
                         <div class="foo-social-icon">
                            <div class="foo-social-flex-wrapper">
                               @if ($settings->facebook_account_link)
-                                 <a target="_blank" href="https://www.facebook.com" class="footer-social"><i class="fab fa-facebook"></i></a>
+                                 <a target="_blank" href="{{ $settings->facebook_account_link }}" class="footer-social"><i class="fab fa-facebook"></i></a>
                               @endif
 
                               @if ($settings->google_account_link)
-                                 <a target="_blank" href="https://www.google.com" class="footer-social"><i class="fab fa-google"></i></a>
+                                 <a target="_blank" href="{{ $settings->google_account_link }}" class="footer-social"><i class="fab fa-google"></i></a>
                               @endif
 
                               @if ($settings->linkedin_account_link)
-                                 <a target="_blank" href="https://www.linkedin.com/login" class="footer-social"><i class="fab fa-linkedin"></i></a>
+                                 <a target="_blank" href="{{ $settings->linkedin_account_link }}" class="footer-social"><i class="fab fa-linkedin"></i></a>
                               @endif
 
                               @if ($settings->instagram_account_link)
-                                 <a target="_blank" href="https://www.instagram.com/" class="footer-social"><i class="fab fa-instagram"></i></a>
+                                 <a target="_blank" href="{{ $settings->instagram_account_link }}" class="footer-social"><i class="fab fa-instagram"></i></a>
                               @endif
 
                               @if ($settings->youtube_account_link)
-                                 <a target="_blank" href="https://www.youtube.com/" class="footer-social"><i class="fab fa-youtube"></i></a>
+                                 <a target="_blank" href="{{ $settings->youtube_account_link }}" class="footer-social"><i class="fab fa-google-plus-square"></i></a>
                               @endif
 
                               <a target="_blank" href="https://wa.me/{{ $settings->contact_whatsapp}}" class="footer-social"><i class="fab fa-whatsapp-square"></i></a>
@@ -363,8 +363,15 @@
                                  <div class="social_icon-container">
                                     <span class="social_icon"><i class="fas fa-map-marker-alt"></i></span> &nbsp;
                                     <span class="footer_social_content">
-                                       <h1>Location</h1>
+                                       <h1>Head Office Location</h1>
                                        <p> {{ $settings->location_address }}</p>
+                                    </span>
+                                 </div>
+                                 <div class="social_icon-container">
+                                    <span class="social_icon"><i class="fas fa-map-marker-alt"></i></span> &nbsp;
+                                    <span class="footer_social_content">
+                                       <h1>Branch</h1>
+                                       <p> {{ $settings->branch }}</p>
                                     </span>
                                  </div>
                                  <div class="social_icon-container">

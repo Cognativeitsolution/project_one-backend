@@ -20,6 +20,7 @@ class CreateSettingsTable extends Migration
             $table->string('favicon')->nullable();
             $table->string('contact_email')->nullable();
             $table->string('location_address')->nullable();
+            $table->string('branch')->nullable();
             $table->string('contact_number')->nullable();
             $table->string('contact_whatsapp')->nullable();
             $table->string('linkedin_account_link')->nullable();
