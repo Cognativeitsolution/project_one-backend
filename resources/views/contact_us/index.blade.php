@@ -62,9 +62,17 @@
 
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
+                  
+
+            <form  method="post" enctype="multipart/form-data" action="{{ route('contactus.multi_delete')}}">
+            @csrf
+
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
+                        @can('contact-delete')   
+                        <th><input type="checkbox"  class="cboxAll" ></th>
+                        @endcan
                         <th>S.No</th>
                         <th>Name</th>
                         <th style="text-align:center;">Email</th>
@@ -85,6 +93,10 @@
                     @php $no=1; @endphp
                       @foreach( $contact_us as $contact)
                         <tr>
+                          @can('contact-delete')   
+                          <td><input type="checkbox" name="ids[]" class="cbox" value="{{ $contact->id }}"></td>
+                          @endcan
+
                           <td>{{ $no++ }}</td>
                           <td>{{ $contact->name }}</td>
                           <td style="text-align:center;">{{ $contact->email }}</td>
@@ -97,28 +109,25 @@
                             @can('contact-edit')                         
                             <a href="{{ route('contactus.show', $contact->id) }}" class="btn btn-info tableaction">Show</a>  
                             @endcan
-                          
 
-
-                          @can('contact-delete')   
-                                                      
-                                <form action="{{ route('contactus.destroy', $contact->id)}}" method="post" class="tableaction">
-                                  @csrf
-                                  @method('DELETE')
-                                  <button class="btn btn-danger del-btn" onclick="return confirm('Are you sure to delete record?')" type="submit">Delete</button>
-                                </form> 
-                          @endcan      
+                            <!-- /.Contact us single delete option  -->
+                               
                           </td>                            
                          
-
-
                         </tr>
                       @endforeach
                     @endif
 
                     </tbody>
+                    
                   </table>
+                
                 <div class="col-sm-12">
+
+                  @can('contact-delete')   
+                  <button type="submit" class="btn btn-danger btnChk" style="margin:15px; 0px;">Bulk Delete</button>
+                  @endcan
+
                   <div class="float-right">
                     <p>
                       @if(!empty($contact_us))
@@ -126,7 +135,9 @@
                       @endif
                     </p>
                   </div>
-                </div>  
+                </div> 
+
+                </form> 
 
                 </div>
                 <!-- /.card-body -->
@@ -140,4 +151,47 @@
       </section>
   </div>
   <!-- /.content-wrapper -->
+@endsection
+
+@section('js')
+<script>
+var chk = 1;
+$(document).ready(function(){
+  $(".cboxAll").click(function(){
+    if($('.cboxAll').prop('checked')) {
+        $('.cbox').prop('checked',true);
+    }else{
+        $('.cbox').prop('checked',false);
+    }
+    checking();
+  });
+
+  $(".btnChk").click(function(){
+    if(chk==0) {
+      return confirm('Are you sure to delete record?');
+    }else{
+      return false;
+    }
+  });
+
+  $(".cbox").click(function(){
+    if ($('.cbox:checked').length == $('.abc').length) {
+      chk=1;
+    }else{
+      chk=0;
+    }
+    
+  });
+
+});
+
+function checking(){
+  if($('.cbox:checked').length == $('.abc').length) {
+      chk=1;
+    }else{
+      chk=0;
+  }
+}
+
+</script>
 @endsection

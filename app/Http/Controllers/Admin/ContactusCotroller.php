@@ -26,11 +26,11 @@ class ContactusCotroller extends Controller
                 ->orWhere('contacts.email', 'like', '%'.$search.'%')
                 ->orWhere('contacts.message', 'like', '%'.$search.'%')
                 ->orderBy('contacts.id','DESC')
-                ->paginate(5);
+                ->paginate(10);
             return view('contact_us.index', compact('contact_us') );
         }else{
 
-            $contact_us = Contact::orderBy('contacts.id','DESC')->paginate(10);
+            $contact_us = Contact::orderBy('contacts.id','DESC')->paginate(15);
 
             if($contact_us != false){
                 return view('contact_us.index', compact('contact_us') );
@@ -52,9 +52,21 @@ class ContactusCotroller extends Controller
 
     public function destroy($id)
     {
+
         $contact = Contact::find($id);
         $contact->delete();
         return redirect()->route('contactus.home')->with('success', 'Record Deleted !');
+    }
+
+    public function multi_delete(Request $request)
+    {
+
+        $ids = $request->ids;
+
+        foreach ($ids as $id) {
+            contact::findOrFail($id)->delete();
+        }
+        return redirect()->route('contactus.home')->with('success', 'Record Delete!');
     }
 
 

@@ -76,7 +76,7 @@
 
                     @if ($careers->count() == 0)
                     <tr>
-                        <td colspan="6">No careers to display.</td>
+                        <td colspan="6">No applications to display.</td>
                     </tr>
                     @endif
                     

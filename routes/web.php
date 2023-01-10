@@ -86,6 +86,7 @@ Route::middleware([IsAdmin::class])->group(function(){
     Route::get('admin/contact_us/{id}', [ContactusCotroller::class, 'show'])->name('contactus.show');
     Route::get('admin/contact_us', [ContactusCotroller::class, 'index'])->name('contactus.home');
     Route::delete('admin/contact_us/{id}', [ContactusCotroller::class, 'destroy'])->name('contactus.destroy');
+    Route::post('admin/contact_us/multi_delete', [ContactusCotroller::class, 'multi_delete'])->name('contactus.multi_delete');
     Route::resource('admin/sliders', SliderController::class);
     Route::resource('admin/blogs', BlogController::class);
     Route::resource('admin/satisfactions', SatisfactionController::class);
